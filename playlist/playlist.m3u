@@ -12,7 +12,7 @@ https://1.org.vn/oni3/?/index.m3u8
 #EXTINF:0 group-title="ONNA Network", ONi4 HD
 https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni4/index.m3u8
 #EXTINF:0 group-title="ONNA Network", ONi6
-https://s3.catcast.tv/content/50189/index.m3u8?token=b36da4e53b769e84fe87af901ece5410
+https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni6/index.m3u8
 #EXTINF:0 group-title="ONNA Network", ONi7
 https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8
 
