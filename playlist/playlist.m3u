@@ -1,21 +1,21 @@
 #EXTM3U
 
-#EXTINF:0 group-title="ONNA Network", ONi1 HD
+#EXTINF:0 tvg-id="oni1hd" group-title="ONNA Network", ONi1 HD
 #https://1.org.vn/oni1/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8
-#EXTINF:0 group-title="ONNA Network", ONi2
+#EXTINF:0 tvg-id="oni2" group-title="ONNA Network", ONi2
 #https://d.org.vn/oni2-mbnlife/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni2/index.m3u8
-#EXTINF:0 group-title="ONNA Network", ONi3
+#EXTINF:0 tvg-id="oni3" group-title="ONNA Network", ONi3
 #https://1.org.vn/oni3/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni3/index.m3u8
-#EXTINF:0 group-title="ONNA Network", ONi4 HD
+#EXTINF:0 tvg-id="oni4hd" group-title="ONNA Network", ONi4 HD
 #https://1.org.vn/oni4/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni4/index.m3u8
-#EXTINF:0 group-title="ONNA Network", ONi6
+#EXTINF:0 tvg-id="oni6" group-title="ONNA Network", ONi6
 #https://1.org.vn/oni6/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni6/index.m3u8
-#EXTINF:0 group-title="ONNA Network", ONi7
+#EXTINF:0 tvg-id="oni7" group-title="ONNA Network", ONi7
 #https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8
 
