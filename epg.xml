@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tv>
+<channel id="oni1hd"><display-name>ONi1 HD</display-name></channel>
+<channel id="oni2"><display-name>ONi2</display-name></channel>
+<channel id="oni3"><display-name>ONi3</display-name></channel>
+<channel id="oni4hd"><display-name>ONi4 HD</display-name></channel>
+<channel id="oni6"><display-name>ONi6</display-name></channel>
+<channel id="oni7"><display-name>ONi7</display-name></channel>
+<programme start="20260111160000 +0700" stop="20260112000000 +0000" channel="oni1hd"><title>Tiếp sóng phim trên HBO</title></programme>
+<programme start="20260111000000 +0700" stop="20260112000000 +0000" channel="oni2"><title>Tiếp sóng phim kênh Quảng Ngãi 2</title></programme>
+<programme start="20260111202000 +0700" stop="20260111210000 +0000" channel="oni3"><title>Trực tiếp: U23 AFC Asian Cup</title></programme>
+<programme start="20260111202000 +0700" stop="20260111210000 +0000" channel="oni4hd"><title>Trực tiếp: U23 AFC Asian Cup</title></programme>
+<programme start="20260111202000 +0700" stop="20260111210000 +0000" channel="oni6"><title>Trực tiếp: U23 AFC Asian Cup</title></programme>
+</tv>
