@@ -1,18 +1,18 @@
 #EXTM3U url-tvg="https://raw.githubusercontent.com/huynhxuanhieu2010/hieuott/refs/heads/main/epg.xml"
 
-#EXTINF:0 tvg-id="oni1hd" group-title="ONNA Network", ONi1 HD
+#EXTINF:0 tvg-id="oni1hd" group-title="ONNA Network" tvg-logo="https://lh3.googleusercontent.com/sitesv/AAzXCkdEr_2N-DncMKB4xm6R2HtcTEKlnU8Nzdng3-Z9rxA2e33S5DSObH5i7UkY4yYwoEFCxOtTgNGtOPYEa2qnFy9xaEcZeuPwmOEbt1MK4ZBaY_5xvXfeeNG98BUpoUJ1NxZ9avW1ZOa02HPIlKnqRg_xzgnYmMY7OV6qWd4rLlF9brTCLCABZJrbqsm5Ms44OtTFP1EubH2QEGDq8hL3EZuFDWprjFi2wZEo9ig=w1280", ONi1 HD
 #https://1.org.vn/oni1/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8
-#EXTINF:0 tvg-id="oni2" group-title="ONNA Network", ONi2
+#EXTINF:0 tvg-id="oni2" group-title="ONNA Network" tvg-logo="https://lh3.googleusercontent.com/sitesv/AAzXCkdcnh2wZMOlvwUy63ADW61xt9USzHbgavfcAcYSv3Pf-7UCewTnvyR3fVJKahd7Ppxh0eMlBtHWK128YhBrP5ArDVeVt7jDLAiUeOId0BT1m_NQX0pcp-BOM6bqF75W_DwoGQh7s-N4Krmc-wrPmTg-mv5FhSpMfdNOy1xOBpvs28M53PrA5L4zk1s7QfLaO49Woxa0KN5H1R0IcUa5ErXAlPH369YlQZDp=w1280", ONi2
 #https://d.org.vn/oni2-mbnlife/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni2/index.m3u8
-#EXTINF:0 tvg-id="oni3" group-title="ONNA Network", ONi3
+#EXTINF:0 tvg-id="oni3" group-title="ONNA Network" tvg-logo="https://lh3.googleusercontent.com/sitesv/AAzXCkfv_al5iRAxKEkw-DSYtVg1OQSKE0XCaIQVfyBYlPTJ4oNtj8n_k-I94uyUH0yUXi1hgQKcGjaxrnjMK6c_KdqoeumH-rVugjfThUDarTzHhoP3TdpU-iVUTQp7ZHeFwB5rgKsF-lWN8EZgJ-TIhPaAEyq9Lj8E2saJGPYjHWi2OXkXQtzGClVQl1Kl28Kkeut3T3eHcDXulotbX_7uR2xvk70nLff84CUe_zM=w1280", ONi3
 #https://1.org.vn/oni3/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni3/index.m3u8
-#EXTINF:0 tvg-id="oni4hd" group-title="ONNA Network", ONi4 HD
+#EXTINF:0 tvg-id="oni4hd" group-title="ONNA Network" tvg-logo="https://lh3.googleusercontent.com/sitesv/AAzXCkcjRradz1xQB8mtQIxjxsMO-gJnXBzZ6et3K1EIVxRTDv5ZQOvYSW6lPzUFqXsNQBduhD4ygV75nD3FgE1aA8DEwoxIo0Bh8qh5m223BGokL8h1HUTciSnpAq_3M1jZOlgC7BLByAXY2TSRLyg8Ubys3mxx26vhUMqH22o3XEq5y1d7ZaBWCuo6c-NdGMws4HGMxgOdU49L1EfCK3dYBHvtFbb-XF1N59UyEpQ=w1280", ONi4 HD
 #https://1.org.vn/oni4/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni4/index.m3u8
-#EXTINF:0 tvg-id="oni6" group-title="ONNA Network", ONi6
+#EXTINF:0 tvg-id="oni6" group-title="ONNA Network" tvg-logo="https://lh3.googleusercontent.com/sitesv/AAzXCke0kNjCBJwCOM_3HFnCk8PMgea01pK6jWAVIdoL9cKn4icSQx7Lv6s9uEpg0V9yOCW_tKSPZck57tj2710NNmIORAZMPZ5zY5QMo0JH9hy5K3Ihkb1thSFV7iLnkWjixyr6Vkzpo3CLgwjLFvFYxDwUGn4RiEMdWiFTEHFPB3p9FUPiKY9soUa1VAErOI9qmb3Pgg_lAIKFEkJEVuPRjdTe7y9JXwbpTF-jn94=w1280", ONi6
 #https://1.org.vn/oni6/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni6/index.m3u8
 #EXTINF:0 tvg-id="oni7" group-title="ONNA Network", ONi7
