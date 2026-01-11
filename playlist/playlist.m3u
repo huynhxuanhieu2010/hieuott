@@ -12,20 +12,22 @@ https://1.org.vn/oni4/?/index.m3u8
 https://1.org.vn/oni6/?/index.m3u8
 #EXTINF:0 group-title="ONNA Network", ONi7
 https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8
-#EXTINF:0 group-title="ONNA Network", HBO
-http://ditmetohieu.hopto.org:21585/hbo/index.m3u8
 
-#EXTINF:0 group-title="ONNA Network", ONi1 FHD
+#EXTINF:0 group-title="ONNA Network", ONi1 HD
 #https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8
-#EXTINF:0 group-title="ONNA Network", ONi2 FHD
+#EXTINF:0 group-title="ONNA Network", ONi2
 #https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni2/index.m3u8
-#EXTINF:0 group-title="ONNA Network", ONi3 FHD
+#EXTINF:0 group-title="ONNA Network", ONi3
 #https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni3/index.m3u8
 #EXTINF:0 group-title="ONNA Network", ONi4 FHD
 #https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni4/index.m3u8
-#EXTINF:0 group-title="ONNA Network", ONi6 FHD
+#EXTINF:0 group-title="ONNA Network", ONi6
 #https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni6/index.m3u8
-#EXTINF:0 group-title="ONNA Network", ONi7 FHD
+#EXTINF:0 group-title="ONNA Network", ONi7
 #https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8
+
+
 #EXTINF:0, LVTT FHD
 #https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/lvtt/index.m3u8
+#EXTINF:0 group-title="ONNA Network", HBO
+#http://ditmetohieu.hopto.org:21585/hbo/index.m3u8
