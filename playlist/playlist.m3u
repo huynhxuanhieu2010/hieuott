@@ -1,4 +1,4 @@
-#EXTM3U url-tvg=""
+#EXTM3U url-tvg="https://raw.githubusercontent.com/huynhxuanhieu2010/hieuott/refs/heads/main/epg.xml"
 
 #EXTINF:0 tvg-id="oni1hd" group-title="ONNA Network", ONi1 HD
 #https://1.org.vn/oni1/?/index.m3u8
