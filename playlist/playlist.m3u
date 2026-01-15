@@ -27,3 +27,5 @@ https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8
 https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni5/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Khám phá" group-logo="", Discovery Channel
 http://ditmetohieu.hopto.org:21585/discovery/index.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="Giải trí" group-logo="", AXN
+http://ditmetohieu.hopto.org:21585/axn/index.m3u8
