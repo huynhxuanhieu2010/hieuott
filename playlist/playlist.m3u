@@ -25,5 +25,5 @@ https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8
 #http://live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="MBN" group-logo="", MBN Enter HD
 https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni5/index.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Phim truyện" group-logo="", HBO
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="Phim" group-logo="", HBO
 http://ditmetohieu.hopto.org:21585/hbo/index.m3u8
