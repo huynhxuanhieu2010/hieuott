@@ -31,3 +31,5 @@ http://ditmetohieu.hopto.org:21585/discovery/index.m3u8
 http://ditmetohieu.hopto.org:21585/axn/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Tin tức" group-logo="", BBC News
 http://ditmetohieu.hopto.org:21585/bbc/index.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="Tin tức" group-logo="", CNN
+http://ditmetohieu.hopto.org:21585/cnn/index.m3u8
