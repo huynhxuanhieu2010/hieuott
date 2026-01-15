@@ -1,7 +1,5 @@
 #EXTM3U
 
-<-- #EXTINF:0 tvg-id="" tvg-logo="" group-title="" group-logo="", -->
-
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="ONNA Network" group-logo="", ONi1 HD
 https://1.org.vn/oni1/?/index.m3u8
 #https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8
@@ -25,6 +23,7 @@ https://1.org.vn/oni6/?/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="ONNA Network" group-logo="", ONi7 HD
 https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8
 #http://live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="MBN" group-logo="", MBN Enter
+
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="MBN" group-logo="", MBN Enter HD
 https://1.org.vn/oni5/?/index.m3u8
 #http://live.qphim.xyz:8880/hls_nonkey/oni5/index.m3u8
