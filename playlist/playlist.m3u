@@ -33,3 +33,9 @@ http://ditmetohieu.hopto.org:21585/axn/index.m3u8
 http://ditmetohieu.hopto.org:21585/bbc/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Tin tức" group-logo="", CNN
 http://ditmetohieu.hopto.org:21585/cnn/index.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="Quốc tế" group-logo="", TV5 Monde
+http://ditmetohieu.hopto.org:21585/tv5/index.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="Quốc tế" group-logo="", DW
+http://ditmetohieu.hopto.org:21585/dw/index.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="Quốc tế" group-logo="", NHK World
+http://ditmetohieu.hopto.org:21585/nhkw/index.m3u8
