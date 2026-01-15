@@ -12,6 +12,8 @@ http://live.qphim.xyz:8880/hls_nonkey/oni3/index.m3u8
 #EXTINF:0 tvg-id="oni4hd" group-title="ONNA Network" tvg-logo="https://i.postimg.cc/tTLSgX2G/unnamed_(3).png", ONi4 HD
 #https://1.org.vn/oni4/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni4/index.m3u8
+#EXTINF:0 tvg-id="oni4hd" group-title="ONNA Network" tvg-logo="https://i.postimg.cc/tTLSgX2G/unnamed_(3).png", MBN Enter
+http://live.qphim.xyz:8880/hls_nonkey/oni5/index.m3u8
 #EXTINF:0 tvg-id="oni6" group-title="ONNA Network" tvg-logo="https://i.postimg.cc/4drL3JwD/unnamed_(4).png", ONi6
 #https://1.org.vn/oni6/?/index.m3u8
 http://live.qphim.xyz:8880/hls_nonkey/oni6/index.m3u8
