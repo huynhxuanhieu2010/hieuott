@@ -6,8 +6,11 @@
     <title>ONNA Online - OTT App</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Hỗ trợ HLS cho luồng video trực tiếp -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    
+    <!-- Video.js Library & CSS -->
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         
@@ -23,12 +26,10 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* Lớp phủ biểu ngữ */
         .gradient-overlay {
             background: linear-gradient(to top, #0f141e 5%, rgba(15, 20, 30, 0.4) 40%, transparent 100%);
         }
 
-        /* Chuyển đổi tiêu đề */
         #main-header {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -45,7 +46,6 @@
             backdrop-filter: blur(15px) !important;
         }
 
-        /* Kiểu thẻ kênh */
         .channel-card-item {
             background-color: #1c222d;
             border-radius: 10px;
@@ -74,7 +74,6 @@
             object-fit: cover;
         }
 
-        /* Cấu trúc thẻ phim tối giản */
         .movie-card-container {
             flex-shrink: 0;
             width: 140px;
@@ -100,7 +99,6 @@
             background: #1c222d;
         }
 
-        /* Trạng thái điều hướng */
         .header-nav-item.active { color: #10b981; font-weight: 700; }
         .header-nav-item.active::after {
             content: '';
@@ -131,7 +129,6 @@
             color: #10b981;
         }
 
-        /* Nút tập phim */
         .episode-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -143,14 +140,12 @@
             color: white;
         }
 
-        /* Giao diện Tìm kiếm */
         #search-overlay {
             transition: all 0.3s ease;
             backdrop-filter: blur(20px);
             background: rgba(15, 20, 30, 0.95);
         }
 
-        /* Lịch phát sóng */
         .epg-item {
             background: rgba(255, 255, 255, 0.03);
             border-left: 3px solid transparent;
@@ -158,6 +153,29 @@
         .epg-item.playing {
             background: rgba(16, 185, 129, 0.1);
             border-left-color: #10b981;
+        }
+
+        /* Video.js Custom Styles */
+        .video-container-wrapper {
+            position: relative;
+            width: 100%;
+            background-color: #000;
+        }
+        .video-js {
+            width: 100% !important;
+            height: auto !important;
+            aspect-ratio: 16/9;
+        }
+        .vjs-big-play-button {
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            border-radius: 50% !important;
+            width: 60px !important;
+            height: 60px !important;
+            line-height: 60px !important;
+            background-color: rgba(16, 185, 129, 0.8) !important;
+            border: none !important;
         }
     </style>
 </head>
@@ -261,17 +279,16 @@
 
         <!-- Movie Details Page -->
         <main id="details-page" class="page-content hidden min-h-screen bg-[#0f141e]">
-            <div id="details-content">
-                <!-- Sẽ được điền bởi JavaScript -->
-            </div>
+            <div id="details-content"></div>
         </main>
 
         <!-- TV Page -->
         <main id="tv-page" class="page-content hidden min-h-screen pt-16">
             <div class="sticky top-16 z-30 bg-[#0f141e]">
-                <div id="video-container" class="aspect-video bg-black relative">
-                    <video id="tv-video-player" class="w-full h-full object-contain" controls></video>
-                    <div id="player-loading" class="absolute inset-0 flex items-center justify-center bg-black/60 hidden">
+                <div id="video-container" class="video-container-wrapper">
+                    <video id="tv-player" class="video-js vjs-big-play-centered" controls preload="auto" playsinline>
+                    </video>
+                    <div id="player-loading" class="absolute inset-0 flex items-center justify-center bg-black/60 hidden z-10">
                         <i class="fas fa-circle-notch fa-spin text-2xl text-emerald-500"></i>
                     </div>
                 </div>
@@ -283,12 +300,10 @@
                 </div>
             </div>
             <div id="tv-tab-content" class="px-4 pb-32 max-w-7xl mx-auto w-full">
-                <!-- Tab: Danh sách kênh -->
                 <div id="tv-content-view">
                     <div id="category-chips" class="flex gap-2 overflow-x-auto hide-scrollbar py-3"></div>
                     <div id="tv-channel-list" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 py-2"></div>
                 </div>
-                <!-- Tab: Lịch phát sóng -->
                 <div id="tv-epg-view" class="hidden py-4 space-y-3">
                     <div id="epg-channel-header" class="flex items-center gap-3 mb-4">
                         <div class="w-10 h-10 bg-black rounded flex items-center justify-center overflow-hidden">
@@ -299,9 +314,7 @@
                             <p class="text-[10px] text-gray-500 font-bold uppercase tracking-tighter">Lịch phát sóng hôm nay</p>
                         </div>
                     </div>
-                    <div id="epg-list" class="space-y-2">
-                        <!-- Nội dung EPG sẽ render ở đây -->
-                    </div>
+                    <div id="epg-list" class="space-y-2"></div>
                 </div>
             </div>
         </main>
@@ -350,29 +363,13 @@
 
     <script>
         const channels = [
-            { id: 1, name: 'ONi1 HD', cat: 'Giải trí', logo: 'https://i.postimg.cc/rwJfnXwz/oni1.png', url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8' },
-            { id: 2, name: 'ONi2', cat: 'Âm nhạc', logo: 'https://i.postimg.cc/8zJCwDHY/oni2.png', url: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8' },
-            { id: 3, name: 'ONi3', cat: 'Giải trí', logo: 'https://i.postimg.cc/zXMhqx2F/oni3.png', url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8' },
-            { id: 4, name: 'ONi4 HD', cat: 'Thể thao', logo: 'https://i.postimg.cc/PrcDdSVz/oni4.png', url: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8' },
-            { id: 5, name: 'MBN Enter HD', cat: 'Giải trí', logo: 'https://i.postimg.cc/hPwmK2Zr/oni5.png', url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8' },
-            { id: 6, name: 'ONi6', cat: 'Tổng hợp', logo: 'https://i.postimg.cc/SN59mg1G/oni6.png', url: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8' },
-            { id: 7, name: 'ONi7 HD', cat: 'Thể thao', logo: 'https://i.postimg.cc/ZKgNJwss/oni7.png', url: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8' }
-        ];
-
-        // Lịch phát sóng giả lập
-        const mockEpg = [
-            { time: "00:00", title: "Phim truyện đêm khuya" },
-            { time: "06:00", title: "Chào ngày mới - Tin tức 24h" },
-            { time: "08:30", title: "Thế giới động vật" },
-            { time: "10:00", title: "Gameshow: Thách thức âm nhạc" },
-            { time: "12:00", title: "Bản tin trưa" },
-            { time: "13:30", title: "Phim bộ: Tình yêu không giới hạn" },
-            { time: "15:00", title: "Ca nhạc theo yêu cầu" },
-            { time: "17:00", title: "Tin tức chiều" },
-            { time: "18:30", title: "Phóng sự đặc biệt" },
-            { time: "20:00", title: "Chương trình trọng điểm (Đang phát)", playing: true },
-            { time: "21:30", title: "Talkshow: Góc nhìn văn hóa" },
-            { time: "23:00", title: "Tóm tắt thể thao quốc tế" }
+            { id: 1, name: 'ONi1 HD', cat: 'Giải trí', logo: 'https://i.postimg.cc/rwJfnXwz/oni1.png', url: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8' },
+            { id: 2, name: 'ONi2', cat: 'Âm nhạc', logo: 'https://i.postimg.cc/8zJCwDHY/oni2.png', url: 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni2/index.m3u8' },
+            { id: 3, name: 'ONi3', cat: 'Giải trí', logo: 'https://i.postimg.cc/zXMhqx2F/oni3.png', url: 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni3/index.m3u8' },
+            { id: 4, name: 'ONi4 HD', cat: 'Thể thao', logo: 'https://i.postimg.cc/PrcDdSVz/oni4.png', url: 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni4/index.m3u8' },
+            { id: 5, name: 'MBN Enter HD', cat: 'Giải trí', logo: 'https://i.postimg.cc/hPwmK2Zr/oni5.png', url: 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni5/index.m3u8' },
+            { id: 6, name: 'ONi6', cat: 'Tổng hợp', logo: 'https://i.postimg.cc/SN59mg1G/oni6.png', url: 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni6/index.m3u8' },
+            { id: 7, name: 'ONi7 HD', cat: 'Thể thao', logo: 'https://i.postimg.cc/ZKgNJwss/oni7.png', url: 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8' }
         ];
 
         const series = [
@@ -381,378 +378,131 @@
                 title: 'Nguyên Tội của Takopi', 
                 ep: '6 Tập', 
                 img: 'https://i.postimg.cc/59v0Ktpw/takopi_no_genzai_688e4acac925c4792d768d22.jpg',
-                desc: 'Takopi là một người ngoài hành tinh từ Hành tinh Hạnh phúc đến Trái đất với nhiệm vụ lan tỏa niềm vui. Trên đường đi, anh gặp Shizuka, một cô bé lớp 4 có cuộc đời đầy đau khổ. Một câu chuyện cảm động và đôi khi ám ảnh về tình bạn và nỗ lực mang lại nụ cười cho ai đó.',
+                desc: 'Một câu chuyện cảm động và đôi khi ám ảnh về tình bạn và nỗ lực mang lại nụ cười cho ai đó.',
                 total_ep: 6,
-                tags: ['Anime', 'Tâm lý', 'Kịch tính'],
-                episode_urls: {
-                    1: 'https://rumble.com/hls-vod/71meok/playlist.m3u8'
-                }
+                tags: ['Anime', 'Tâm lý'],
+                episode_urls: { 1: 'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8' }
             }
         ];
 
-        let hlsPlayer = null;
-        let currentFilter = "Tất cả";
+        let player = null; 
         let currentChannel = null;
 
         window.onload = () => {
+            initVideoPlayer();
             renderContent();
-            setupScrollHeader();
+            
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
                 splash.style.opacity = '0';
                 setTimeout(() => splash.style.display = 'none', 500);
             }, 1000);
-
-            // Đóng tìm kiếm khi nhấn ESC
-            window.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    const overlay = document.getElementById('search-overlay');
-                    if (!overlay.classList.contains('hidden')) toggleSearch();
-                }
-            });
         };
 
-        function toggleSearch() {
-            const overlay = document.getElementById('search-overlay');
-            const input = document.getElementById('search-input');
-            const isHidden = overlay.classList.contains('hidden');
-            
-            if (isHidden) {
-                overlay.classList.remove('hidden');
-                input.focus();
-                document.body.style.overflow = 'hidden'; 
-            } else {
-                overlay.classList.add('hidden');
-                document.body.style.overflow = '';
-                input.value = '';
-                handleSearch('');
-            }
-        }
-        function handleSearch(query) {
-            const status = document.getElementById('search-status');
-            const content = document.getElementById('search-results-content');
-            const q = query.toLowerCase().trim();
-
-            if (!q) {
-                status.classList.remove('hidden');
-                content.classList.add('hidden');
-                return;
-            }
-
-            status.classList.add('hidden');
-            content.classList.remove('hidden');
-
-            const filteredChannels = channels.filter(c => c.name.toLowerCase().includes(q) || c.cat.toLowerCase().includes(q));
-            const channelsSection = document.getElementById('results-channels-section');
-            const channelsList = document.getElementById('search-results-channels');
-            
-            if (filteredChannels.length > 0) {
-                channelsSection.classList.remove('hidden');
-                channelsList.innerHTML = filteredChannels.map(ch => `
-                    <div onclick='playAndCloseSearch(${JSON.stringify(ch)})' class="channel-card-item w-full cursor-pointer">
-                        <div class="logo-container"><img src="${ch.logo}" alt="${ch.name}"></div>
-                        <div class="p-2.5">
-                            <h4 class="text-[11px] font-bold truncate">${ch.name}</h4>
-                            <p class="text-[9px] text-gray-500 font-bold mt-0.5 uppercase">${ch.cat}</p>
-                        </div>
-                    </div>
-                `).join('');
-            } else {
-                channelsSection.classList.add('hidden');
-            }
-            const filteredMovies = series.filter(s => s.title.toLowerCase().includes(q) || s.tags.some(t => t.toLowerCase().includes(q)));
-            const moviesSection = document.getElementById('results-movies-section');
-            const moviesList = document.getElementById('search-results-movies');
-
-            if (filteredMovies.length > 0) {
-                moviesSection.classList.remove('hidden');
-                moviesList.innerHTML = filteredMovies.map(m => createMovieCard(m, true)).join('');
-            } else {
-                moviesSection.classList.add('hidden');
-            }
-
-            if (filteredChannels.length === 0 && filteredMovies.length === 0) {
-                status.classList.remove('hidden');
-                status.innerHTML = `<i class="fas fa-ghost text-6xl mb-4 block opacity-20"></i><p>Không tìm thấy kết quả cho "${query}"</p>`;
-            }
-        }
-
-        function playAndCloseSearch(ch) {
-            toggleSearch();
-            playChannel(ch);
-        }
-        function setupScrollHeader() {
-            const header = document.getElementById('main-header');
-            window.addEventListener('scroll', () => {
-                const isTransparentPage = !document.getElementById('home-page').classList.contains('hidden') || 
-                                          !document.getElementById('phim-page').classList.contains('hidden') ||
-                                          !document.getElementById('details-page').classList.contains('hidden');
-                
-                if (isTransparentPage && window.scrollY < 80) {
-                    header.classList.add('header-transparent');
-                    header.classList.remove('header-scrolled');
-                } else {
-                    header.classList.remove('header-transparent');
-                    header.classList.add('header-scrolled');
+        function initVideoPlayer() {
+            // Khởi tạo Video.js với hỗ trợ HLS mặc định trong bản v8
+            player = videojs('tv-player', {
+                fluid: true,
+                autoplay: false,
+                controls: true,
+                preload: 'auto',
+                html5: {
+                    vhs: { overrideNative: true },
+                    nativeAudioTracks: false,
+                    nativeVideoTracks: false
                 }
             });
-        }
 
-        function createMovieCard(m, isSearch = false) {
-            const clickFn = isSearch ? `onclick="toggleSearch(); openMovieDetails(${m.id})"` : `onclick="openMovieDetails(${m.id})"`;
-            return `
-                <div class="movie-card-container cursor-pointer ${isSearch ? 'w-full' : ''}" ${clickFn}>
-                    <div class="movie-poster-box">
-                        <img src="${m.img}" class="w-full h-full object-cover" alt="${m.title}">
-                    </div>
-                    <div class="movie-info-box">
-                        <h4 class="text-[11px] font-bold truncate text-white mb-1">${m.title}</h4>
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] text-gray-400 font-medium">${m.ep}</span>
-                            <i class="fas fa-play-circle text-emerald-500 text-[14px]"></i>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        function renderContent() {
-            document.getElementById('home-channel-list').innerHTML = channels.map(ch => `
-                <div onclick='playChannel(${JSON.stringify(ch)})' class="channel-card-item w-[140px] flex-shrink-0 cursor-pointer">
-                    <div class="logo-container">
-                        <img src="${ch.logo}" alt="${ch.name}" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                    </div>
-                    <div class="p-2.5">
-                        <h4 class="text-[11px] font-bold truncate">${ch.name}</h4>
-                        <p class="text-[9px] text-gray-500 font-bold uppercase mt-0.5">${ch.cat}</p>
-                    </div>
-                </div>
-            `).join('');
-
-            const movieHTML = series.map(m => createMovieCard(m)).join('');
-            document.getElementById('home-series-list').innerHTML = movieHTML;
-            document.getElementById('phim-latest-list').innerHTML = movieHTML;
-
-            renderTvList();
-            renderCategoryChips();
-        }
-
-        function openMovieDetails(seriesId) {
-            const movie = series.find(s => s.id === seriesId);
-            if (!movie) return;
-
-            const firstEpUrl = movie.episode_urls && movie.episode_urls[1] ? movie.episode_urls[1] : 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8';
-
-            const content = `
-                <section class="relative w-full h-[55vh] md:h-[70vh]">
-                    <img src="${movie.img}" class="w-full h-full object-cover object-top blur-[2px] opacity-60" alt="Background">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0f141e] via-[#0f141e]/50 to-transparent"></div>
-                    <div class="absolute inset-0 flex flex-col justify-end px-4 pb-8 max-w-7xl mx-auto w-full">
-                        <div class="flex flex-col md:flex-row gap-6 items-end md:items-start">
-                            <div class="w-32 md:w-52 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/10 flex-shrink-0">
-                                <img src="${movie.img}" class="w-full h-full object-cover" alt="Poster">
-                            </div>
-                            
-                            <div class="flex-1 space-y-4">
-                                <div class="flex flex-wrap gap-2">
-                                    ${movie.tags.map(tag => `<span class="bg-white/10 text-[10px] font-bold px-3 py-1 rounded-full border border-white/10">${tag}</span>`).join('')}
-                                </div>
-                                <h1 class="text-3xl md:text-5xl font-bold">${movie.title}</h1>
-                                <div class="flex items-center gap-4 text-sm text-gray-300">
-                                    <span class="text-emerald-500 font-bold"><i class="fas fa-star mr-1"></i> 9.8</span>
-                                    <span>${movie.ep}</span>
-                                    <span>2024</span>
-                                </div>
-                                <p class="text-gray-400 text-sm leading-relaxed max-w-2xl line-clamp-3 md:line-clamp-none">
-                                    ${movie.desc}
-                                </p>
-                                <div class="flex items-center gap-3 pt-2">
-                                    <button onclick="playMedia('${movie.title} - Tập 1', '${firstEpUrl}')" class="flex-1 md:flex-none bg-emerald-500 px-8 py-3 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-emerald-600 transition-all">
-                                        <i class="fas fa-play"></i> Xem ngay
-                                    </button>
-                                    <button class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                    <button class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20">
-                                        <i class="fas fa-share-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="px-4 py-8 max-w-7xl mx-auto w-full pb-32">
-                    <div class="mb-6">
-                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                            <i class="fas fa-list-ul text-emerald-500"></i> Danh sách tập phim
-                        </h3>
-                        <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-10 gap-2">
-                            ${Array.from({length: Math.min(movie.total_ep, 20)}, (_, i) => {
-                                const epNum = i + 1;
-                                const epUrl = movie.episode_urls && movie.episode_urls[epNum] ? movie.episode_urls[epNum] : 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8';
-                                return `
-                                    <button onclick="playMedia('${movie.title} - Tập ${epNum}', '${epUrl}')" class="episode-btn py-2.5 rounded-lg text-xs font-bold ${i === 0 ? 'active' : ''}">
-                                        ${epNum}
-                                    </button>
-                                `;
-                            }).join('')}
-                        </div>
-                    </div>
-                </section>
-            `;
-
-            document.getElementById('details-content').innerHTML = content;
-            showPage('details');
-        }
-
-        function renderTvList() {
-            const filtered = channels.filter(ch => {
-                if (currentFilter === "Tất cả") return true;
-                return ch.cat === currentFilter;
+            player.on('error', function() {
+                const error = player.error();
+                console.error('VideoJS Error:', error);
+                document.getElementById('player-loading').classList.add('hidden');
             });
 
-            document.getElementById('tv-channel-list').innerHTML = filtered.map(ch => `
-                <div onclick='playChannel(${JSON.stringify(ch)})' class="channel-card-item w-full cursor-pointer">
-                    <div class="logo-container"><img src="${ch.logo}" alt="${ch.name}"></div>
-                    <div class="p-2.5">
-                        <h4 class="text-[11px] font-bold truncate">${ch.name}</h4>
-                        <p class="text-[9px] text-gray-500 font-bold mt-0.5 uppercase">${ch.cat}</p>
-                    </div>
-                </div>
-            `).join('');
+            player.on('waiting', () => document.getElementById('player-loading').classList.remove('hidden'));
+            player.on('playing', () => document.getElementById('player-loading').classList.add('hidden'));
         }
 
-        function renderCategoryChips() {
-            const cats = ["Tất cả", "Thể thao", "Giải trí", "Âm nhạc", "Phim", "Tổng hợp"];
-            document.getElementById('category-chips').innerHTML = cats.map(c => `
-                <button onclick="filterTv('${c}')" class="flex-shrink-0 px-5 py-1.5 rounded-full text-[10px] font-bold border ${currentFilter === c ? 'bg-emerald-500 border-emerald-500 text-white' : 'bg-white/5 border-white/10 text-gray-400'}">${c}</button>
-            `).join('');
-        }
+        function playChannel(channel) {
+            currentChannel = channel;
+            showPage('tv');
+            
+            document.getElementById('epg-current-logo').src = channel.logo;
+            document.getElementById('epg-current-name').innerText = channel.name;
 
-        function filterTv(cat) {
-            currentFilter = cat;
-            renderTvList();
-            renderCategoryChips();
+            const videoType = channel.url.includes('.m3u8') ? 'application/x-mpegURL' : 'video/mp4';
+            
+            if (player) {
+                player.src({ src: channel.url, type: videoType });
+                player.poster(channel.logo);
+                player.play().catch(e => console.log("Yêu cầu tương tác người dùng để phát video."));
+            }
+
+            document.getElementById('video-container').scrollIntoView({ behavior: 'smooth' });
         }
 
         function showPage(pageId) {
             document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
             document.getElementById(`${pageId}-page`).classList.remove('hidden');
-
-            const header = document.getElementById('main-header');
-            const isTransparentPage = ['home', 'phim', 'details'].includes(pageId);
             
-            if (isTransparentPage && window.scrollY < 80) {
-                header.classList.add('header-transparent');
-                header.classList.remove('header-scrolled');
-            } else {
-                header.classList.remove('header-transparent');
-                header.classList.add('header-scrolled');
-            }
-
+            // Cập nhật Navigation UI
             document.querySelectorAll('.nav-item').forEach(n => n.classList.replace('text-emerald-500', 'text-gray-500'));
-            const activeBtn = document.getElementById(`nav-${pageId}`);
-            if (activeBtn) activeBtn.classList.replace('text-gray-500', 'text-emerald-500');
+            const activeNav = document.getElementById(`nav-${pageId}`);
+            if (activeNav) activeNav.classList.replace('text-gray-500', 'text-emerald-500');
 
-            document.querySelectorAll('.header-nav-item').forEach(n => n.classList.remove('active'));
-            const activeH = document.getElementById(`h-nav-${pageId}`);
-            if (activeH) activeH.classList.add('active');
-
-            if (pageId !== 'tv' && pageId !== 'details') stopVideo();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (pageId !== 'tv') {
+                if(player) player.pause();
+            }
+            window.scrollTo(0,0);
         }
 
-        function playChannel(channel) {
-            currentChannel = channel;
-            const isTv = !document.getElementById('tv-page').classList.contains('hidden');
-            if (!isTv) showPage('tv');
-
-            // Cập nhật thông tin kênh trong tab EPG
-            document.getElementById('epg-current-logo').src = channel.logo;
-            document.getElementById('epg-current-name').innerText = channel.name;
-
-            const video = document.getElementById('tv-video-player');
-            const loading = document.getElementById('player-loading');
-            loading.classList.remove('hidden');
-            if (hlsPlayer) hlsPlayer.destroy();
-
-            if (Hls.isSupported()) {
-                hlsPlayer = new Hls();
-                hlsPlayer.loadSource(channel.url);
-                hlsPlayer.attachMedia(video);
-                hlsPlayer.on(Hls.Events.MANIFEST_PARSED, () => {
-                    video.play();
-                    loading.classList.add('hidden');
-                });
-                hlsPlayer.on(Hls.Events.ERROR, function (event, data) {
-                    if (data.fatal) {
-                        loading.classList.add('hidden');
-                        console.error("HLS Error:", data);
-                    }
-                });
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = channel.url;
-                video.addEventListener('loadedmetadata', function() {
-                    video.play();
-                    loading.classList.add('hidden');
-                });
-            }
-            document.getElementById('video-container').scrollIntoView({ behavior: 'smooth' });
-            
-            // Nếu đang ở tab EPG, render lại danh sách
-            if (!document.getElementById('tv-epg-view').classList.contains('hidden')) {
-                renderEpg();
-            }
-        }
-
-        function renderEpg() {
-            const epgList = document.getElementById('epg-list');
-            if (!currentChannel) {
-                epgList.innerHTML = `<p class="text-center text-gray-500 text-xs py-10">Vui lòng chọn một kênh để xem lịch phát sóng</p>`;
-                return;
-            }
-
-            epgList.innerHTML = mockEpg.map(item => `
-                <div class="epg-item flex items-center gap-4 p-3 rounded-lg ${item.playing ? 'playing' : ''}">
-                    <span class="text-[11px] font-bold ${item.playing ? 'text-emerald-500' : 'text-gray-400'} w-10 text-center">${item.time}</span>
-                    <div class="flex-1">
-                        <h4 class="text-xs font-bold ${item.playing ? 'text-white' : 'text-gray-300'}">${item.title}</h4>
-                        ${item.playing ? '<span class="text-[8px] bg-emerald-500 text-white px-1.5 py-0.5 rounded font-bold uppercase animate-pulse">Trực tiếp</span>' : ''}
+        function renderContent() {
+            const list = document.getElementById('home-channel-list');
+            list.innerHTML = channels.map(ch => `
+                <div onclick='playChannel(${JSON.stringify(ch)})' class="channel-card-item w-[140px] flex-shrink-0 cursor-pointer">
+                    <div class="logo-container"><img src="${ch.logo}" alt="${ch.name}"></div>
+                    <div class="p-2">
+                        <h4 class="text-[11px] font-bold truncate">${ch.name}</h4>
+                        <p class="text-[9px] text-gray-500 font-bold uppercase">${ch.cat}</p>
                     </div>
                 </div>
             `).join('');
+
+            document.getElementById('tv-channel-list').innerHTML = channels.map(ch => `
+                <div onclick='playChannel(${JSON.stringify(ch)})' class="channel-card-item w-full cursor-pointer">
+                    <div class="logo-container"><img src="${ch.logo}" alt="${ch.name}"></div>
+                    <div class="p-2">
+                        <h4 class="text-[11px] font-bold truncate">${ch.name}</h4>
+                        <p class="text-[9px] text-gray-500 font-bold uppercase">${ch.cat}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            renderCategoryChips();
         }
 
-        function stopVideo() {
-            const video = document.getElementById('tv-video-player');
-            video.pause();
-            video.src = "";
-            if (hlsPlayer) hlsPlayer.destroy();
+        function renderCategoryChips() {
+            const cats = ["Tất cả", "Thể thao", "Giải trí", "Âm nhạc", "Phim", "Tổng hợp"];
+            document.getElementById('category-chips').innerHTML = cats.map(c => `
+                <button class="flex-shrink-0 px-4 py-1 rounded-full text-[10px] font-bold border border-white/10 bg-white/5 text-gray-400">${c}</button>
+            `).join('');
         }
 
         function switchTvTab(tab) {
-            const contentView = document.getElementById('tv-content-view');
-            const epgView = document.getElementById('tv-epg-view');
-            const btnContent = document.getElementById('tab-btn-content');
-            const btnEpg = document.getElementById('tab-btn-epg');
-
-            if (tab === 'content') {
-                contentView.classList.remove('hidden');
-                epgView.classList.add('hidden');
-                btnContent.classList.add('active');
-                btnEpg.classList.remove('active');
-            } else {
-                contentView.classList.add('hidden');
-                epgView.classList.remove('hidden');
-                btnContent.classList.remove('active');
-                btnEpg.classList.add('active');
-                renderEpg(); // Gọi hàm render lịch khi mở tab
-            }
+            document.getElementById('tv-content-view').classList.toggle('hidden', tab !== 'content');
+            document.getElementById('tv-epg-view').classList.toggle('hidden', tab !== 'epg');
+            document.getElementById('tab-btn-content').classList.toggle('active', tab === 'content');
+            document.getElementById('tab-btn-epg').classList.toggle('active', tab === 'epg');
         }
 
-        function playMedia(title, url) {
-            playChannel({ name: title, url: url, cat: 'ONNA Phim', logo: 'https://i.postimg.cc/5NdWYRN5/onnaonlinetv.png' });
+        function toggleSearch() {
+            const overlay = document.getElementById('search-overlay');
+            overlay.classList.toggle('hidden');
+        }
+
+        function openMovieDetails(id) {
+            // Mock function for demo
+            alert("Chi tiết phim ID: " + id);
         }
     </script>
 </body>
