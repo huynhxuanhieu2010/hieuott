@@ -106,6 +106,10 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            font-size: 10px;
+            color: #666;
+            text-align: center;
+            padding: 10px;
         }
 
         .video-js {
@@ -227,13 +231,6 @@
             object-fit: contain;
             background-color: #111;
         }
-        .live-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: #e50914;
-            display: inline-block;
-        }
         
         .cat-btn.active {
             background-color: #e50914;
@@ -301,11 +298,11 @@
                 </h2>
                 <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
                     <div class="content-card">
-                        <div class="aspect-poster">Phim 1<div class="absolute top-2 right-2 bg-black/60 text-[10px] px-1 rounded text-red-500">HD</div></div>
+                        <div class="aspect-poster">Thần Lan Kỳ Vực<div class="absolute top-2 right-2 bg-black/60 text-[10px] px-1 rounded text-red-500">HD</div></div>
                         <div class="p-2 text-xs font-medium truncate">Thần Lan Kỳ Vực</div>
                     </div>
                     <div class="content-card">
-                        <div class="aspect-poster">Phim 2</div>
+                        <div class="aspect-poster">Tiên Nghịch</div>
                         <div class="p-2 text-xs font-medium truncate">Tiên Nghịch</div>
                     </div>
                 </div>
@@ -317,9 +314,7 @@
             <div class="hidden md:grid grid-cols-3 gap-6 mb-8">
                 <div class="col-span-2">
                     <div class="bg-black rounded-lg overflow-hidden">
-                        <video id="player-desktop" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto">
-                            <!-- Nguồn nạp động -->
-                        </video>
+                        <video id="player-desktop" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto"></video>
                     </div>
                 </div>
                 <div class="col-span-1">
@@ -338,9 +333,7 @@
 
             <div class="md:hidden flex flex-col gap-4 mb-4">
                 <div class="bg-black rounded-lg overflow-hidden border border-zinc-800">
-                    <video id="player-mobile" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto">
-                        <!-- Nguồn nạp động -->
-                    </video>
+                    <video id="player-mobile" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto"></video>
                 </div>
                 <div class="radio-container">
                     <div id="btn-list" class="radio-btn active" onclick="switchTvTab('list')">Danh sách kênh</div>
@@ -349,7 +342,6 @@
             </div>
 
             <div id="tab-list">
-                <!-- Danh mục thể loại (Đã loại bỏ VTV) -->
                 <div class="relative flex items-center mb-6 border-b border-zinc-800 pb-2">
                     <button onclick="scrollCategories(-1)" class="category-nav-btn absolute left-0 z-10 w-8 h-8 rounded-full border border-zinc-700">
                         <i class="fas fa-chevron-left text-xs"></i>
@@ -367,37 +359,30 @@
                 </div>
 
                 <div id="channels-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    <!-- ONi1 HD -->
                     <div class="channel-card cursor-pointer" data-category="entertainment" onclick="changeChannel('ONi1', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8')">
                         <div class="channel-thumb"><img src="https://i.postimg.cc/rwJfnXwz/oni1.png" alt="ONi1 HD"></div>
                         <div class="p-2"><h3 class="text-xs font-bold truncate">ONi1 HD</h3></div>
                     </div>
-                    <!-- ONi2 -->
                     <div class="channel-card cursor-pointer" data-category="music" onclick="changeChannel('ONi2', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni2/index.m3u8')">
                         <div class="channel-thumb"><img src="https://i.postimg.cc/02LzTbrZ/oni2.png" alt="ONi2"></div>
                         <div class="p-2"><h3 class="text-xs font-bold truncate">ONi2</h3></div>
                     </div>
-                    <!-- ONi3 -->
                     <div class="channel-card cursor-pointer" data-category="entertainment" onclick="changeChannel('ONi3', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni3/index.m3u8')">
                         <div class="channel-thumb"><img src="https://i.postimg.cc/zXMhqx2F/oni3.png" alt="ONi3"></div>
                         <div class="p-2"><h3 class="text-xs font-bold truncate">ONi3</h3></div>
                     </div>
-                    <!-- ONi4 HD -->
                     <div class="channel-card cursor-pointer" data-category="sports music" onclick="changeChannel('ONi4 HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni4/index.m3u8')">
                         <div class="channel-thumb"><img src="https://i.postimg.cc/PrcDdSVz/oni4.png" alt="ONi4 HD"></div>
                         <div class="p-2"><h3 class="text-xs font-bold truncate">ONi4 HD</h3></div>
                     </div>
-                    <!-- MBN Enter HD -->
                     <div class="channel-card cursor-pointer" data-category="entertainment" onclick="changeChannel('MBN Enter HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni5/index.m3u8')">
                         <div class="channel-thumb"><img src="https://i.postimg.cc/hPwmK2Zr/oni5.png" alt="MBN Enter HD"></div>
                         <div class="p-2"><h3 class="text-xs font-bold truncate">MBN Enter HD</h3></div>
                     </div>
-                    <!-- ONi6 -->
                     <div class="channel-card cursor-pointer" data-category="children" onclick="changeChannel('ONi6', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni6/index.m3u8')">
                         <div class="channel-thumb"><img src="https://i.postimg.cc/SN59mg1G/oni6.png" alt="ONi6"></div>
                         <div class="p-2"><h3 class="text-xs font-bold truncate">ONi6</h3></div>
                     </div>
-                    <!-- ONi7 HD -->
                     <div class="channel-card cursor-pointer" data-category="sports" onclick="changeChannel('ONi7 HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8')">
                         <div class="channel-thumb"><img src="https://i.postimg.cc/ZKgNJwss/oni7.png" alt="ONi7 HD"></div>
                         <div class="p-2"><h3 class="text-xs font-bold truncate">ONi7 HD</h3></div>
@@ -412,28 +397,97 @@
 
         <!-- [3] ONNA Phim -->
         <section id="onna-phim" class="page-content">
-            <h2 class="text-xl font-bold mb-6">ONNA Phim</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                <div class="content-card"><div class="aspect-poster">Phim 1</div></div>
+            <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="w-1 h-5 bg-red-600 rounded"></span> Phim lẻ thịnh hành
+            </h2>
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                <div class="content-card"><div class="aspect-poster">Hành Tinh Cát</div><div class="p-2 text-xs truncate">Hành Tinh Cát</div></div>
+                <div class="content-card"><div class="aspect-poster">Kẻ Hủy Diệt</div><div class="p-2 text-xs truncate">Kẻ Hủy Diệt</div></div>
+                <div class="content-card"><div class="aspect-poster">Avatar 2</div><div class="p-2 text-xs truncate">Avatar: Dòng Chảy Nước</div></div>
+                <div class="content-card"><div class="aspect-poster">Lật Mặt 7</div><div class="p-2 text-xs truncate">Lật Mặt 7</div></div>
+            </div>
+        </section>
+
+        <!-- [4] Hoạt Hình -->
+        <section id="hoat-hinh" class="page-content">
+            <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="w-1 h-5 bg-orange-500 rounded"></span> Hoạt hình đặc sắc
+            </h2>
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                <div class="content-card"><div class="aspect-poster">Doraemon</div><div class="p-2 text-xs truncate">Doraemon: Nobita và...</div></div>
+                <div class="content-card"><div class="aspect-poster">Conan</div><div class="p-2 text-xs truncate">Thám Tử Lừng Danh Conan</div></div>
+                <div class="content-card"><div class="aspect-poster">One Piece</div><div class="p-2 text-xs truncate">Đảo Hải Tặc</div></div>
+                <div class="content-card"><div class="aspect-poster">Naruto</div><div class="p-2 text-xs truncate">Naruto Shippuden</div></div>
+                <div class="content-card"><div class="aspect-poster">Dragon Ball</div><div class="p-2 text-xs truncate">Bảy Viên Ngọc Rồng</div></div>
+                <div class="content-card"><div class="aspect-poster">Pokemon</div><div class="p-2 text-xs truncate">Pokemon Horizons</div></div>
+            </div>
+        </section>
+
+        <!-- [5] Thể Thao -->
+        <section id="the-thao" class="page-content">
+            <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="w-1 h-5 bg-blue-600 rounded"></span> Sự kiện thể thao trực tiếp
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
+                    <div>
+                        <p class="text-[10px] text-red-500 font-bold mb-1">LIVE</p>
+                        <h4 class="text-sm font-bold">Việt Nam vs Thái Lan</h4>
+                        <p class="text-[10px] text-zinc-500">Vòng loại World Cup 2026</p>
+                    </div>
+                    <button class="bg-red-600 text-white text-[10px] px-3 py-1 rounded">Xem ngay</button>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 flex items-center justify-between opacity-70">
+                    <div>
+                        <p class="text-[10px] text-zinc-400 font-bold mb-1">21:00 - HÔM NAY</p>
+                        <h4 class="text-sm font-bold">Man Utd vs Liverpool</h4>
+                        <p class="text-[10px] text-zinc-500">Ngoại Hạng Anh</p>
+                    </div>
+                    <i class="far fa-bell text-zinc-500"></i>
+                </div>
+            </div>
+            
+            <h2 class="text-lg md:text-xl font-bold mb-4">Highlight nổi bật</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="content-card">
+                    <div class="aspect-video bg-zinc-800 flex items-center justify-center relative">
+                        <i class="fas fa-play text-xl opacity-50"></i>
+                    </div>
+                    <div class="p-2 text-xs truncate">Tổng hợp vòng 10 Ngoại Hạng Anh</div>
+                </div>
+                <div class="content-card">
+                    <div class="aspect-video bg-zinc-800 flex items-center justify-center relative">
+                        <i class="fas fa-play text-xl opacity-50"></i>
+                    </div>
+                    <div class="p-2 text-xs truncate">Bàn thắng đẹp nhất tuần qua</div>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- [FOOTER ĐIỆN THOẠI] -->
-    <footer class="flex md:hidden fixed bottom-0 w-full bg-black bg-opacity-95 border-t border-gray-800 z-50">
-        <div class="flex w-full justify-around py-2">
-            <button onclick="showPage('trang-chu')" class="mobile-nav-link flex flex-col items-center text-gray-400 nav-item-active" data-page="trang-chu">
-                <i class="fas fa-home text-lg"></i>
-                <span class="text-[10px] mt-1">Trang chủ</span>
+    <!-- [FOOTER ĐIỆN THOẠI] - ĐÃ ĐỒNG BỘ 5 DANH MỤC -->
+    <footer class="flex md:hidden fixed bottom-0 w-full bg-black bg-opacity-95 border-t border-zinc-800 z-50">
+        <div class="flex w-full justify-between items-center px-1 py-2">
+            <button onclick="showPage('trang-chu')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500 nav-item-active" data-page="trang-chu">
+                <i class="fas fa-home text-base"></i>
+                <span class="text-[9px] mt-1 whitespace-nowrap">Trang chủ</span>
             </button>
-            <button onclick="showPage('truyen-hinh')" class="mobile-nav-link flex flex-col items-center text-gray-400" data-page="truyen-hinh">
-                <i class="fas fa-tv text-lg"></i>
-                <span class="text-[10px] mt-1">Truyền hình</span>
+            <button onclick="showPage('truyen-hinh')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500" data-page="truyen-hinh">
+                <i class="fas fa-tv text-base"></i>
+                <span class="text-[9px] mt-1 whitespace-nowrap">Truyền hình</span>
             </button>
-            <button onclick="showPage('onna-phim')" class="mobile-nav-link flex flex-col items-center text-gray-400" data-page="onna-phim">
-                <i class="fas fa-film text-lg"></i>
-                <span class="text-[10px] mt-1">ONNA Phim</span>
+            <button onclick="showPage('onna-phim')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500" data-page="onna-phim">
+                <i class="fas fa-film text-base"></i>
+                <span class="text-[9px] mt-1 whitespace-nowrap">ONNA Phim</span>
+            </button>
+            <button onclick="showPage('hoat-hinh')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500" data-page="hoat-hinh">
+                <i class="fas fa-child text-base"></i>
+                <span class="text-[9px] mt-1 whitespace-nowrap">Hoạt hình</span>
+            </button>
+            <button onclick="showPage('the-thao')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500" data-page="the-thao">
+                <i class="fas fa-running text-base"></i>
+                <span class="text-[9px] mt-1 whitespace-nowrap">Thể thao</span>
             </button>
         </div>
     </footer>
@@ -444,7 +498,6 @@
         let desktopPlayer, mobilePlayer;
         let currentStreamUrl = "";
 
-        // Chuyển trang và đồng bộ hiển thị
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page-content');
             pages.forEach(page => page.classList.remove('active-page'));
@@ -452,17 +505,27 @@
             const activePage = document.getElementById(pageId);
             if (activePage) activePage.classList.add('active-page');
 
-            // Khi rời khỏi trang truyền hình, tạm dừng cả 2 để tiết kiệm tài nguyên
             if (pageId !== 'truyen-hinh') {
                 if (desktopPlayer) desktopPlayer.pause();
                 if (mobilePlayer) mobilePlayer.pause();
-            } else if (currentStreamUrl) {
-                // Quay lại trang truyền hình thì đồng bộ trạng thái phát
-                syncPlayback();
+            } else {
+                handleMuteSync();
+                if (currentStreamUrl) syncPlayback();
             }
 
             updateActiveState(pageId);
             window.scrollTo(0, 0);
+        }
+
+        function handleMuteSync() {
+            const isDesktop = window.innerWidth >= 768;
+            if (isDesktop) {
+                if (desktopPlayer) desktopPlayer.muted(false);
+                if (mobilePlayer) mobilePlayer.muted(true);
+            } else {
+                if (desktopPlayer) desktopPlayer.muted(true);
+                if (mobilePlayer) mobilePlayer.muted(false);
+            }
         }
 
         function updateActiveState(pageId) {
@@ -514,61 +577,52 @@
             });
         }
 
-        // ĐỒNG BỘ KÊNH PHÁT
         function changeChannel(name, url) {
+            if (!url) return;
+            if (currentStreamUrl === url) return;
+
             currentStreamUrl = url;
             localStorage.setItem('last_channel_url', url); 
             
             const type = url.endsWith('.m3u8') ? 'application/x-mpegURL' : 'video/mp4';
             
             if (desktopPlayer) {
+                desktopPlayer.pause();
                 desktopPlayer.src({ src: url, type: type });
             }
             if (mobilePlayer) {
+                mobilePlayer.pause();
                 mobilePlayer.src({ src: url, type: type });
             }
 
+            handleMuteSync();
             syncPlayback();
         }
 
-        // ĐỒNG BỘ TRẠNG THÁI PHÁT/DỪNG
         function syncPlayback() {
-            const playPromises = [];
-            if (desktopPlayer) playPromises.push(desktopPlayer.play());
-            if (mobilePlayer) playPromises.push(mobilePlayer.play());
-
-            Promise.all(playPromises).catch(error => {
-                console.log("Trình duyệt chặn tự động phát");
-            });
+            const isDesktop = window.innerWidth >= 768;
+            if (isDesktop && desktopPlayer) {
+                desktopPlayer.play().catch(() => {});
+            } else if (mobilePlayer) {
+                mobilePlayer.play().catch(() => {});
+            }
         }
 
         window.onload = function() {
             if (typeof videojs !== 'undefined') {
-                desktopPlayer = videojs('player-desktop', {
-                    autoplay: false,
-                    controls: true,
-                    responsive: true,
-                    fluid: true,
-                    preload: 'auto'
-                });
+                desktopPlayer = videojs('player-desktop', { autoplay: false, controls: true, responsive: true, fluid: true, preload: 'auto' });
+                mobilePlayer = videojs('player-mobile', { autoplay: false, controls: true, responsive: true, fluid: true, preload: 'auto' });
 
-                mobilePlayer = videojs('player-mobile', {
-                    autoplay: false,
-                    controls: true,
-                    responsive: true,
-                    fluid: true,
-                    preload: 'auto'
-                });
-
-                // ĐỒNG BỘ ĐIỀU KHIỂN (Play/Pause)
-                desktopPlayer.on('play', () => { if(mobilePlayer && mobilePlayer.paused()) mobilePlayer.play(); });
+                desktopPlayer.on('play', () => { if(mobilePlayer && mobilePlayer.paused()) mobilePlayer.play(); handleMuteSync(); });
                 desktopPlayer.on('pause', () => { if(mobilePlayer && !mobilePlayer.paused()) mobilePlayer.pause(); });
                 
-                mobilePlayer.on('play', () => { if(desktopPlayer && desktopPlayer.paused()) desktopPlayer.play(); });
+                mobilePlayer.on('play', () => { if(desktopPlayer && desktopPlayer.paused()) desktopPlayer.play(); handleMuteSync(); });
                 mobilePlayer.on('pause', () => { if(desktopPlayer && !desktopPlayer.paused()) desktopPlayer.pause(); });
 
+                window.addEventListener('resize', handleMuteSync);
+
                 const savedUrl = localStorage.getItem('last_channel_url') || 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8';
-                changeChannel('Default', savedUrl);
+                changeChannel('Init', savedUrl);
             }
         }
     </script>
