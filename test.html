@@ -86,6 +86,34 @@
             }
         }
 
+        /* Banner Styling */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 450px; 
+            background-image: linear-gradient(to bottom, rgba(15, 15, 15, 0) 30%, rgba(15, 15, 15, 1) 100%), url('https://i.postimg.cc/X7cchy0j/takopi-bg.jpg');
+            background-size: cover;
+            background-position: center top;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner {
+                height: 300px;
+                padding: 20px;
+                background-position: center;
+                border-radius: 0;
+                margin-left: -1rem; 
+                margin-right: -1rem;
+                width: calc(100% + 2rem);
+            }
+        }
+
         /* Content Card Styling */
         .content-card {
             background-color: #1a1a1a;
@@ -110,6 +138,8 @@
             color: #666;
             text-align: center;
             padding: 10px;
+            background-size: cover;
+            background-position: center;
         }
 
         .video-js {
@@ -237,6 +267,21 @@
             color: white;
             font-weight: bold;
         }
+
+        /* Episode buttons */
+        .ep-btn {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            transition: 0.2s;
+        }
+        .ep-btn:hover {
+            border-color: #e50914;
+        }
+        .ep-btn.active {
+            background: #e50914;
+            border-color: #e50914;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -276,34 +321,110 @@
         
         <!-- [1] Trang Chủ -->
         <section id="trang-chu" class="page-content active-page">
-            <div class="relative h-48 md:h-96 w-full rounded-xl overflow-hidden mb-8 border border-zinc-800">
-                <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent z-10"></div>
-                <div class="absolute bottom-4 left-4 md:bottom-10 md:left-10 z-20 max-w-md">
-                    <span class="bg-red-600 text-[10px] md:text-xs font-bold px-2 py-1 rounded mb-2 inline-block">MỚI RA MẮT</span>
-                    <h1 class="text-xl md:text-4xl font-bold mb-2">Đấu La Đại Lục</h1>
-                    <p class="text-xs md:text-sm text-gray-300 hidden md:block mb-4">Hành trình thức tỉnh vũ hồn và trở thành cường giả mạnh nhất đại lục của Đường Tam.</p>
-                    <div class="flex gap-3">
-                        <button class="bg-white text-black px-4 py-1.5 md:px-6 md:py-2 rounded font-bold text-xs md:text-sm">Xem ngay</button>
-                        <button class="bg-zinc-800/80 text-white px-4 py-1.5 md:px-6 md:py-2 rounded font-bold text-xs md:text-sm">+ Danh sách</button>
+            <!-- BANNER TĨNH -->
+            <div class="hero-banner cursor-pointer" onclick="openTakopiDetail()">
+                <div class="max-w-xl z-20">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-red-600 text-[10px] md:text-xs font-bold px-2 py-1 rounded">MỚI</span>
+                        <span class="text-xs text-zinc-300 font-medium">Hoạt hình tâm lý</span>
                     </div>
-                </div>
-                <div class="w-full h-full bg-zinc-900 flex items-center justify-center">
-                    <i class="fas fa-play text-4xl text-zinc-700"></i>
+                    <h1 class="text-2xl md:text-5xl font-bold mb-3 leading-tight">Nguyên Tội của Takopi</h1>
+                    <p class="text-xs md:text-base text-gray-300 mb-6 line-clamp-2 md:line-clamp-none">Takopi, một sinh vật ngoài hành tinh nhỏ bé với sứ mệnh mang lại nụ cười cho nhân loại, vô tình dấn thân vào một chuỗi bi kịch đau đớn khi cố gắng giúp đỡ cô bé Shizuka đáng thương.</p>
+                    <div class="flex gap-4">
+                        <button onclick="event.stopPropagation(); playTakopi(1)" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-bold text-sm flex items-center gap-2 transition">
+                            <i class="fas fa-play"></i> Xem ngay
+                        </button>
+                        <button onclick="event.stopPropagation(); openTakopiDetail()" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-bold text-sm transition">
+                            Chi tiết
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <div class="mb-8">
                 <h2 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-2">
-                    <span class="w-1 h-5 bg-red-600 rounded"></span> Phim bộ mới cập nhật
+                    <span class="w-1 h-5 bg-red-600 rounded"></span> Phim hoạt hình mới nhất
                 </h2>
                 <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
-                    <div class="content-card">
-                        <div class="aspect-poster">Thần Lan Kỳ Vực<div class="absolute top-2 right-2 bg-black/60 text-[10px] px-1 rounded text-red-500">HD</div></div>
-                        <div class="p-2 text-xs font-medium truncate">Thần Lan Kỳ Vực</div>
+                    <div class="content-card" onclick="openTakopiDetail()">
+                        <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/BQ6Hh7Nr/takopi-ps.jpg');">
+                            <div class="absolute top-2 right-2 bg-red-600 text-[9px] px-1 rounded text-white font-bold">Tập 1</div>
+                        </div>
+                        <div class="p-2 text-xs font-bold truncate">Nguyên Tội của Takopi</div>
                     </div>
-                    <div class="content-card">
-                        <div class="aspect-poster">Tiên Nghịch</div>
-                        <div class="p-2 text-xs font-medium truncate">Tiên Nghịch</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [TRANG CHI TIẾT TAKOPI] -->
+        <section id="takopi-detail" class="page-content">
+            <div class="flex flex-col gap-6">
+                <!-- Video Player Area -->
+                <div id="takopi-player-container" class="hidden">
+                    <div class="max-w-4xl mx-auto bg-black rounded-lg overflow-hidden border border-zinc-800">
+                        <video id="takopi-player" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto"></video>
+                    </div>
+                    <div class="max-w-4xl mx-auto mt-4">
+                        <h2 class="text-xl font-bold" id="takopi-playing-title">Nguyên Tội của Takopi - Tập 1</h2>
+                        <p class="text-zinc-500 text-sm mt-1">Hành trình mang nụ cười của sinh vật ngoài hành tinh</p>
+                    </div>
+                </div>
+
+                <!-- Info Header -->
+                <div id="takopi-info-header" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+                    <div class="hidden md:block">
+                        <img src="https://i.postimg.cc/BQ6Hh7Nr/takopi-ps.jpg" class="w-full rounded-xl shadow-2xl border border-zinc-800">
+                    </div>
+                    <div class="md:col-span-2 flex flex-col justify-center">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-red-600 text-xs font-bold px-2 py-1 rounded">HOT</span>
+                            <span class="text-zinc-400 text-sm">2024 • 1 Mùa • 18+</span>
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-bold mb-4">Nguyên Tội của Takopi</h1>
+                        <p class="text-zinc-300 text-sm md:text-base leading-relaxed mb-6">
+                            Takopi là một chú "Happian" nhỏ bé đến từ hành tinh Hạnh Phúc, xuống Trái Đất với mong muốn mang lại nụ cười cho mọi người. Khi gặp Shizuka, một cô bé lớp 4 có ánh mắt vô hồn và hoàn cảnh bi kịch, Takopi dùng những bảo bối kỳ lạ của mình để giúp cô bé. Tuy nhiên, sự ngây thơ của một sinh vật không hiểu khái niệm "tội lỗi" đã dẫn đến những hậu quả không thể lường trước.
+                        </p>
+                        <div class="flex gap-4">
+                            <button onclick="playTakopi(1)" class="bg-red-600 hover:bg-red-700 text-white px-10 py-3 rounded-full font-bold flex items-center gap-2 transition transform hover:scale-105">
+                                <i class="fas fa-play"></i> XEM NGAY
+                            </button>
+                            <button class="bg-zinc-800 hover:bg-zinc-700 text-white w-12 h-12 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode List -->
+                <div class="mt-4">
+                    <h3 class="text-lg font-bold mb-4 border-l-4 border-red-600 pl-3">Danh sách tập</h3>
+                    <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3">
+                        <button onclick="playTakopi(1)" class="ep-btn active py-2 rounded font-bold text-sm">1</button>
+                        <button class="ep-btn py-2 rounded font-bold text-sm opacity-50 cursor-not-allowed">2</button>
+                        <button class="ep-btn py-2 rounded font-bold text-sm opacity-50 cursor-not-allowed">3</button>
+                        <button class="ep-btn py-2 rounded font-bold text-sm opacity-50 cursor-not-allowed">4</button>
+                    </div>
+                </div>
+
+                <!-- Cast & Crew -->
+                <div class="mt-8 border-t border-zinc-800 pt-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                        <div>
+                            <p class="text-zinc-500 mb-1">Đạo diễn</p>
+                            <p class="font-medium">Onna Animation</p>
+                        </div>
+                        <div>
+                            <p class="text-zinc-500 mb-1">Thể loại</p>
+                            <p class="font-medium">Tâm lý, Chính kịch, Giật gân</p>
+                        </div>
+                        <div>
+                            <p class="text-zinc-500 mb-1">Quốc gia</p>
+                            <p class="font-medium">Nhật Bản</p>
+                        </div>
+                        <div>
+                            <p class="text-zinc-500 mb-1">Phát hành</p>
+                            <p class="font-medium">2024</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -414,12 +535,15 @@
                 <span class="w-1 h-5 bg-orange-500 rounded"></span> Hoạt hình đặc sắc
             </h2>
             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                <div class="content-card" onclick="openTakopiDetail()">
+                    <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/BQ6Hh7Nr/takopi-ps.jpg');"></div>
+                    <div class="p-2 text-xs truncate font-bold">Nguyên Tội của Takopi</div>
+                </div>
                 <div class="content-card"><div class="aspect-poster">Doraemon</div><div class="p-2 text-xs truncate">Doraemon: Nobita và...</div></div>
                 <div class="content-card"><div class="aspect-poster">Conan</div><div class="p-2 text-xs truncate">Thám Tử Lừng Danh Conan</div></div>
                 <div class="content-card"><div class="aspect-poster">One Piece</div><div class="p-2 text-xs truncate">Đảo Hải Tặc</div></div>
                 <div class="content-card"><div class="aspect-poster">Naruto</div><div class="p-2 text-xs truncate">Naruto Shippuden</div></div>
                 <div class="content-card"><div class="aspect-poster">Dragon Ball</div><div class="p-2 text-xs truncate">Bảy Viên Ngọc Rồng</div></div>
-                <div class="content-card"><div class="aspect-poster">Pokemon</div><div class="p-2 text-xs truncate">Pokemon Horizons</div></div>
             </div>
         </section>
 
@@ -466,7 +590,7 @@
 
     </main>
 
-    <!-- [FOOTER ĐIỆN THOẠI] - ĐÃ ĐỒNG BỘ 5 DANH MỤC -->
+    <!-- [FOOTER ĐIỆN THOẠI] -->
     <footer class="flex md:hidden fixed bottom-0 w-full bg-black bg-opacity-95 border-t border-zinc-800 z-50">
         <div class="flex w-full justify-between items-center px-1 py-2">
             <button onclick="showPage('trang-chu')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500 nav-item-active" data-page="trang-chu">
@@ -495,7 +619,7 @@
     <!-- Video.js JS -->
     <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
     <script>
-        let desktopPlayer, mobilePlayer;
+        let desktopPlayer, mobilePlayer, takopiPlayer;
         let currentStreamUrl = "";
 
         function showPage(pageId) {
@@ -505,6 +629,7 @@
             const activePage = document.getElementById(pageId);
             if (activePage) activePage.classList.add('active-page');
 
+            // Stop all players when leaving their respective pages
             if (pageId !== 'truyen-hinh') {
                 if (desktopPlayer) desktopPlayer.pause();
                 if (mobilePlayer) mobilePlayer.pause();
@@ -513,8 +638,38 @@
                 if (currentStreamUrl) syncPlayback();
             }
 
+            if (pageId !== 'takopi-detail') {
+                if (takopiPlayer) takopiPlayer.pause();
+            }
+
             updateActiveState(pageId);
             window.scrollTo(0, 0);
+        }
+
+        // --- TAKOPI FUNCTIONS ---
+        function openTakopiDetail() {
+            showPage('takopi-detail');
+            document.getElementById('takopi-player-container').classList.add('hidden');
+            document.getElementById('takopi-info-header').classList.remove('hidden');
+        }
+
+        function playTakopi(episodeNum) {
+            showPage('takopi-detail');
+            const playerContainer = document.getElementById('takopi-player-container');
+            const infoHeader = document.getElementById('takopi-info-header');
+            const titleElem = document.getElementById('takopi-playing-title');
+            
+            playerContainer.classList.remove('hidden');
+            infoHeader.classList.add('hidden');
+            titleElem.innerText = `Nguyên Tội của Takopi - Tập ${episodeNum}`;
+
+            // Link M3U8 chính xác cho tập 1
+            const takopiUrl = episodeNum === 1 
+                ? "https://rumble.com/hls-vod/71meok/playlist.m3u8" 
+                : "https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8"; // Fallback demo cho các tập khác
+
+            takopiPlayer.src({ src: takopiUrl, type: 'application/x-mpegURL' });
+            takopiPlayer.play();
         }
 
         function handleMuteSync() {
@@ -612,6 +767,7 @@
             if (typeof videojs !== 'undefined') {
                 desktopPlayer = videojs('player-desktop', { autoplay: false, controls: true, responsive: true, fluid: true, preload: 'auto' });
                 mobilePlayer = videojs('player-mobile', { autoplay: false, controls: true, responsive: true, fluid: true, preload: 'auto' });
+                takopiPlayer = videojs('takopi-player', { autoplay: false, controls: true, responsive: true, fluid: true, preload: 'auto' });
 
                 desktopPlayer.on('play', () => { if(mobilePlayer && mobilePlayer.paused()) mobilePlayer.play(); handleMuteSync(); });
                 desktopPlayer.on('pause', () => { if(mobilePlayer && !mobilePlayer.paused()) mobilePlayer.pause(); });
