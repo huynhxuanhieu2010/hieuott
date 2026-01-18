@@ -185,6 +185,40 @@
             color: #666;
             margin-top: 2px;
         }
+
+        /* Card Channel Style */
+        .channel-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+            border: 1px solid #2a2a2a;
+        }
+        .channel-card:hover {
+            transform: translateY(-4px);
+            border-color: #e50914;
+        }
+        .channel-thumb {
+            aspect-ratio: 16 / 9;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #fff;
+            position: relative;
+        }
+        .channel-logo-overlay {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.6);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
@@ -305,18 +339,63 @@
                     </button>
                 </div>
 
-                <div class="grid grid-cols-6 gap-4">
-                    <div class="bg-zinc-900 p-4 rounded-lg border border-zinc-800 hover:border-red-600 cursor-pointer">
-                        <div class="aspect-video bg-zinc-800 rounded flex items-center justify-center font-bold text-lg">VTV1</div>
-                        <p class="text-xs mt-2 text-center text-zinc-400">Kênh Thời sự - Chính trị</p>
+                <!-- Danh sách kênh Desktop (Dạng hình chữ nhật 16:9) -->
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <!-- VTV1 -->
+                    <div class="channel-card cursor-pointer">
+                        <div class="channel-thumb">
+                            VTV1
+                            <div class="channel-logo-overlay">HD</div>
+                        </div>
+                        <div class="p-3">
+                            <h3 class="text-sm font-bold truncate">VTV1 HD</h3>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                                <p class="text-[11px] text-zinc-400 truncate">Thời sự 19h</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-zinc-900 p-4 rounded-lg border border-zinc-800 hover:border-red-600 cursor-pointer">
-                        <div class="aspect-video bg-zinc-800 rounded flex items-center justify-center font-bold text-lg">VTV3</div>
-                        <p class="text-xs mt-2 text-center text-zinc-400">Giải trí tổng hợp</p>
+                    <!-- VTV3 -->
+                    <div class="channel-card cursor-pointer">
+                        <div class="channel-thumb">
+                            VTV3
+                            <div class="channel-logo-overlay">HD</div>
+                        </div>
+                        <div class="p-3">
+                            <h3 class="text-sm font-bold truncate">VTV3 HD</h3>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                                <p class="text-[11px] text-zinc-400 truncate">Ơn giời cậu đây rồi</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-zinc-900 p-4 rounded-lg border border-zinc-800 hover:border-red-600 cursor-pointer">
-                        <div class="aspect-video bg-zinc-800 rounded flex items-center justify-center font-bold text-lg">HTV7</div>
-                        <p class="text-xs mt-2 text-center text-zinc-400">Tổng hợp văn hóa</p>
+                    <!-- HTV7 -->
+                    <div class="channel-card cursor-pointer">
+                        <div class="channel-thumb">
+                            HTV7
+                            <div class="channel-logo-overlay">HD</div>
+                        </div>
+                        <div class="p-3">
+                            <h3 class="text-sm font-bold truncate">HTV7 HD</h3>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                                <p class="text-[11px] text-zinc-400 truncate">Running Man Vietnam</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ON Sports -->
+                    <div class="channel-card cursor-pointer">
+                        <div class="channel-thumb">
+                            Sports
+                            <div class="channel-logo-overlay">HD</div>
+                        </div>
+                        <div class="p-3">
+                            <h3 class="text-sm font-bold truncate">ON Sports</h3>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                                <p class="text-[11px] text-zinc-400 truncate">Trực tiếp: Bundesliga</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -354,15 +433,29 @@
                         <span class="text-zinc-500 px-1">Phim truyện</span>
                         <span class="text-zinc-500 px-1">Khoa giáo</span>
                     </div>
-                    <div class="grid grid-cols-3 gap-3">
-                        <div class="bg-zinc-900 p-2 rounded border border-zinc-800 text-center">
-                            <div class="font-bold text-sm">VTV1</div>
+                    
+                    <!-- Danh sách kênh Mobile (Dạng hình chữ nhật nằm ngang) -->
+                    <div class="flex flex-col gap-3">
+                        <div class="channel-card flex h-20 items-center">
+                            <div class="w-32 h-full bg-zinc-800 flex items-center justify-center font-bold text-xs shrink-0">VTV1</div>
+                            <div class="p-3">
+                                <h3 class="text-xs font-bold">VTV1 HD</h3>
+                                <p class="text-[10px] text-zinc-500 mt-1 italic">Đang phát: Thời sự 19h</p>
+                            </div>
                         </div>
-                        <div class="bg-zinc-900 p-2 rounded border border-zinc-800 text-center">
-                            <div class="font-bold text-sm">VTV3</div>
+                        <div class="channel-card flex h-20 items-center">
+                            <div class="w-32 h-full bg-zinc-800 flex items-center justify-center font-bold text-xs shrink-0">VTV3</div>
+                            <div class="p-3">
+                                <h3 class="text-xs font-bold">VTV3 HD</h3>
+                                <p class="text-[10px] text-zinc-500 mt-1 italic">Đang phát: Phim truyện</p>
+                            </div>
                         </div>
-                        <div class="bg-zinc-900 p-2 rounded border border-zinc-800 text-center">
-                            <div class="font-bold text-sm">HTV7</div>
+                        <div class="channel-card flex h-20 items-center">
+                            <div class="w-32 h-full bg-zinc-800 flex items-center justify-center font-bold text-xs shrink-0">HTV7</div>
+                            <div class="p-3">
+                                <h3 class="text-xs font-bold">HTV7 HD</h3>
+                                <p class="text-[10px] text-zinc-500 mt-1 italic">Đang phát: Ca nhạc</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -386,7 +479,7 @@
             </div>
         </section>
 
-        <!-- ONNA Phim -->
+        <!-- Các mục khác giữ nguyên cấu trúc -->
         <section id="onna-phim" class="page-content">
             <h2 class="text-2xl font-bold mb-6">Kho ONNA Phim Đặc Sắc</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
@@ -395,7 +488,6 @@
             </div>
         </section>
 
-        <!-- Hoạt hình -->
         <section id="hoat-hinh" class="page-content">
             <h2 class="text-2xl font-bold mb-6">Thế giới Hoạt hình</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -403,7 +495,6 @@
             </div>
         </section>
 
-        <!-- Thể Thao -->
         <section id="the-thao" class="page-content">
             <h2 class="text-2xl font-bold mb-6">Tin tức & Trực tiếp Thể Thao</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -490,10 +581,9 @@
             }
         }
 
-        // Chức năng cuộn thể loại trên Desktop
         function scrollCategories(direction) {
             const container = document.getElementById('category-container-desktop');
-            const scrollAmount = 250; // Khoảng cách cuộn mỗi lần nhấn
+            const scrollAmount = 250;
             container.scrollLeft += direction * scrollAmount;
         }
 
