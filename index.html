@@ -463,8 +463,8 @@
                 <div class="mt-4">
                     <h3 class="text-lg font-bold mb-4 border-l-4 border-emerald-600 pl-3">Danh sách tập</h3>
                     <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3">
-                        <button onclick="playTakopi(1)" class="ep-btn active py-2 rounded font-bold text-sm">1</button>
-                        <button class="ep-btn py-2 rounded font-bold text-sm opacity-50 cursor-not-allowed">2</button>
+                        <button id="ep-btn-1" onclick="playTakopi(1)" class="ep-btn active py-2 rounded font-bold text-sm">1</button>
+                        <button id="ep-btn-2" onclick="playTakopi(2)" class="ep-btn py-2 rounded font-bold text-sm">2</button>
                         <button class="ep-btn py-2 rounded font-bold text-sm opacity-50 cursor-not-allowed">3</button>
                         <button class="ep-btn py-2 rounded font-bold text-sm opacity-50 cursor-not-allowed">4</button>
                     </div>
@@ -563,6 +563,14 @@
                     <div class="channel-card cursor-pointer" data-category="entertainment" onclick="changeChannel('MBN Enter HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni5/index.m3u8')">
                         <div class="channel-thumb"><img src="https://i.postimg.cc/hPwmK2Zr/oni5.png" alt="MBN Enter HD"></div>
                         <div class="p-2"><h3 class="text-xs font-bold truncate">MBN Enter HD</h3></div>
+                    </div>
+                    <div class="channel-card cursor-pointer" data-category="children" onclick="changeChannel('ONi6', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni6/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/SN59mg1G/oni6.png" alt="ONi6"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi6</h3></div>
+                    </div>
+                    <div class="channel-card cursor-pointer" data-category="sports" onclick="changeChannel('ONi7 HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/ZKgNJwss/oni7.png" alt="ONi7 HD"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi7 HD</h3></div>
                     </div>
                 </div>
             </div>
@@ -728,17 +736,26 @@
             const playerContainer = document.getElementById('takopi-player-container');
             const infoHeader = document.getElementById('takopi-info-header');
             const titleElem = document.getElementById('takopi-playing-title');
+			
+			document.querySelectorAll('.ep-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`ep-btn-${episodeNum}`);
+            if(activeBtn) activeBtn.classList.add('active');
             
             playerContainer.classList.remove('hidden');
             infoHeader.classList.add('hidden');
             titleElem.innerText = `Nguyên Tội của Takopi - Tập ${episodeNum}`;
 
-            const takopiUrl = episodeNum === 1 
-                ? "https://rumble.com/hls-vod/71meok/playlist.m3u8" 
-                : "https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8";
+            let takopiUrl = "";
+            if (episodeNum === 1) {
+                takopiUrl = "https://rumble.com/hls-vod/71meok/playlist.m3u8";
+            } else if (episodeNum === 2) {
+                takopiUrl = "https://rumble.com/hls-vod/725vdc/playlist.m3u8"; // Link tập 2 mới thêm
+            } else {
+                takopiUrl = "https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8";
+            }
 
-            takopiPlayer.src({ src: takopiUrl, type: 'application/x-mpegURL' });
-            takopiPlayer.play();
+    takopiPlayer.src({ src: takopiUrl, type: 'application/x-mpegURL' });
+    takopiPlayer.play();
         }
 
         function handleMuteSync() {
@@ -862,12 +879,5 @@
             }, 2500);
         });
     </script>
-	
 </body>
-
 </html>
-
-
-
-
-
