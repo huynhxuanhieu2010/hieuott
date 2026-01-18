@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV360 Clone - OTT App</title>
+    <title>TV360 Clone - OTT App (Green Theme)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Video.js CSS -->
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #0f0f0f;
+            background-color: #0c0f0c; /* Nền tối ánh xanh */
             color: #ffffff;
             margin: 0;
             padding: 0;
@@ -26,10 +26,10 @@
                 width: 6px;
             }
             ::-webkit-scrollbar-track {
-                background: #1a1a1a;
+                background: #111a11;
             }
             ::-webkit-scrollbar-thumb {
-                background: #e50914;
+                background: #059669; /* Xanh lá đậm */
                 border-radius: 10px;
             }
         }
@@ -66,12 +66,12 @@
         }
 
         .nav-item-active {
-            color: #e50914 !important;
+            color: #10b981 !important; /* Xanh lá sáng */
             font-weight: bold;
         }
 
         .desktop-nav-link:hover {
-            color: #e50914;
+            color: #10b981;
             transition: 0.3s;
         }
 
@@ -79,6 +79,7 @@
             height: 32px;
             width: auto;
             object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.3)); /* Hiệu ứng xanh cho logo */
         }
         @media (max-width: 768px) {
             .logo-img {
@@ -91,7 +92,7 @@
             position: relative;
             width: 100%;
             height: 450px; 
-            background-image: linear-gradient(to bottom, rgba(15, 15, 15, 0) 30%, rgba(15, 15, 15, 1) 100%), url('https://i.postimg.cc/X7cchy0j/takopi-bg.jpg');
+            background-image: linear-gradient(to bottom, rgba(12, 15, 12, 0) 30%, rgba(12, 15, 12, 1) 100%), url('https://i.postimg.cc/X7cchy0j/takopi-bg.jpg');
             background-size: cover;
             background-position: center top;
             border-radius: 12px;
@@ -116,7 +117,7 @@
 
         /* Content Card Styling */
         .content-card {
-            background-color: #1a1a1a;
+            background-color: #161d16;
             border-radius: 8px;
             overflow: hidden;
             transition: transform 0.3s;
@@ -125,11 +126,11 @@
         }
         .content-card:hover {
             transform: scale(1.05);
-            border-color: #e50914;
+            border-color: #10b981;
         }
         .aspect-poster {
             aspect-ratio: 2 / 3;
-            background-color: #333;
+            background-color: #232d23;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -148,6 +149,10 @@
             overflow: hidden;
         }
 
+        /* Thay đổi màu sắc VideoJS sang xanh */
+        .vjs-play-progress, .vjs-volume-level { background-color: #059669 !important; }
+        .vjs-big-play-button { border-color: #10b981 !important; background-color: rgba(16, 185, 129, 0.4) !important; }
+
         .category-scroll {
             display: flex;
             overflow-x: auto;
@@ -161,7 +166,7 @@
         }
 
         .category-nav-btn {
-            background: rgba(15, 15, 15, 0.8);
+            background: rgba(12, 15, 12, 0.8);
             backdrop-filter: blur(4px);
             transition: all 0.2s;
             display: none;
@@ -174,12 +179,12 @@
             }
         }
         .category-nav-btn:hover {
-            background: #e50914;
+            background: #059669;
             color: white;
         }
 
         .radio-container {
-            background-color: #1a1a1a;
+            background-color: #161d16;
             padding: 4px;
             border-radius: 4px;
             display: flex;
@@ -200,14 +205,14 @@
         }
 
         .radio-btn.active {
-            background-color: #333;
+            background-color: #232d23;
             color: #fff;
-            border: 1px solid #444;
+            border: 1px solid #334233;
         }
 
         .epg-box {
-            background-color: #111;
-            border: 1px solid #222;
+            background-color: #0e130e;
+            border: 1px solid #1c261c;
             border-radius: 8px;
             height: 100%;
             overflow: hidden;
@@ -225,30 +230,30 @@
             display: flex;
             gap: 12px;
             padding: 10px 0;
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid #161d16;
         }
 
         .epg-time {
-            color: #e50914;
+            color: #10b981;
             font-weight: bold;
             font-size: 13px;
             min-width: 45px;
         }
 
         .channel-card {
-            background-color: #1a1a1a;
+            background-color: #161d16;
             border-radius: 8px;
             overflow: hidden;
             transition: transform 0.2s, border-color 0.2s;
-            border: 1px solid #2a2a2a;
+            border: 1px solid #232d23;
         }
         .channel-card:hover {
             transform: translateY(-4px);
-            border-color: #e50914;
+            border-color: #10b981;
         }
         .channel-thumb {
             aspect-ratio: 16 / 9;
-            background-color: #222;
+            background-color: #1c261c;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -259,27 +264,27 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            background-color: #111;
+            background-color: #0c0f0c;
         }
         
         .cat-btn.active {
-            background-color: #e50914;
+            background-color: #059669;
             color: white;
             font-weight: bold;
         }
 
         /* Episode buttons */
         .ep-btn {
-            background: #1a1a1a;
-            border: 1px solid #333;
+            background: #161d16;
+            border: 1px solid #232d23;
             transition: 0.2s;
         }
         .ep-btn:hover {
-            border-color: #e50914;
+            border-color: #10b981;
         }
         .ep-btn.active {
-            background: #e50914;
-            border-color: #e50914;
+            background: #059669;
+            border-color: #059669;
             color: white;
         }
     </style>
@@ -287,7 +292,7 @@
 <body>
 
     <!-- [NAVBAR MÁY TÍNH & TABLET] -->
-    <header class="hidden md:flex fixed top-0 w-full bg-black bg-opacity-90 z-50 px-8 py-4 items-center justify-between border-b border-gray-800">
+    <header class="hidden md:flex fixed top-0 w-full bg-black bg-opacity-90 z-50 px-8 py-4 items-center justify-between border-b border-zinc-900">
         <div class="flex items-center space-x-10">
             <div class="cursor-pointer" onclick="showPage('trang-chu')">
                 <img src="https://i.postimg.cc/5NdWYRN5/onnaonlinetv.png" alt="ONNA TV Logo" class="logo-img">
@@ -301,13 +306,13 @@
             </nav>
         </div>
         <div class="flex items-center space-x-6">
-            <i class="fas fa-search cursor-pointer hover:text-red-500"></i>
-            <i class="fas fa-bell cursor-pointer hover:text-red-500"></i>
+            <i class="fas fa-search cursor-pointer hover:text-emerald-500"></i>
+            <i class="fas fa-bell cursor-pointer hover:text-emerald-500"></i>
         </div>
     </header>
 
     <!-- [NAVBAR ĐIỆN THOẠI] -->
-    <header class="flex md:hidden fixed top-0 w-full bg-black z-50 px-4 py-3 items-center justify-between border-b border-gray-800">
+    <header class="flex md:hidden fixed top-0 w-full bg-black z-50 px-4 py-3 items-center justify-between border-b border-zinc-900">
         <div class="cursor-pointer" onclick="showPage('trang-chu')">
             <img src="https://i.postimg.cc/5NdWYRN5/onnaonlinetv.png" alt="ONNA TV Logo" class="logo-img">
         </div>
@@ -325,13 +330,13 @@
             <div class="hero-banner cursor-pointer" onclick="openTakopiDetail()">
                 <div class="max-w-xl z-20">
                     <div class="flex items-center gap-2 mb-3">
-                        <span class="bg-red-600 text-[10px] md:text-xs font-bold px-2 py-1 rounded">MỚI</span>
+                        <span class="bg-emerald-600 text-[10px] md:text-xs font-bold px-2 py-1 rounded">MỚI</span>
                         <span class="text-xs text-zinc-300 font-medium">Hoạt hình tâm lý</span>
                     </div>
                     <h1 class="text-2xl md:text-5xl font-bold mb-3 leading-tight">Nguyên Tội của Takopi</h1>
                     <p class="text-xs md:text-base text-gray-300 mb-6 line-clamp-2 md:line-clamp-none">Takopi, một sinh vật ngoài hành tinh nhỏ bé với sứ mệnh mang lại nụ cười cho nhân loại, vô tình dấn thân vào một chuỗi bi kịch đau đớn khi cố gắng giúp đỡ cô bé Shizuka đáng thương.</p>
                     <div class="flex gap-4">
-                        <button onclick="event.stopPropagation(); playTakopi(1)" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-bold text-sm flex items-center gap-2 transition">
+                        <button onclick="event.stopPropagation(); playTakopi(1)" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-bold text-sm flex items-center gap-2 transition">
                             <i class="fas fa-play"></i> Xem ngay
                         </button>
                         <button onclick="event.stopPropagation(); openTakopiDetail()" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-bold text-sm transition">
@@ -343,12 +348,12 @@
 
             <div class="mb-8">
                 <h2 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-2">
-                    <span class="w-1 h-5 bg-red-600 rounded"></span> Phim hoạt hình mới nhất
+                    <span class="w-1 h-5 bg-emerald-600 rounded"></span> Phim hoạt hình mới nhất
                 </h2>
                 <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
                     <div class="content-card" onclick="openTakopiDetail()">
                         <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/BQ6Hh7Nr/takopi-ps.jpg');">
-                            <div class="absolute top-2 right-2 bg-red-600 text-[9px] px-1 rounded text-white font-bold">Tập 1</div>
+                            <div class="absolute top-2 right-2 bg-emerald-600 text-[9px] px-1 rounded text-white font-bold">Tập 1</div>
                         </div>
                         <div class="p-2 text-xs font-bold truncate">Nguyên Tội của Takopi</div>
                     </div>
@@ -361,12 +366,12 @@
             <div class="flex flex-col gap-6">
                 <!-- Video Player Area -->
                 <div id="takopi-player-container" class="hidden">
-                    <div class="max-w-4xl mx-auto bg-black rounded-lg overflow-hidden border border-zinc-800">
+                    <div class="max-w-4xl mx-auto bg-black rounded-lg overflow-hidden border border-emerald-900/30">
                         <video id="takopi-player" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto"></video>
                     </div>
                     <div class="max-w-4xl mx-auto mt-4">
                         <h2 class="text-xl font-bold" id="takopi-playing-title">Nguyên Tội của Takopi - Tập 1</h2>
-                        <p class="text-zinc-500 text-sm mt-1">Hành trình mang nụ cười của sinh vật ngoài hành tinh</p>
+                        <p class="text-emerald-500/70 text-sm mt-1">Hành trình mang nụ cười của sinh vật ngoài hành tinh</p>
                     </div>
                 </div>
 
@@ -377,7 +382,7 @@
                     </div>
                     <div class="md:col-span-2 flex flex-col justify-center">
                         <div class="flex items-center gap-2 mb-4">
-                            <span class="bg-red-600 text-xs font-bold px-2 py-1 rounded">HOT</span>
+                            <span class="bg-emerald-600 text-xs font-bold px-2 py-1 rounded">HOT</span>
                             <span class="text-zinc-400 text-sm">2024 • 1 Mùa • 18+</span>
                         </div>
                         <h1 class="text-3xl md:text-5xl font-bold mb-4">Nguyên Tội của Takopi</h1>
@@ -385,10 +390,10 @@
                             Takopi là một chú "Happian" nhỏ bé đến từ hành tinh Hạnh Phúc, xuống Trái Đất với mong muốn mang lại nụ cười cho mọi người. Khi gặp Shizuka, một cô bé lớp 4 có ánh mắt vô hồn và hoàn cảnh bi kịch, Takopi dùng những bảo bối kỳ lạ của mình để giúp cô bé. Tuy nhiên, sự ngây thơ của một sinh vật không hiểu khái niệm "tội lỗi" đã dẫn đến những hậu quả không thể lường trước.
                         </p>
                         <div class="flex gap-4">
-                            <button onclick="playTakopi(1)" class="bg-red-600 hover:bg-red-700 text-white px-10 py-3 rounded-full font-bold flex items-center gap-2 transition transform hover:scale-105">
+                            <button onclick="playTakopi(1)" class="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-3 rounded-full font-bold flex items-center gap-2 transition transform hover:scale-105">
                                 <i class="fas fa-play"></i> XEM NGAY
                             </button>
-                            <button class="bg-zinc-800 hover:bg-zinc-700 text-white w-12 h-12 rounded-full flex items-center justify-center transition">
+                            <button class="bg-zinc-800 hover:bg-emerald-900/40 text-white w-12 h-12 rounded-full flex items-center justify-center transition">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
@@ -397,7 +402,7 @@
 
                 <!-- Episode List -->
                 <div class="mt-4">
-                    <h3 class="text-lg font-bold mb-4 border-l-4 border-red-600 pl-3">Danh sách tập</h3>
+                    <h3 class="text-lg font-bold mb-4 border-l-4 border-emerald-600 pl-3">Danh sách tập</h3>
                     <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3">
                         <button onclick="playTakopi(1)" class="ep-btn active py-2 rounded font-bold text-sm">1</button>
                         <button class="ep-btn py-2 rounded font-bold text-sm opacity-50 cursor-not-allowed">2</button>
@@ -434,14 +439,14 @@
         <section id="truyen-hinh" class="page-content">
             <div class="hidden md:grid grid-cols-3 gap-6 mb-8">
                 <div class="col-span-2">
-                    <div class="bg-black rounded-lg overflow-hidden">
+                    <div class="bg-black rounded-lg overflow-hidden border border-emerald-900/20">
                         <video id="player-desktop" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto"></video>
                     </div>
                 </div>
                 <div class="col-span-1">
                     <div class="epg-box">
-                        <div class="p-3 bg-zinc-900 border-b border-zinc-800 font-bold text-sm uppercase flex items-center gap-2">
-                            <i class="far fa-clock text-red-600"></i> Lịch phát sóng
+                        <div class="p-3 bg-emerald-950/20 border-b border-zinc-800 font-bold text-sm uppercase flex items-center gap-2">
+                            <i class="far fa-clock text-emerald-500"></i> Lịch phát sóng
                         </div>
                         <div class="epg-list" id="epg-desktop">
                             <div class="epg-item"><span class="epg-time">19:00</span><div class="epg-info"><h4>ONi1 News</h4><p>Tin tức giải trí 24h</p></div></div>
@@ -519,7 +524,7 @@
         <!-- [3] ONNA Phim -->
         <section id="onna-phim" class="page-content">
             <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
-                <span class="w-1 h-5 bg-red-600 rounded"></span> Phim lẻ thịnh hành
+                <span class="w-1 h-5 bg-emerald-600 rounded"></span> Phim lẻ thịnh hành
             </h2>
             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
                 <div class="content-card"><div class="aspect-poster">Hành Tinh Cát</div><div class="p-2 text-xs truncate">Hành Tinh Cát</div></div>
@@ -532,7 +537,7 @@
         <!-- [4] Hoạt Hình -->
         <section id="hoat-hinh" class="page-content">
             <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
-                <span class="w-1 h-5 bg-orange-500 rounded"></span> Hoạt hình đặc sắc
+                <span class="w-1 h-5 bg-emerald-500 rounded"></span> Hoạt hình đặc sắc
             </h2>
             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
                 <div class="content-card" onclick="openTakopiDetail()">
@@ -550,16 +555,16 @@
         <!-- [5] Thể Thao -->
         <section id="the-thao" class="page-content">
             <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
-                <span class="w-1 h-5 bg-blue-600 rounded"></span> Sự kiện thể thao trực tiếp
+                <span class="w-1 h-5 bg-emerald-700 rounded"></span> Sự kiện thể thao trực tiếp
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
                     <div>
-                        <p class="text-[10px] text-red-500 font-bold mb-1">LIVE</p>
+                        <p class="text-[10px] text-emerald-500 font-bold mb-1">LIVE</p>
                         <h4 class="text-sm font-bold">Việt Nam vs Thái Lan</h4>
                         <p class="text-[10px] text-zinc-500">Vòng loại World Cup 2026</p>
                     </div>
-                    <button class="bg-red-600 text-white text-[10px] px-3 py-1 rounded">Xem ngay</button>
+                    <button class="bg-emerald-600 text-white text-[10px] px-3 py-1 rounded">Xem ngay</button>
                 </div>
                 <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 flex items-center justify-between opacity-70">
                     <div>
@@ -591,7 +596,7 @@
     </main>
 
     <!-- [FOOTER ĐIỆN THOẠI] -->
-    <footer class="flex md:hidden fixed bottom-0 w-full bg-black bg-opacity-95 border-t border-zinc-800 z-50">
+    <footer class="flex md:hidden fixed bottom-0 w-full bg-black bg-opacity-95 border-t border-zinc-900 z-50">
         <div class="flex w-full justify-between items-center px-1 py-2">
             <button onclick="showPage('trang-chu')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500 nav-item-active" data-page="trang-chu">
                 <i class="fas fa-home text-base"></i>
@@ -663,10 +668,9 @@
             infoHeader.classList.add('hidden');
             titleElem.innerText = `Nguyên Tội của Takopi - Tập ${episodeNum}`;
 
-            // Link M3U8 chính xác cho tập 1
             const takopiUrl = episodeNum === 1 
                 ? "https://rumble.com/hls-vod/71meok/playlist.m3u8" 
-                : "https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8"; // Fallback demo cho các tập khác
+                : "https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8";
 
             takopiPlayer.src({ src: takopiUrl, type: 'application/x-mpegURL' });
             takopiPlayer.play();
@@ -718,8 +722,8 @@
 
         function filterChannels(category, element) {
             const buttons = document.querySelectorAll('.cat-btn');
-            buttons.forEach(btn => btn.classList.remove('active', 'bg-red-600', 'font-bold'));
-            element.classList.add('active', 'bg-red-600', 'font-bold');
+            buttons.forEach(btn => btn.classList.remove('active', 'bg-emerald-600', 'font-bold'));
+            element.classList.add('active', 'bg-emerald-600', 'font-bold');
 
             const cards = document.querySelectorAll('.channel-card');
             cards.forEach(card => {
