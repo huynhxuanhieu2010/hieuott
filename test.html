@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV360 Clone - OTT App (Green Theme)</title>
+    <title>ONNA Online TV</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- Video.js CSS -->
@@ -288,9 +288,65 @@
             color: white;
         }
     </style>
+	
+	<style>
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000; /* Màu nền đen đặc trưng của OTT */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Đảm bảo luôn nằm trên cùng */
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
+        .splash-content {
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .splash-logo {
+            width: 120px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Vòng xoay tải trang */
+        .loader {
+            border: 4px solid #333;
+            border-top: 4px solid #e50914; /* Màu đỏ Netflix style */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+
+        /* Lớp ẩn màn hình chờ */
+        .splash-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+	
 </head>
 <body>
+    <div id="splash-screen">
+        <div class="splash-content">
+            <img src="https://i.postimg.cc/5NdWYRN5/onnaonlinetv.png" alt="OTT Logo" class="splash-logo">
+            <div class="loader"></div>
+        </div>
+    </div>
 
+	
     <!-- [NAVBAR MÁY TÍNH & TABLET] -->
     <header class="hidden md:flex fixed top-0 w-full bg-black bg-opacity-90 z-50 px-8 py-4 items-center justify-between border-b border-zinc-900">
         <div class="flex items-center space-x-10">
@@ -330,7 +386,6 @@
             <div class="hero-banner cursor-pointer" onclick="openTakopiDetail()">
                 <div class="max-w-xl z-20">
                     <div class="flex items-center gap-2 mb-3">
-                        <span class="bg-emerald-600 text-[10px] md:text-xs font-bold px-2 py-1 rounded">MỚI</span>
                         <span class="text-xs text-zinc-300 font-medium">Hoạt hình tâm lý</span>
                     </div>
                     <h1 class="text-2xl md:text-5xl font-bold mb-3 leading-tight">Nguyên Tội của Takopi</h1>
@@ -353,9 +408,14 @@
                 <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
                     <div class="content-card" onclick="openTakopiDetail()">
                         <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/BQ6Hh7Nr/takopi-ps.jpg');">
-                            <div class="absolute top-2 right-2 bg-emerald-600 text-[9px] px-1 rounded text-white font-bold">Tập 1</div>
                         </div>
                         <div class="p-2 text-xs font-bold truncate">Nguyên Tội của Takopi</div>
+                    </div>
+                    <!-- Phim mới thêm: Oshi No Ko S3 -->
+                    <div class="content-card">
+                        <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/J0PkKZ9T/ofd99b96-660x946-duaconcuathantuong-s2b8da494121bc0210920acd4274aa193f.png');">
+                        </div>
+                        <div class="p-2 text-xs font-bold truncate">Đứa con của Thần Tượng - Mùa 3</div>
                     </div>
                 </div>
             </div>
@@ -382,7 +442,6 @@
                     </div>
                     <div class="md:col-span-2 flex flex-col justify-center">
                         <div class="flex items-center gap-2 mb-4">
-                            <span class="bg-emerald-600 text-xs font-bold px-2 py-1 rounded">HOT</span>
                             <span class="text-zinc-400 text-sm">2024 • 1 Mùa • 18+</span>
                         </div>
                         <h1 class="text-3xl md:text-5xl font-bold mb-4">Nguyên Tội của Takopi</h1>
@@ -523,32 +582,46 @@
 
         <!-- [3] ONNA Phim -->
         <section id="onna-phim" class="page-content">
-            <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
-                <span class="w-1 h-5 bg-emerald-600 rounded"></span> Phim lẻ thịnh hành
-            </h2>
-            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-                <div class="content-card"><div class="aspect-poster">Hành Tinh Cát</div><div class="p-2 text-xs truncate">Hành Tinh Cát</div></div>
-                <div class="content-card"><div class="aspect-poster">Kẻ Hủy Diệt</div><div class="p-2 text-xs truncate">Kẻ Hủy Diệt</div></div>
-                <div class="content-card"><div class="aspect-poster">Avatar 2</div><div class="p-2 text-xs truncate">Avatar: Dòng Chảy Nước</div></div>
-                <div class="content-card"><div class="aspect-poster">Lật Mặt 7</div><div class="p-2 text-xs truncate">Lật Mặt 7</div></div>
+            <!-- Mục Phim Lẻ -->
+            <div class="mb-10">
+                <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
+                    <span class="w-1 h-5 bg-emerald-600 rounded"></span> Phim lẻ
+                </h2>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                    <div class="content-card"><div class="aspect-poster">Hành Tinh Cát</div><div class="p-2 text-xs truncate">Hành Tinh Cát</div></div>
+                    <div class="content-card"><div class="aspect-poster">Kẻ Hủy Diệt</div><div class="p-2 text-xs truncate">Kẻ Hủy Diệt</div></div>
+                    <div class="content-card"><div class="aspect-poster">Avatar 2</div><div class="p-2 text-xs truncate">Avatar: Dòng Chảy Nước</div></div>
+                    <div class="content-card"><div class="aspect-poster">Lật Mặt 7</div><div class="p-2 text-xs truncate">Lật Mặt 7</div></div>
+                </div>
+            </div>
+
+            <!-- Mục Phim Bộ mới thêm -->
+            <div class="mb-10">
+                <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
+                    <span class="w-1 h-5 bg-emerald-600 rounded"></span> Phim bộ
+                </h2>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                    <div class="content-card"><div class="aspect-poster">Vincenzo</div><div class="p-2 text-xs truncate">Vincenzo (20 Tập)</div></div>
+                    <div class="content-card"><div class="aspect-poster">Trò Chơi Con Mực</div><div class="p-2 text-xs truncate">Trò Chơi Con Mực</div></div>
+                    <div class="content-card"><div class="aspect-poster">Cậu Út Nhà Tài Phiệt</div><div class="p-2 text-xs truncate">Cậu Út Nhà Tài Phiệt</div></div>
+                    <div class="content-card"><div class="aspect-poster">Hạ Cánh Nơi Anh</div><div class="p-2 text-xs truncate">Hạ Cánh Nơi Anh</div></div>
+                    <div class="content-card"><div class="aspect-poster">Chuyến Tàu Sinh Tử</div><div class="p-2 text-xs truncate">Chuyến Tàu Sinh Tử</div></div>
+                </div>
             </div>
         </section>
 
         <!-- [4] Hoạt Hình -->
         <section id="hoat-hinh" class="page-content">
-            <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
-                <span class="w-1 h-5 bg-emerald-500 rounded"></span> Hoạt hình đặc sắc
-            </h2>
             <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
                 <div class="content-card" onclick="openTakopiDetail()">
                     <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/BQ6Hh7Nr/takopi-ps.jpg');"></div>
                     <div class="p-2 text-xs truncate font-bold">Nguyên Tội của Takopi</div>
                 </div>
-                <div class="content-card"><div class="aspect-poster">Doraemon</div><div class="p-2 text-xs truncate">Doraemon: Nobita và...</div></div>
-                <div class="content-card"><div class="aspect-poster">Conan</div><div class="p-2 text-xs truncate">Thám Tử Lừng Danh Conan</div></div>
-                <div class="content-card"><div class="aspect-poster">One Piece</div><div class="p-2 text-xs truncate">Đảo Hải Tặc</div></div>
-                <div class="content-card"><div class="aspect-poster">Naruto</div><div class="p-2 text-xs truncate">Naruto Shippuden</div></div>
-                <div class="content-card"><div class="aspect-poster">Dragon Ball</div><div class="p-2 text-xs truncate">Bảy Viên Ngọc Rồng</div></div>
+                <!-- Oshi No Ko S3 -->
+                <div class="content-card">
+                    <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/J0PkKZ9T/ofd99b96-660x946-duaconcuathantuong-s2b8da494121bc0210920acd4274aa193f.png');"></div>
+                    <div class="p-2 text-xs truncate font-bold">Đứa con của Thần Tượng - Mùa 3</div>
+                </div>
             </div>
         </section>
 
@@ -786,5 +859,17 @@
             }
         }
     </script>
+	
+	<script>
+        window.addEventListener('load', function() {
+            const splash = document.getElementById('splash-screen');
+        
+            // Đợi 2-3 giây để người dùng thấy thương hiệu (tùy chọn)
+            setTimeout(() => {
+                splash.classList.add('splash-hidden');
+            }, 2500);
+        });
+    </script>
+	
 </body>
 </html>
