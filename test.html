@@ -20,7 +20,7 @@
             overflow-x: hidden;
         }
 
-        /* Tùy chỉnh thanh cuộn cho MÁY TÍNH (Desktop) */
+        /* Tùy chỉnh thanh cuộn cho Máy tính */
         @media (min-width: 1024px) {
             ::-webkit-scrollbar {
                 width: 6px;
@@ -34,7 +34,7 @@
             }
         }
 
-        /* Ẩn thanh cuộn cho ĐIỆN THOẠI & MÁY TÍNH BẢNG (Mobile/Tablet) */
+        /* Ẩn thanh cuộn cho Điện thoại/Máy tính bảng */
         @media (max-width: 1023px) {
             html, body {
                 scrollbar-width: none;
@@ -86,7 +86,28 @@
             }
         }
 
-        /* TV Category Styles */
+        /* Content Card Styling */
+        .content-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .content-card:hover {
+            transform: scale(1.05);
+            border-color: #e50914;
+        }
+        .aspect-poster {
+            aspect-ratio: 2 / 3;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
         .video-js {
             width: 100%;
             border-radius: 8px;
@@ -99,23 +120,30 @@
             white-space: nowrap;
             scrollbar-width: none;
             scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
         .category-scroll::-webkit-scrollbar {
             display: none;
         }
 
-        /* Nav Arrows for Desktop */
         .category-nav-btn {
             background: rgba(15, 15, 15, 0.8);
             backdrop-filter: blur(4px);
             transition: all 0.2s;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (min-width: 768px) {
+            .category-nav-btn {
+                display: flex;
+            }
         }
         .category-nav-btn:hover {
             background: #e50914;
             color: white;
         }
 
-        /* Rectangle Toggle Buttons (Mobile) */
         .radio-container {
             background-color: #1a1a1a;
             padding: 4px;
@@ -143,7 +171,6 @@
             border: 1px solid #444;
         }
 
-        /* EPG Box */
         .epg-box {
             background-color: #111;
             border: 1px solid #222;
@@ -174,19 +201,6 @@
             min-width: 45px;
         }
 
-        .epg-info h4 {
-            font-size: 14px;
-            margin: 0;
-            color: #eee;
-        }
-
-        .epg-info p {
-            font-size: 12px;
-            color: #666;
-            margin-top: 2px;
-        }
-
-        /* Card Channel Style */
         .channel-card {
             background-color: #1a1a1a;
             border-radius: 8px;
@@ -200,37 +214,44 @@
         }
         .channel-thumb {
             aspect-ratio: 16 / 9;
-            background-color: #333;
+            background-color: #222;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 1.25rem;
-            color: #fff;
             position: relative;
+            overflow: hidden;
         }
-        .channel-logo-overlay {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background: rgba(0,0,0,0.6);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 10px;
-            text-transform: uppercase;
+        .channel-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #111;
+        }
+        .live-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #e50914;
+            display: inline-block;
+        }
+        
+        .cat-btn.active {
+            background-color: #e50914;
+            color: white;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <!-- [NAVBAR TRÊN - DÀNH CHO MÁY TÍNH & TABLET] -->
+    <!-- [NAVBAR MÁY TÍNH & TABLET] -->
     <header class="hidden md:flex fixed top-0 w-full bg-black bg-opacity-90 z-50 px-8 py-4 items-center justify-between border-b border-gray-800">
         <div class="flex items-center space-x-10">
             <div class="cursor-pointer" onclick="showPage('trang-chu')">
                 <img src="https://i.postimg.cc/5NdWYRN5/onnaonlinetv.png" alt="ONNA TV Logo" class="logo-img">
             </div>
             <nav class="flex space-x-8 text-sm font-medium uppercase tracking-wide">
-                <a href="#" onclick="showPage('trang-chu')" class="desktop-nav-link" data-page="trang-chu">Trang chủ</a>
+                <a href="#" onclick="showPage('trang-chu')" class="desktop-nav-link nav-item-active" data-page="trang-chu">Trang chủ</a>
                 <a href="#" onclick="showPage('truyen-hinh')" class="desktop-nav-link" data-page="truyen-hinh">Truyền hình</a>
                 <a href="#" onclick="showPage('onna-phim')" class="desktop-nav-link" data-page="onna-phim">ONNA Phim</a>
                 <a href="#" onclick="showPage('hoat-hinh')" class="desktop-nav-link" data-page="hoat-hinh">Hoạt hình</a>
@@ -243,7 +264,7 @@
         </div>
     </header>
 
-    <!-- [NAVBAR TRÊN - DÀNH CHO ĐIỆN THOẠI] -->
+    <!-- [NAVBAR ĐIỆN THOẠI] -->
     <header class="flex md:hidden fixed top-0 w-full bg-black z-50 px-4 py-3 items-center justify-between border-b border-gray-800">
         <div class="cursor-pointer" onclick="showPage('trang-chu')">
             <img src="https://i.postimg.cc/5NdWYRN5/onnaonlinetv.png" alt="ONNA TV Logo" class="logo-img">
@@ -255,32 +276,49 @@
     </header>
 
     <main class="container mx-auto px-4">
-        <!-- Trang Chủ -->
+        
+        <!-- [1] Trang Chủ -->
         <section id="trang-chu" class="page-content active-page">
-            <div class="h-64 md:h-96 w-full bg-gradient-to-r from-gray-800 to-gray-900 rounded-xl flex items-center justify-center border border-gray-700">
-                <div class="text-center">
-                    <h1 class="text-3xl font-bold mb-2">Chào mừng đến với ONNA TV</h1>
-                    <p class="text-gray-400">Nội dung đề xuất dành cho bạn sẽ hiển thị tại đây.</p>
+            <div class="relative h-48 md:h-96 w-full rounded-xl overflow-hidden mb-8 border border-zinc-800">
+                <div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent z-10"></div>
+                <div class="absolute bottom-4 left-4 md:bottom-10 md:left-10 z-20 max-w-md">
+                    <span class="bg-red-600 text-[10px] md:text-xs font-bold px-2 py-1 rounded mb-2 inline-block">MỚI RA MẮT</span>
+                    <h1 class="text-xl md:text-4xl font-bold mb-2">Đấu La Đại Lục</h1>
+                    <p class="text-xs md:text-sm text-gray-300 hidden md:block mb-4">Hành trình thức tỉnh vũ hồn và trở thành cường giả mạnh nhất đại lục của Đường Tam.</p>
+                    <div class="flex gap-3">
+                        <button class="bg-white text-black px-4 py-1.5 md:px-6 md:py-2 rounded font-bold text-xs md:text-sm">Xem ngay</button>
+                        <button class="bg-zinc-800/80 text-white px-4 py-1.5 md:px-6 md:py-2 rounded font-bold text-xs md:text-sm">+ Danh sách</button>
+                    </div>
+                </div>
+                <div class="w-full h-full bg-zinc-900 flex items-center justify-center">
+                    <i class="fas fa-play text-4xl text-zinc-700"></i>
                 </div>
             </div>
-            <div class="mt-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <div class="aspect-video bg-gray-800 rounded animate-pulse"></div>
-                <div class="aspect-video bg-gray-800 rounded animate-pulse"></div>
-                <div class="aspect-video bg-gray-800 rounded animate-pulse"></div>
-                <div class="aspect-video bg-gray-800 rounded animate-pulse"></div>
-                <div class="aspect-video bg-gray-800 rounded animate-pulse"></div>
-                <div class="aspect-video bg-gray-800 rounded animate-pulse"></div>
+
+            <div class="mb-8">
+                <h2 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-2">
+                    <span class="w-1 h-5 bg-red-600 rounded"></span> Phim bộ mới cập nhật
+                </h2>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
+                    <div class="content-card">
+                        <div class="aspect-poster">Phim 1<div class="absolute top-2 right-2 bg-black/60 text-[10px] px-1 rounded text-red-500">HD</div></div>
+                        <div class="p-2 text-xs font-medium truncate">Thần Lan Kỳ Vực</div>
+                    </div>
+                    <div class="content-card">
+                        <div class="aspect-poster">Phim 2</div>
+                        <div class="p-2 text-xs font-medium truncate">Tiên Nghịch</div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Truyền Hình -->
+        <!-- [2] Truyền Hình -->
         <section id="truyen-hinh" class="page-content">
-            <!-- Layout Desktop: Player Trái - EPG Phải -->
             <div class="hidden md:grid grid-cols-3 gap-6 mb-8">
                 <div class="col-span-2">
                     <div class="bg-black rounded-lg overflow-hidden">
                         <video id="player-desktop" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto">
-                            <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+                            <!-- Nguồn nạp động -->
                         </video>
                     </div>
                 </div>
@@ -290,221 +328,99 @@
                             <i class="far fa-clock text-red-600"></i> Lịch phát sóng
                         </div>
                         <div class="epg-list" id="epg-desktop">
-                            <div class="epg-item">
-                                <span class="epg-time">19:00</span>
-                                <div class="epg-info"><h4>Thời sự 19h</h4><p>Tin tức quan trọng nhất trong ngày</p></div>
-                            </div>
-                            <div class="epg-item">
-                                <span class="epg-time">20:10</span>
-                                <div class="epg-info"><h4>Phim truyện: Đất rừng phương Nam</h4><p>Phim truyền hình Việt Nam đặc sắc</p></div>
-                            </div>
-                            <div class="epg-item">
-                                <span class="epg-time">21:30</span>
-                                <div class="epg-info"><h4>Thể thao 24/7</h4><p>Cập nhật chuyển động thể thao thế giới</p></div>
-                            </div>
+                            <div class="epg-item"><span class="epg-time">19:00</span><div class="epg-info"><h4>ONi1 News</h4><p>Tin tức giải trí 24h</p></div></div>
+                            <div class="epg-item"><span class="epg-time">20:10</span><div class="epg-info"><h4>ONi4 Sports</h4><p>Bình luận thể thao HD</p></div></div>
+                            <div class="epg-item"><span class="epg-time">21:30</span><div class="epg-info"><h4>Phim Sitcom</h4><p>Cười cùng ONi1</p></div></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Thể loại & Kênh (Dưới Player trên Desktop) -->
-            <div class="hidden md:block">
-                <div class="relative flex items-center mb-6 border-b border-zinc-800 pb-2">
-                    <!-- Left Arrow -->
-                    <button onclick="scrollCategories(-1)" class="category-nav-btn absolute left-0 z-10 w-8 h-8 rounded-full border border-zinc-700 flex items-center justify-center">
-                        <i class="fas fa-chevron-left text-xs"></i>
-                    </button>
-                    
-                    <div id="category-container-desktop" class="category-scroll gap-4 px-10">
-                        <button class="px-4 py-1 rounded bg-red-600 text-sm font-bold">Tất cả</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">ONNA Network</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">MBN</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">VTV</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">Thiết yếu</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">HTV</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">Quốc tế</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">Địa phương</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">Phát thanh</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">Giải trí</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">Âm nhạc</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">Thể thao</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">Thiếu nhi</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">Phim truyện</button>
-                        <button class="px-4 py-1 rounded hover:bg-zinc-800 text-sm">Khoa giáo</button>
-                    </div>
-
-                    <!-- Right Arrow -->
-                    <button onclick="scrollCategories(1)" class="category-nav-btn absolute right-0 z-10 w-8 h-8 rounded-full border border-zinc-700 flex items-center justify-center">
-                        <i class="fas fa-chevron-right text-xs"></i>
-                    </button>
-                </div>
-
-                <!-- Danh sách kênh Desktop (Dạng hình chữ nhật 16:9) -->
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                    <!-- VTV1 -->
-                    <div class="channel-card cursor-pointer">
-                        <div class="channel-thumb">
-                            VTV1
-                            <div class="channel-logo-overlay">HD</div>
-                        </div>
-                        <div class="p-3">
-                            <h3 class="text-sm font-bold truncate">VTV1 HD</h3>
-                            <div class="flex items-center gap-2 mt-1">
-                                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-                                <p class="text-[11px] text-zinc-400 truncate">Thời sự 19h</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- VTV3 -->
-                    <div class="channel-card cursor-pointer">
-                        <div class="channel-thumb">
-                            VTV3
-                            <div class="channel-logo-overlay">HD</div>
-                        </div>
-                        <div class="p-3">
-                            <h3 class="text-sm font-bold truncate">VTV3 HD</h3>
-                            <div class="flex items-center gap-2 mt-1">
-                                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-                                <p class="text-[11px] text-zinc-400 truncate">Ơn giời cậu đây rồi</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- HTV7 -->
-                    <div class="channel-card cursor-pointer">
-                        <div class="channel-thumb">
-                            HTV7
-                            <div class="channel-logo-overlay">HD</div>
-                        </div>
-                        <div class="p-3">
-                            <h3 class="text-sm font-bold truncate">HTV7 HD</h3>
-                            <div class="flex items-center gap-2 mt-1">
-                                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-                                <p class="text-[11px] text-zinc-400 truncate">Running Man Vietnam</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ON Sports -->
-                    <div class="channel-card cursor-pointer">
-                        <div class="channel-thumb">
-                            Sports
-                            <div class="channel-logo-overlay">HD</div>
-                        </div>
-                        <div class="p-3">
-                            <h3 class="text-sm font-bold truncate">ON Sports</h3>
-                            <div class="flex items-center gap-2 mt-1">
-                                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-                                <p class="text-[11px] text-zinc-400 truncate">Trực tiếp: Bundesliga</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Layout Mobile: Player -> Toggle -> Content -->
-            <div class="md:hidden flex flex-col gap-4">
+            <div class="md:hidden flex flex-col gap-4 mb-4">
                 <div class="bg-black rounded-lg overflow-hidden border border-zinc-800">
                     <video id="player-mobile" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto">
-                        <source src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
+                        <!-- Nguồn nạp động -->
                     </video>
                 </div>
-
-                <!-- Rectangle Toggle Group -->
                 <div class="radio-container">
                     <div id="btn-list" class="radio-btn active" onclick="switchTvTab('list')">Danh sách kênh</div>
                     <div id="btn-epg" class="radio-btn" onclick="switchTvTab('epg')">Lịch phát sóng</div>
                 </div>
+            </div>
 
-                <!-- Mobile Content List -->
-                <div id="tab-list">
-                    <div class="category-scroll gap-4 mb-4 pb-2">
-                        <span class="text-red-500 font-bold border-b-2 border-red-500 pb-1 px-1">Tất cả</span>
-                        <span class="text-zinc-500 px-1">ONNA Network</span>
-                        <span class="text-zinc-500 px-1">MBN</span>
-                        <span class="text-zinc-500 px-1">VTV</span>
-                        <span class="text-zinc-500 px-1">Thiết yếu</span>
-                        <span class="text-zinc-500 px-1">HTV</span>
-                        <span class="text-zinc-500 px-1">Quốc tế</span>
-                        <span class="text-zinc-500 px-1">Địa phương</span>
-                        <span class="text-zinc-500 px-1">Phát thanh</span>
-                        <span class="text-zinc-500 px-1">Giải trí</span>
-                        <span class="text-zinc-500 px-1">Âm nhạc</span>
-                        <span class="text-zinc-500 px-1">Thể thao</span>
-                        <span class="text-zinc-500 px-1">Thiếu nhi</span>
-                        <span class="text-zinc-500 px-1">Phim truyện</span>
-                        <span class="text-zinc-500 px-1">Khoa giáo</span>
+            <div id="tab-list">
+                <!-- Danh mục thể loại (Đã loại bỏ VTV) -->
+                <div class="relative flex items-center mb-6 border-b border-zinc-800 pb-2">
+                    <button onclick="scrollCategories(-1)" class="category-nav-btn absolute left-0 z-10 w-8 h-8 rounded-full border border-zinc-700">
+                        <i class="fas fa-chevron-left text-xs"></i>
+                    </button>
+                    <div id="category-container" class="category-scroll gap-4 px-0 md:px-10">
+                        <button class="cat-btn px-4 py-1 rounded active text-sm font-bold" onclick="filterChannels('all', this)">Tất cả</button>
+                        <button class="cat-btn px-4 py-1 rounded hover:bg-zinc-800 text-sm" onclick="filterChannels('entertainment', this)">Giải trí</button>
+                        <button class="cat-btn px-4 py-1 rounded hover:bg-zinc-800 text-sm" onclick="filterChannels('music', this)">Âm nhạc</button>
+                        <button class="cat-btn px-4 py-1 rounded hover:bg-zinc-800 text-sm" onclick="filterChannels('sports', this)">Thể thao</button>
+                        <button class="cat-btn px-4 py-1 rounded hover:bg-zinc-800 text-sm" onclick="filterChannels('children', this)">Thiếu nhi</button>
                     </div>
-                    
-                    <!-- Danh sách kênh Mobile (Dạng hình chữ nhật nằm ngang) -->
-                    <div class="flex flex-col gap-3">
-                        <div class="channel-card flex h-20 items-center">
-                            <div class="w-32 h-full bg-zinc-800 flex items-center justify-center font-bold text-xs shrink-0">VTV1</div>
-                            <div class="p-3">
-                                <h3 class="text-xs font-bold">VTV1 HD</h3>
-                                <p class="text-[10px] text-zinc-500 mt-1 italic">Đang phát: Thời sự 19h</p>
-                            </div>
-                        </div>
-                        <div class="channel-card flex h-20 items-center">
-                            <div class="w-32 h-full bg-zinc-800 flex items-center justify-center font-bold text-xs shrink-0">VTV3</div>
-                            <div class="p-3">
-                                <h3 class="text-xs font-bold">VTV3 HD</h3>
-                                <p class="text-[10px] text-zinc-500 mt-1 italic">Đang phát: Phim truyện</p>
-                            </div>
-                        </div>
-                        <div class="channel-card flex h-20 items-center">
-                            <div class="w-32 h-full bg-zinc-800 flex items-center justify-center font-bold text-xs shrink-0">HTV7</div>
-                            <div class="p-3">
-                                <h3 class="text-xs font-bold">HTV7 HD</h3>
-                                <p class="text-[10px] text-zinc-500 mt-1 italic">Đang phát: Ca nhạc</p>
-                            </div>
-                        </div>
-                    </div>
+                    <button onclick="scrollCategories(1)" class="category-nav-btn absolute right-0 z-10 w-8 h-8 rounded-full border border-zinc-700">
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </button>
                 </div>
 
-                <!-- Mobile Content EPG -->
-                <div id="tab-epg" class="hidden">
-                    <div class="epg-box">
-                        <div class="epg-list" id="epg-mobile">
-                            <div class="text-center py-2 text-zinc-600 text-[10px] uppercase">Dữ liệu từ .xml file</div>
-                            <div class="epg-item">
-                                <span class="epg-time">19:00</span>
-                                <div class="epg-info"><h4>Thời sự 19h</h4></div>
-                            </div>
-                            <div class="epg-item">
-                                <span class="epg-time">20:10</span>
-                                <div class="epg-info"><h4>Phim truyện</h4></div>
-                            </div>
-                        </div>
+                <div id="channels-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <!-- ONi1 HD -->
+                    <div class="channel-card cursor-pointer" data-category="entertainment" onclick="changeChannel('ONi1', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/rwJfnXwz/oni1.png" alt="ONi1 HD"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi1 HD</h3></div>
+                    </div>
+                    <!-- ONi2 -->
+                    <div class="channel-card cursor-pointer" data-category="music" onclick="changeChannel('ONi2', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni2/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/02LzTbrZ/oni2.png" alt="ONi2"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi2</h3></div>
+                    </div>
+                    <!-- ONi3 -->
+                    <div class="channel-card cursor-pointer" data-category="entertainment" onclick="changeChannel('ONi3', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni3/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/zXMhqx2F/oni3.png" alt="ONi3"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi3</h3></div>
+                    </div>
+                    <!-- ONi4 HD -->
+                    <div class="channel-card cursor-pointer" data-category="sports music" onclick="changeChannel('ONi4 HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni4/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/PrcDdSVz/oni4.png" alt="ONi4 HD"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi4 HD</h3></div>
+                    </div>
+                    <!-- MBN Enter HD -->
+                    <div class="channel-card cursor-pointer" data-category="entertainment" onclick="changeChannel('MBN Enter HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni5/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/hPwmK2Zr/oni5.png" alt="MBN Enter HD"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">MBN Enter HD</h3></div>
+                    </div>
+                    <!-- ONi6 -->
+                    <div class="channel-card cursor-pointer" data-category="children" onclick="changeChannel('ONi6', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni6/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/SN59mg1G/oni6.png" alt="ONi6"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi6</h3></div>
+                    </div>
+                    <!-- ONi7 HD -->
+                    <div class="channel-card cursor-pointer" data-category="sports" onclick="changeChannel('ONi7 HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/ZKgNJwss/oni7.png" alt="ONi7 HD"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi7 HD</h3></div>
                     </div>
                 </div>
             </div>
+
+            <div id="tab-epg" class="hidden">
+                <div class="epg-box"><div class="epg-list"><p class="text-center text-zinc-500 py-10">Đang tải lịch phát sóng...</p></div></div>
+            </div>
         </section>
 
-        <!-- Các mục khác giữ nguyên cấu trúc -->
+        <!-- [3] ONNA Phim -->
         <section id="onna-phim" class="page-content">
-            <h2 class="text-2xl font-bold mb-6">Kho ONNA Phim Đặc Sắc</h2>
+            <h2 class="text-xl font-bold mb-6">ONNA Phim</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                <div class="aspect-[2/3] bg-gray-800 rounded shadow-lg border border-gray-700 flex items-center justify-center text-gray-600">Phim mới</div>
-                <div class="aspect-[2/3] bg-gray-800 rounded shadow-lg border border-gray-700 flex items-center justify-center text-gray-600">Phim mới</div>
+                <div class="content-card"><div class="aspect-poster">Phim 1</div></div>
             </div>
         </section>
 
-        <section id="hoat-hinh" class="page-content">
-            <h2 class="text-2xl font-bold mb-6">Thế giới Hoạt hình</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div class="aspect-video bg-gray-800 rounded border border-gray-700 flex items-center justify-center text-gray-600 italic text-sm">Animation Content</div>
-            </div>
-        </section>
-
-        <section id="the-thao" class="page-content">
-            <h2 class="text-2xl font-bold mb-6">Tin tức & Trực tiếp Thể Thao</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                <div class="h-40 bg-gray-800 rounded border border-gray-700"></div>
-                <div class="h-40 bg-gray-800 rounded border border-gray-700"></div>
-            </div>
-        </section>
     </main>
 
-    <!-- [NAVBAR DƯỚI - DÀNH CHO ĐIỆN THOẠI] -->
+    <!-- [FOOTER ĐIỆN THOẠI] -->
     <footer class="flex md:hidden fixed bottom-0 w-full bg-black bg-opacity-95 border-t border-gray-800 z-50">
         <div class="flex w-full justify-around py-2">
             <button onclick="showPage('trang-chu')" class="mobile-nav-link flex flex-col items-center text-gray-400 nav-item-active" data-page="trang-chu">
@@ -519,14 +435,6 @@
                 <i class="fas fa-film text-lg"></i>
                 <span class="text-[10px] mt-1">ONNA Phim</span>
             </button>
-            <button onclick="showPage('hoat-hinh')" class="mobile-nav-link flex flex-col items-center text-gray-400" data-page="hoat-hinh">
-                <i class="fas fa-dragon text-lg"></i>
-                <span class="text-[10px] mt-1">Hoạt hình</span>
-            </button>
-            <button onclick="showPage('the-thao')" class="mobile-nav-link flex flex-col items-center text-gray-400" data-page="the-thao">
-                <i class="fas fa-trophy text-lg"></i>
-                <span class="text-[10px] mt-1">Thể thao</span>
-            </button>
         </div>
     </footer>
 
@@ -534,24 +442,27 @@
     <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
     <script>
         let desktopPlayer, mobilePlayer;
+        let currentStreamUrl = "";
 
+        // Chuyển trang và đồng bộ hiển thị
         function showPage(pageId) {
             const pages = document.querySelectorAll('.page-content');
             pages.forEach(page => page.classList.remove('active-page'));
 
             const activePage = document.getElementById(pageId);
-            if (activePage) {
-                activePage.classList.add('active-page');
-                window.scrollTo(0, 0);
-            }
+            if (activePage) activePage.classList.add('active-page');
 
-            // Dừng player nếu không phải trang Truyền hình
+            // Khi rời khỏi trang truyền hình, tạm dừng cả 2 để tiết kiệm tài nguyên
             if (pageId !== 'truyen-hinh') {
                 if (desktopPlayer) desktopPlayer.pause();
                 if (mobilePlayer) mobilePlayer.pause();
+            } else if (currentStreamUrl) {
+                // Quay lại trang truyền hình thì đồng bộ trạng thái phát
+                syncPlayback();
             }
 
             updateActiveState(pageId);
+            window.scrollTo(0, 0);
         }
 
         function updateActiveState(pageId) {
@@ -582,15 +493,82 @@
         }
 
         function scrollCategories(direction) {
-            const container = document.getElementById('category-container-desktop');
-            const scrollAmount = 250;
+            const container = document.getElementById('category-container');
+            const scrollAmount = 200;
             container.scrollLeft += direction * scrollAmount;
+        }
+
+        function filterChannels(category, element) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => btn.classList.remove('active', 'bg-red-600', 'font-bold'));
+            element.classList.add('active', 'bg-red-600', 'font-bold');
+
+            const cards = document.querySelectorAll('.channel-card');
+            cards.forEach(card => {
+                const cardCats = card.getAttribute('data-category').split(' ');
+                if (category === 'all' || cardCats.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // ĐỒNG BỘ KÊNH PHÁT
+        function changeChannel(name, url) {
+            currentStreamUrl = url;
+            localStorage.setItem('last_channel_url', url); 
+            
+            const type = url.endsWith('.m3u8') ? 'application/x-mpegURL' : 'video/mp4';
+            
+            if (desktopPlayer) {
+                desktopPlayer.src({ src: url, type: type });
+            }
+            if (mobilePlayer) {
+                mobilePlayer.src({ src: url, type: type });
+            }
+
+            syncPlayback();
+        }
+
+        // ĐỒNG BỘ TRẠNG THÁI PHÁT/DỪNG
+        function syncPlayback() {
+            const playPromises = [];
+            if (desktopPlayer) playPromises.push(desktopPlayer.play());
+            if (mobilePlayer) playPromises.push(mobilePlayer.play());
+
+            Promise.all(playPromises).catch(error => {
+                console.log("Trình duyệt chặn tự động phát");
+            });
         }
 
         window.onload = function() {
             if (typeof videojs !== 'undefined') {
-                desktopPlayer = videojs('player-desktop');
-                mobilePlayer = videojs('player-mobile');
+                desktopPlayer = videojs('player-desktop', {
+                    autoplay: false,
+                    controls: true,
+                    responsive: true,
+                    fluid: true,
+                    preload: 'auto'
+                });
+
+                mobilePlayer = videojs('player-mobile', {
+                    autoplay: false,
+                    controls: true,
+                    responsive: true,
+                    fluid: true,
+                    preload: 'auto'
+                });
+
+                // ĐỒNG BỘ ĐIỀU KHIỂN (Play/Pause)
+                desktopPlayer.on('play', () => { if(mobilePlayer && mobilePlayer.paused()) mobilePlayer.play(); });
+                desktopPlayer.on('pause', () => { if(mobilePlayer && !mobilePlayer.paused()) mobilePlayer.pause(); });
+                
+                mobilePlayer.on('play', () => { if(desktopPlayer && desktopPlayer.paused()) desktopPlayer.play(); });
+                mobilePlayer.on('pause', () => { if(desktopPlayer && !desktopPlayer.paused()) desktopPlayer.pause(); });
+
+                const savedUrl = localStorage.getItem('last_channel_url') || 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8';
+                changeChannel('Default', savedUrl);
             }
         }
     </script>
