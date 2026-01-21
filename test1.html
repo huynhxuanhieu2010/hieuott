@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONNA Online TV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Video.js CSS -->
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0c0f0c; /* Nền tối ánh xanh */
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Tùy chỉnh thanh cuộn cho Máy tính */
+        @media (min-width: 1024px) {
+            ::-webkit-scrollbar {
+                width: 6px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #111a11;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #059669; /* Xanh lá đậm */
+                border-radius: 10px;
+            }
+        }
+
+        /* Ẩn thanh cuộn trang chính nhưng vẫn cho phép cuộn các thành phần con */
+        @media (max-width: 1023px) {
+            body::-webkit-scrollbar {
+                display: none;
+            }
+            .epg-list::-webkit-scrollbar {
+                display: block; /* Hiện lại thanh cuộn cho danh sách EPG */
+            width: 4px;
+            }
+        }
+
+        .page-content {
+            display: none;
+            padding-top: 80px;
+            padding-bottom: 20px;
+            min-height: 100vh;
+        }
+
+        .active-page {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .page-content {
+                padding-top: 60px;
+                padding-bottom: 80px;
+            }
+        }
+
+        .nav-item-active {
+            color: #10b981 !important; /* Xanh lá sáng */
+            font-weight: bold;
+        }
+
+        .desktop-nav-link:hover {
+            color: #10b981;
+            transition: 0.3s;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.3)); /* Hiệu ứng xanh cho logo */
+        }
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 28px;
+            }
+        }
+
+        /* Banner Styling */
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 450px; 
+            background-image: linear-gradient(to bottom, rgba(12, 15, 12, 0) 30%, rgba(12, 15, 12, 1) 100%), url('https://i.postimg.cc/X7cchy0j/takopi-bg.jpg');
+            background-size: cover;
+            background-position: center top;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner {
+                height: 300px;
+                padding: 20px;
+                background-position: center;
+                border-radius: 0;
+                margin-left: -1rem; 
+                margin-right: -1rem;
+                width: calc(100% + 2rem);
+            }
+        }
+
+        /* Content Card Styling */
+        .content-card {
+            background-color: #161d16;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .content-card:hover {
+            transform: scale(1.05);
+            border-color: #10b981;
+        }
+        .aspect-poster {
+            aspect-ratio: 2 / 3;
+            background-color: #232d23;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            font-size: 10px;
+            color: #666;
+            text-align: center;
+            padding: 10px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .video-js {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Thay đổi màu sắc VideoJS sang xanh */
+        .vjs-play-progress, .vjs-volume-level { background-color: #059669 !important; }
+        .vjs-big-play-button { border-color: #10b981 !important; background-color: rgba(16, 185, 129, 0.4) !important; }
+
+        .category-scroll {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .category-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-nav-btn {
+            background: rgba(12, 15, 12, 0.8);
+            backdrop-filter: blur(4px);
+            transition: all 0.2s;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (min-width: 768px) {
+            .category-nav-btn {
+                display: flex;
+            }
+        }
+        .category-nav-btn:hover {
+            background: #059669;
+            color: white;
+        }
+
+        .radio-container {
+            background-color: #161d16;
+            padding: 4px;
+            border-radius: 4px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .radio-btn {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: transparent;
+            color: #999;
+        }
+
+        .radio-btn.active {
+            background-color: #232d23;
+            color: #fff;
+            border: 1px solid #334233;
+        }
+
+        .epg-box {
+            background-color: #0e130e;
+            border: 1px solid #1c261c;
+            border-radius: 8px;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .epg-list {
+            flex: 1;
+            overflow-y: auto; /* Cho phép cuộn dọc */
+            padding: 12px;
+            max-height: 400px; /* Đặt chiều cao tối đa để kích hoạt cuộn */
+            scrollbar-width: thin; /* Thanh cuộn nhỏ trên Firefox */
+            scrollbar-color: #059669 #111a11; /* Màu thanh cuộn cho Firefox */
+        }
+
+        /* Tùy chỉnh thanh cuộn cho Chrome/Safari trên Desktop */
+        .epg-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .epg-list::-webkit-scrollbar-track {
+            background: #111a11;
+        }
+        .epg-list::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 10px;
+        }
+
+        .epg-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #161d16;
+        }
+
+        .epg-time {
+            color: #10b981;
+            font-weight: bold;
+            font-size: 13px;
+            min-width: 45px;
+        }
+
+        .channel-card {
+            background-color: #161d16;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+            border: 1px solid #232d23;
+        }
+        .channel-card:hover {
+            transform: translateY(-4px);
+            border-color: #10b981;
+        }
+        .channel-thumb {
+            aspect-ratio: 16 / 9;
+            background-color: #1c261c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .channel-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #0c0f0c;
+        }
+        
+        .cat-btn.active {
+            background-color: #059669;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Episode buttons */
+        .ep-btn {
+            background: #161d16;
+            border: 1px solid #232d23;
+            transition: 0.2s;
+        }
+        .ep-btn:hover {
+            border-color: #10b981;
+        }
+        .ep-btn.active {
+            background: #059669;
+            border-color: #059669;
+            color: white;
+        }
+    </style>
+	
+	<style>
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000; /* Màu nền đen đặc trưng của OTT */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Đảm bảo luôn nằm trên cùng */
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+
+        .splash-content {
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .splash-logo {
+            width: 120px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Vòng xoay tải trang */
+        .loader {
+            border: 4px solid #333;
+            border-top: 4px solid #e50914; /* Màu đỏ Netflix style */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+
+        /* Lớp ẩn màn hình chờ */
+        .splash-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+	
+</head>
+<body>
+    <div id="splash-screen">
+        <div class="splash-content">
+            <img src="https://i.postimg.cc/5NdWYRN5/onnaonlinetv.png" alt="OTT Logo" class="splash-logo">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+	
+    <!-- [NAVBAR MÁY TÍNH & TABLET] -->
+    <header class="hidden md:flex fixed top-0 w-full bg-black bg-opacity-90 z-50 px-8 py-4 items-center justify-between border-b border-zinc-900">
+        <div class="flex items-center space-x-10">
+            <div class="cursor-pointer" onclick="showPage('trang-chu')">
+                <img src="https://i.postimg.cc/5NdWYRN5/onnaonlinetv.png" alt="ONNA TV Logo" class="logo-img">
+            </div>
+            <nav class="flex space-x-8 text-sm font-medium uppercase tracking-wide">
+                <a href="#" onclick="showPage('trang-chu')" class="desktop-nav-link nav-item-active" data-page="trang-chu">Trang chủ</a>
+                <a href="#" onclick="showPage('truyen-hinh')" class="desktop-nav-link" data-page="truyen-hinh">Truyền hình</a>
+                <a href="#" onclick="showPage('onna-phim')" class="desktop-nav-link" data-page="onna-phim">ONNA Phim</a>
+                <a href="#" onclick="showPage('hoat-hinh')" class="desktop-nav-link" data-page="hoat-hinh">Hoạt hình</a>
+                <a href="#" onclick="showPage('the-thao')" class="desktop-nav-link" data-page="the-thao">Thể thao</a>
+            </nav>
+        </div>
+        <div class="flex items-center space-x-6">
+            <i class="fas fa-search cursor-pointer hover:text-emerald-500"></i>
+            <i class="fas fa-bell cursor-pointer hover:text-emerald-500"></i>
+        </div>
+    </header>
+
+    <!-- [NAVBAR ĐIỆN THOẠI] -->
+    <header class="flex md:hidden fixed top-0 w-full bg-black z-50 px-4 py-3 items-center justify-between border-b border-zinc-900">
+        <div class="cursor-pointer" onclick="showPage('trang-chu')">
+            <img src="https://i.postimg.cc/5NdWYRN5/onnaonlinetv.png" alt="ONNA TV Logo" class="logo-img">
+        </div>
+        <div class="flex space-x-6 items-center">
+            <i class="fas fa-search text-lg"></i>
+            <i class="fas fa-bell text-lg"></i>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4">
+        
+        <!-- [1] Trang Chủ -->
+        <section id="trang-chu" class="page-content active-page">
+            <!-- BANNER TĨNH -->
+            <div class="hero-banner cursor-pointer" onclick="openTakopiDetail()">
+                <div class="max-w-xl z-20">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-xs text-zinc-300 font-medium">Hoạt hình tâm lý</span>
+                    </div>
+                    <h1 class="text-2xl md:text-5xl font-bold mb-3 leading-tight">Nguyên Tội của Takopi</h1>
+                    <p class="text-xs md:text-base text-gray-300 mb-6 line-clamp-2 md:line-clamp-none">Takopi, một sinh vật ngoài hành tinh nhỏ bé với sứ mệnh mang lại nụ cười cho nhân loại, vô tình dấn thân vào một chuỗi bi kịch đau đớn khi cố gắng giúp đỡ cô bé Shizuka đáng thương.</p>
+                    <div class="flex gap-4">
+                        <button onclick="event.stopPropagation(); playTakopi(1)" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-bold text-sm flex items-center gap-2 transition">
+                            <i class="fas fa-play"></i> Xem ngay
+                        </button>
+                        <button onclick="event.stopPropagation(); openTakopiDetail()" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-bold text-sm transition">
+                            Chi tiết
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-2">
+                    <span class="w-1 h-5 bg-emerald-600 rounded"></span> Phim hoạt hình mới nhất
+                </h2>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 md:gap-4">
+                    <div class="content-card" onclick="openTakopiDetail()">
+                        <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/BQ6Hh7Nr/takopi-ps.jpg');">
+                        </div>
+                        <div class="p-2 text-xs font-bold truncate">Nguyên Tội của Takopi</div>
+                    </div>
+                    <!-- Phim mới thêm: Oshi No Ko S3 -->
+                    <div class="content-card">
+                        <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/J0PkKZ9T/ofd99b96-660x946-duaconcuathantuong-s2b8da494121bc0210920acd4274aa193f.png');">
+                        </div>
+                        <div class="p-2 text-xs font-bold truncate">Đứa con của Thần Tượng - Mùa 3</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [TRANG CHI TIẾT TAKOPI] -->
+        <section id="takopi-detail" class="page-content">
+            <div class="flex flex-col gap-6">
+                <!-- Video Player Area -->
+                <div id="takopi-player-container" class="hidden">
+                    <div class="max-w-4xl mx-auto bg-black rounded-lg overflow-hidden border border-emerald-900/30">
+                        <video id="takopi-player" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto"></video>
+                    </div>
+                    <div class="max-w-4xl mx-auto mt-4">
+                        <h2 class="text-xl font-bold" id="takopi-playing-title">Nguyên Tội của Takopi - Tập 1</h2>
+                        <p class="text-emerald-500/70 text-sm mt-1">Hành trình mang nụ cười của sinh vật ngoài hành tinh</p>
+                    </div>
+                </div>
+
+                <!-- Info Header -->
+                <div id="takopi-info-header" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-4">
+                    <div class="hidden md:block">
+                        <img src="https://i.postimg.cc/BQ6Hh7Nr/takopi-ps.jpg" class="w-full rounded-xl shadow-2xl border border-zinc-800">
+                    </div>
+                    <div class="md:col-span-2 flex flex-col justify-center">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="text-zinc-400 text-sm">2024 • 1 Mùa • 18+</span>
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-bold mb-4">Nguyên Tội của Takopi</h1>
+                        <p class="text-zinc-300 text-sm md:text-base leading-relaxed mb-6">
+                            Takopi là một chú "Happian" nhỏ bé đến từ hành tinh Hạnh Phúc, xuống Trái Đất với mong muốn mang lại nụ cười cho mọi người. Khi gặp Shizuka, một cô bé lớp 4 có ánh mắt vô hồn và hoàn cảnh bi kịch, Takopi dùng những bảo bối kỳ lạ của mình để giúp cô bé. Tuy nhiên, sự ngây thơ của một sinh vật không hiểu khái niệm "tội lỗi" đã dẫn đến những hậu quả không thể lường trước.
+                        </p>
+                        <div class="flex gap-4">
+                            <button onclick="playTakopi(1)" class="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-3 rounded-full font-bold flex items-center gap-2 transition transform hover:scale-105">
+                                <i class="fas fa-play"></i> XEM NGAY
+                            </button>
+                            <button class="bg-zinc-800 hover:bg-emerald-900/40 text-white w-12 h-12 rounded-full flex items-center justify-center transition">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Episode List -->
+                <div class="mt-4">
+                    <h3 class="text-lg font-bold mb-4 border-l-4 border-emerald-600 pl-3">Danh sách tập</h3>
+                    <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-3">
+                        <button id="ep-btn-1" onclick="playTakopi(1)" class="ep-btn active py-2 rounded font-bold text-sm">1</button>
+                        <button id="ep-btn-2" onclick="playTakopi(2)" class="ep-btn py-2 rounded font-bold text-sm">2</button>
+                        <button class="ep-btn py-2 rounded font-bold text-sm opacity-50 cursor-not-allowed">3</button>
+                        <button class="ep-btn py-2 rounded font-bold text-sm opacity-50 cursor-not-allowed">4</button>
+                    </div>
+                </div>
+
+                <!-- Cast & Crew -->
+                <div class="mt-8 border-t border-zinc-800 pt-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                        <div>
+                            <p class="text-zinc-500 mb-1">Đạo diễn</p>
+                            <p class="font-medium">Onna Animation</p>
+                        </div>
+                        <div>
+                            <p class="text-zinc-500 mb-1">Thể loại</p>
+                            <p class="font-medium">Tâm lý, Chính kịch, Giật gân</p>
+                        </div>
+                        <div>
+                            <p class="text-zinc-500 mb-1">Quốc gia</p>
+                            <p class="font-medium">Nhật Bản</p>
+                        </div>
+                        <div>
+                            <p class="text-zinc-500 mb-1">Phát hành</p>
+                            <p class="font-medium">2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [2] Truyền Hình -->
+        <section id="truyen-hinh" class="page-content">
+            <div class="hidden md:grid grid-cols-3 gap-6 mb-8">
+                <div class="col-span-2">
+                    <div class="bg-black rounded-lg overflow-hidden border border-emerald-900/20">
+                        <video id="player-desktop" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto"></video>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <div class="epg-box">
+                        <div class="p-3 bg-emerald-950/20 border-b border-zinc-800 font-bold text-sm uppercase flex items-center gap-2">
+                            <i class="far fa-clock text-emerald-500"></i> Lịch phát sóng
+                        </div>
+                        <div class="epg-list" id="epg-desktop">
+                            <div class="epg-item"><span class="epg-time">19:00</span><div class="epg-info"><h4>ONi1 News</h4><p>Tin tức giải trí 24h</p></div></div>
+                            <div class="epg-item"><span class="epg-time">20:10</span><div class="epg-info"><h4>ONi4 Sports</h4><p>Bình luận thể thao HD</p></div></div>
+                            <div class="epg-item"><span class="epg-time">21:30</span><div class="epg-info"><h4>Phim Sitcom</h4><p>Cười cùng ONi1</p></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:hidden flex flex-col gap-4 mb-4">
+                <div class="bg-black rounded-lg overflow-hidden border border-zinc-800">
+                    <video id="player-mobile" class="video-js vjs-16-9 vjs-big-play-centered" controls preload="auto"></video>
+                </div>
+                <div class="radio-container">
+                    <div id="btn-list" class="radio-btn active" onclick="switchTvTab('list')">Danh sách kênh</div>
+                    <div id="btn-epg" class="radio-btn" onclick="switchTvTab('epg')">Lịch phát sóng</div>
+                </div>
+            </div>
+
+            <div id="tab-list">
+                <div class="relative flex items-center mb-6 border-b border-zinc-800 pb-2">
+                    <button onclick="scrollCategories(-1)" class="category-nav-btn absolute left-0 z-10 w-8 h-8 rounded-full border border-zinc-700">
+                        <i class="fas fa-chevron-left text-xs"></i>
+                    </button>
+                    <div id="category-container" class="category-scroll gap-4 px-0 md:px-10">
+                        <button class="cat-btn px-4 py-1 rounded active text-sm font-bold" onclick="filterChannels('all', this)">Tất cả</button>
+                        <button class="cat-btn px-4 py-1 rounded hover:bg-zinc-800 text-sm" onclick="filterChannels('entertainment', this)">Giải trí</button>
+                        <button class="cat-btn px-4 py-1 rounded hover:bg-zinc-800 text-sm" onclick="filterChannels('music', this)">Âm nhạc</button>
+                        <button class="cat-btn px-4 py-1 rounded hover:bg-zinc-800 text-sm" onclick="filterChannels('sports', this)">Thể thao</button>
+                        <!-- <button class="cat-btn px-4 py-1 rounded hover:bg-zinc-800 text-sm" onclick="filterChannels('children', this)">Thiếu nhi</button> -->
+						<button class="cat-btn px-4 py-1 rounded hover:bg-zinc-800 text-sm" onclick="filterChannels('international', this)">Quốc tế</button>
+                    </div>
+                    <button onclick="scrollCategories(1)" class="category-nav-btn absolute right-0 z-10 w-8 h-8 rounded-full border border-zinc-700">
+                        <i class="fas fa-chevron-right text-xs"></i>
+                    </button>
+                </div>
+
+                <div id="channels-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <div class="channel-card cursor-pointer" data-category="entertainment" onclick="changeChannel('ONi1', 'https://infinity.sgchill.io.vn/v1/getstream/twitch.tv/nnt1709_2/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/rwJfnXwz/oni1.png" alt="ONi1 HD"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi1 HD</h3></div>
+                    </div>
+                    <div class="channel-card cursor-pointer" data-category="music" onclick="changeChannel('ONi2', 'https://infinity.sgchill.io.vn/v1/getstream/twitch.tv/nnt1709/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/02LzTbrZ/oni2.png" alt="ONi2"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi2</h3></div>
+                    </div>
+                    <div class="channel-card cursor-pointer" data-category="entertainment" onclick="changeChannel('ONi3', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni3/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/zXMhqx2F/oni3.png" alt="ONi3"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi3</h3></div>
+                    </div>
+                    <div class="channel-card cursor-pointer" data-category="sports music" onclick="changeChannel('ONi4 HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni4/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/PrcDdSVz/oni4.png" alt="ONi4 HD"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi4 HD</h3></div>
+                    </div>
+                    <div class="channel-card cursor-pointer" data-category="entertainment" onclick="changeChannel('MBN Enter HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni5/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/hPwmK2Zr/oni5.png" alt="MBN Enter HD"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">MBN Enter HD</h3></div>
+                    </div>
+                    <!-- <div class="channel-card cursor-pointer" data-category="children" onclick="changeChannel('ONi6', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni6/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/SN59mg1G/oni6.png" alt="ONi6"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi6</h3></div>
+                    </div>
+                    <div class="channel-card cursor-pointer" data-category="sports" onclick="changeChannel('ONi7 HD', 'https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni7/index.m3u8')">
+                        <div class="channel-thumb"><img src="https://i.postimg.cc/ZKgNJwss/oni7.png" alt="ONi7 HD"></div>
+                        <div class="p-2"><h3 class="text-xs font-bold truncate">ONi7 HD</h3></div>
+                    </div> -->
+					<div class="channel-card cursor-pointer" data-category="international" onclick="changeChannel('TVB VietNam HD', 'https://amg01868-amg01868c3-tvbanywhere-us-4491.playouts.now.amagi.tv/playlist1080p.m3u8')">
+					    <div class="channel-thumb"><img src="https://i.postimg.cc/xC6rkmS2/TVB-Vietnam-Banner-1920x1080-1536x864.jpg" alt="TVB VietNam HD"></div>
+						<div class="p-2"><h3 class="text-xs font-bold truncate">TVB VietNam HD</h3></div>
+					</div>
+                </div>
+            </div>
+
+            <div id="tab-epg" class="hidden">
+                <div class="epg-box h-[400px]"><div class="epg-list"><p class="text-center text-zinc-500 py-10">Đang tải lịch phát sóng...</p></div></div>
+            </div>
+        </section>
+
+        <!-- [3] ONNA Phim -->
+        <section id="onna-phim" class="page-content">
+            <!-- Mục Phim Lẻ -->
+            <div class="mb-10">
+                <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
+                    <span class="w-1 h-5 bg-emerald-600 rounded"></span> Phim lẻ
+                </h2>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                    <div class="content-card"><div class="aspect-poster">Hành Tinh Cát</div><div class="p-2 text-xs truncate">Hành Tinh Cát</div></div>
+                    <div class="content-card"><div class="aspect-poster">Kẻ Hủy Diệt</div><div class="p-2 text-xs truncate">Kẻ Hủy Diệt</div></div>
+                    <div class="content-card"><div class="aspect-poster">Avatar 2</div><div class="p-2 text-xs truncate">Avatar: Dòng Chảy Nước</div></div>
+                    <div class="content-card"><div class="aspect-poster">Lật Mặt 7</div><div class="p-2 text-xs truncate">Lật Mặt 7</div></div>
+                </div>
+            </div>
+
+            <!-- Mục Phim Bộ mới thêm -->
+            <div class="mb-10">
+                <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
+                    <span class="w-1 h-5 bg-emerald-600 rounded"></span> Phim bộ
+                </h2>
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                    <div class="content-card"><div class="aspect-poster">Vincenzo</div><div class="p-2 text-xs truncate">Vincenzo (20 Tập)</div></div>
+                    <div class="content-card"><div class="aspect-poster">Trò Chơi Con Mực</div><div class="p-2 text-xs truncate">Trò Chơi Con Mực</div></div>
+                    <div class="content-card"><div class="aspect-poster">Cậu Út Nhà Tài Phiệt</div><div class="p-2 text-xs truncate">Cậu Út Nhà Tài Phiệt</div></div>
+                    <div class="content-card"><div class="aspect-poster">Hạ Cánh Nơi Anh</div><div class="p-2 text-xs truncate">Hạ Cánh Nơi Anh</div></div>
+                    <div class="content-card"><div class="aspect-poster">Chuyến Tàu Sinh Tử</div><div class="p-2 text-xs truncate">Chuyến Tàu Sinh Tử</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [4] Hoạt Hình -->
+        <section id="hoat-hinh" class="page-content">
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                <div class="content-card" onclick="openTakopiDetail()">
+                    <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/BQ6Hh7Nr/takopi-ps.jpg');"></div>
+                    <div class="p-2 text-xs truncate font-bold">Nguyên Tội của Takopi</div>
+                </div>
+                <!-- Oshi No Ko S3 -->
+                <div class="content-card">
+                    <div class="aspect-poster" style="background-image: url('https://i.postimg.cc/J0PkKZ9T/ofd99b96-660x946-duaconcuathantuong-s2b8da494121bc0210920acd4274aa193f.png');"></div>
+                    <div class="p-2 text-xs truncate font-bold">Đứa con của Thần Tượng - Mùa 3</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- [5] Thể Thao -->
+        <section id="the-thao" class="page-content">
+            <h2 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="w-1 h-5 bg-emerald-700 rounded"></span> Sự kiện thể thao trực tiếp
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
+                    <div>
+                        <p class="text-[10px] text-emerald-500 font-bold mb-1">LIVE</p>
+                        <h4 class="text-sm font-bold">Việt Nam vs Thái Lan</h4>
+                        <p class="text-[10px] text-zinc-500">Vòng loại World Cup 2026</p>
+                    </div>
+                    <button class="bg-emerald-600 text-white text-[10px] px-3 py-1 rounded">Xem ngay</button>
+                </div>
+                <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 flex items-center justify-between opacity-70">
+                    <div>
+                        <p class="text-[10px] text-zinc-400 font-bold mb-1">21:00 - HÔM NAY</p>
+                        <h4 class="text-sm font-bold">Man Utd vs Liverpool</h4>
+                        <p class="text-[10px] text-zinc-500">Ngoại Hạng Anh</p>
+                    </div>
+                    <i class="far fa-bell text-zinc-500"></i>
+                </div>
+            </div>
+            
+            <h2 class="text-lg md:text-xl font-bold mb-4">Highlight nổi bật</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="content-card">
+                    <div class="aspect-video bg-zinc-800 flex items-center justify-center relative">
+                        <i class="fas fa-play text-xl opacity-50"></i>
+                    </div>
+                    <div class="p-2 text-xs truncate">Tổng hợp vòng 10 Ngoại Hạng Anh</div>
+                </div>
+                <div class="content-card">
+                    <div class="aspect-video bg-zinc-800 flex items-center justify-center relative">
+                        <i class="fas fa-play text-xl opacity-50"></i>
+                    </div>
+                    <div class="p-2 text-xs truncate">Bàn thắng đẹp nhất tuần qua</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- [FOOTER ĐIỆN THOẠI] -->
+    <footer class="flex md:hidden fixed bottom-0 w-full bg-black bg-opacity-95 border-t border-zinc-900 z-50">
+        <div class="flex w-full justify-between items-center px-1 py-2">
+            <button onclick="showPage('trang-chu')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500 nav-item-active" data-page="trang-chu">
+                <i class="fas fa-home text-base"></i>
+                <span class="text-[9px] mt-1 whitespace-nowrap">Trang chủ</span>
+            </button>
+            <button onclick="showPage('truyen-hinh')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500" data-page="truyen-hinh">
+                <i class="fas fa-tv text-base"></i>
+                <span class="text-[9px] mt-1 whitespace-nowrap">Truyền hình</span>
+            </button>
+            <button onclick="showPage('onna-phim')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500" data-page="onna-phim">
+                <i class="fas fa-film text-base"></i>
+                <span class="text-[9px] mt-1 whitespace-nowrap">ONNA Phim</span>
+            </button>
+            <button onclick="showPage('hoat-hinh')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500" data-page="hoat-hinh">
+                <i class="fas fa-child text-base"></i>
+                <span class="text-[9px] mt-1 whitespace-nowrap">Hoạt hình</span>
+            </button>
+            <button onclick="showPage('the-thao')" class="mobile-nav-link flex-1 flex flex-col items-center text-zinc-500" data-page="the-thao">
+                <i class="fas fa-running text-base"></i>
+                <span class="text-[9px] mt-1 whitespace-nowrap">Thể thao</span>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Video.js JS -->
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script>
+        let desktopPlayer, mobilePlayer, takopiPlayer;
+        let currentStreamUrl = "";
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => page.classList.remove('active-page'));
+
+            const activePage = document.getElementById(pageId);
+            if (activePage) activePage.classList.add('active-page');
+
+            // Stop all players when leaving their respective pages
+            if (pageId !== 'truyen-hinh') {
+                if (desktopPlayer) desktopPlayer.pause();
+                if (mobilePlayer) mobilePlayer.pause();
+            } else {
+                handleMuteSync();
+                if (currentStreamUrl) syncPlayback();
+            }
+
+            if (pageId !== 'takopi-detail') {
+                if (takopiPlayer) takopiPlayer.pause();
+            }
+
+            updateActiveState(pageId);
+            window.scrollTo(0, 0);
+        }
+
+        // --- TAKOPI FUNCTIONS ---
+        function openTakopiDetail() {
+            showPage('takopi-detail');
+            document.getElementById('takopi-player-container').classList.add('hidden');
+            document.getElementById('takopi-info-header').classList.remove('hidden');
+        }
+
+        function playTakopi(episodeNum) {
+            showPage('takopi-detail');
+            const playerContainer = document.getElementById('takopi-player-container');
+            const infoHeader = document.getElementById('takopi-info-header');
+            const titleElem = document.getElementById('takopi-playing-title');
+			
+			document.querySelectorAll('.ep-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`ep-btn-${episodeNum}`);
+            if(activeBtn) activeBtn.classList.add('active');
+            
+            playerContainer.classList.remove('hidden');
+            infoHeader.classList.add('hidden');
+            titleElem.innerText = `Nguyên Tội của Takopi - Tập ${episodeNum}`;
+
+            let takopiUrl = "";
+            if (episodeNum === 1) {
+                takopiUrl = "https://rumble.com/hls-vod/71meok/playlist.m3u8";
+            } else if (episodeNum === 2) {
+                takopiUrl = "https://rumble.com/hls-vod/725vdc/playlist.m3u8"; // Link tập 2 mới thêm
+            } else {
+                takopiUrl = "https://onnanetwork.xyz/live.qphim.xyz:8880/hls_nonkey/oni1/index.m3u8";
+            }
+
+    takopiPlayer.src({ src: takopiUrl, type: 'application/x-mpegURL' });
+    takopiPlayer.play();
+        }
+
+        function handleMuteSync() {
+            const isDesktop = window.innerWidth >= 768;
+            if (isDesktop) {
+                if (desktopPlayer) desktopPlayer.muted(false);
+                if (mobilePlayer) mobilePlayer.muted(true);
+            } else {
+                if (desktopPlayer) desktopPlayer.muted(true);
+                if (mobilePlayer) mobilePlayer.muted(false);
+            }
+        }
+
+        function updateActiveState(pageId) {
+            const links = [...document.querySelectorAll('.mobile-nav-link'), ...document.querySelectorAll('.desktop-nav-link')];
+            links.forEach(link => {
+                if (link.getAttribute('data-page') === pageId) link.classList.add('nav-item-active');
+                else link.classList.remove('nav-item-active');
+            });
+        }
+
+        function switchTvTab(tab) {
+            const tabList = document.getElementById('tab-list');
+            const tabEpg = document.getElementById('tab-epg');
+            const btnList = document.getElementById('btn-list');
+            const btnEpg = document.getElementById('btn-epg');
+
+            if (tab === 'list') {
+                tabList.classList.remove('hidden');
+                tabEpg.classList.add('hidden');
+                btnList.classList.add('active');
+                btnEpg.classList.remove('active');
+            } else {
+                tabList.classList.add('hidden');
+                tabEpg.classList.remove('hidden');
+                btnList.classList.remove('active');
+                btnEpg.classList.add('active');
+            }
+        }
+
+        function scrollCategories(direction) {
+            const container = document.getElementById('category-container');
+            const scrollAmount = 200;
+            container.scrollLeft += direction * scrollAmount;
+        }
+
+        function filterChannels(category, element) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => btn.classList.remove('active', 'bg-emerald-600', 'font-bold'));
+            element.classList.add('active', 'bg-emerald-600', 'font-bold');
+
+            const cards = document.querySelectorAll('.channel-card');
+            cards.forEach(card => {
+                const cardCats = card.getAttribute('data-category').split(' ');
+                if (category === 'all' || cardCats.includes(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function changeChannel(name, url) {
+            if (!url) return;
+            if (currentStreamUrl === url) return;
+
+            currentStreamUrl = url;
+            localStorage.setItem('last_channel_url', url); 
+            
+            const type = url.endsWith('.m3u8') ? 'application/x-mpegURL' : 'video/mp4';
+            
+            if (desktopPlayer) {
+                desktopPlayer.pause();
+                desktopPlayer.src({ src: url, type: type });
+            }
+            if (mobilePlayer) {
+                mobilePlayer.pause();
+                mobilePlayer.src({ src: url, type: type });
+            }
+
+            handleMuteSync();
+            syncPlayback();
+        }
+
+        function syncPlayback() {
+            const isDesktop = window.innerWidth >= 768;
+            if (isDesktop && desktopPlayer) {
+                desktopPlayer.play().catch(() => {});
+            } else if (mobilePlayer) {
+                mobilePlayer.play().catch(() => {});
+            }
+        }
+		
+		// Lịch phát sóng từ link .xml
+		async function updateEPGFromXML(xmlUrl, channelId) {
+            try {
+                const response = await fetch(xmlUrl);
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+                // Lấy tất cả các chương trình của kênh cụ thể
+                const programmes = Array.from(xmlDoc.querySelectorAll(`programme[channel="${channelId}"]`));
+        
+                // Lọc các chương trình của ngày hiện tại
+                const now = new Date();
+                const epgContainer = document.getElementById('epg-desktop');
+                const mobileEpgContainer = document.querySelector('#tab-epg .epg-list');
+
+                let htmlContent = "";
+
+                programmes.forEach(prog => {
+                    const startStr = prog.getAttribute('start'); // Định dạng YYYYMMDDHHMMSS
+                    const title = prog.querySelector('title').textContent;
+                    const desc = prog.querySelector('desc') ? prog.querySelector('desc').textContent : "Không có mô tả";
+
+                // Chuyển đổi thời gian XMLTV sang định dạng HH:mm
+                    const hour = startStr.substring(8, 10);
+                    const minute = startStr.substring(10, 12);
+                    const timeDisplay = `${hour}:${minute}`;
+
+                htmlContent += `
+                    <div class="epg-item">
+                        <span class="epg-time">${timeDisplay}</span>
+                        <div class="epg-info">
+                            <h4>${title}</h4>
+                            <p>${desc}</p>
+                        </div>
+                    </div>`;
+                });
+
+                if (htmlContent === "") htmlContent = "<p class='text-center p-4'>Không có lịch phát sóng hôm nay.</p>";
+
+                // Cập nhật vào cả giao diện Desktop và Mobile
+                if (epgContainer) epgContainer.innerHTML = htmlContent;
+                if (mobileEpgContainer) mobileEpgContainer.innerHTML = htmlContent;
+
+            } catch (error) {
+                console.error("Lỗi tải EPG:", error);
+                const errorMsg = "<p class='text-center p-4 text-red-500'>Không thể tải lịch phát sóng.</p>";
+                document.getElementById('epg-desktop').innerHTML = errorMsg;
+            }
+        }
+
+        function changeChannel(name, url) {
+            if (!url) return;
+            if (currentStreamUrl === url) return;
+
+            currentStreamUrl = url;
+            localStorage.setItem('last_channel_url', url); 
+    
+            // Giả sử link XML của bạn có cấu trúc chung hoặc bạn có thể gán điều kiện
+            if (name === 'TVB VietNam HD') {
+                // Thay link .xml thật của bạn vào đây và ID kênh tương ứng trong file XML
+                updateEPGFromXML('https://tvbvn.quanlehong539.workers.dev/xml', 'tvbvn');
+            }
+
+            const type = url.endsWith('.m3u8') ? 'application/x-mpegURL' : 'video/mp4';
+    
+            if (desktopPlayer) {
+                desktopPlayer.src({ src: url, type: type });
+            }
+            if (mobilePlayer) {
+                mobilePlayer.src({ src: url, type: type });
+            }
+
+            handleMuteSync();
+            syncPlayback();
+        }
+		
+
+        window.onload = function() {
+            if (typeof videojs !== 'undefined') {
+                desktopPlayer = videojs('player-desktop', { autoplay: false, controls: true, responsive: true, fluid: true, preload: 'auto' });
+                mobilePlayer = videojs('player-mobile', { autoplay: false, controls: true, responsive: true, fluid: true, preload: 'auto' });
+                takopiPlayer = videojs('takopi-player', { autoplay: false, controls: true, responsive: true, fluid: true, preload: 'auto' });
+
+                desktopPlayer.on('play', () => { if(mobilePlayer && mobilePlayer.paused()) mobilePlayer.play(); handleMuteSync(); });
+                desktopPlayer.on('pause', () => { if(mobilePlayer && !mobilePlayer.paused()) mobilePlayer.pause(); });
+                
+                mobilePlayer.on('play', () => { if(desktopPlayer && desktopPlayer.paused()) desktopPlayer.play(); handleMuteSync(); });
+                mobilePlayer.on('pause', () => { if(desktopPlayer && !desktopPlayer.paused()) desktopPlayer.pause(); });
+
+                window.addEventListener('resize', handleMuteSync);
+
+                const savedUrl = localStorage.getItem('last_channel_url') || 'https://infinity.sgchill.io.vn/v1/getstream/twitch.tv/nnt1709_2/index.m3u8';
+                changeChannel('Init', savedUrl);
+            }
+        }
+    </script>
+	
+	<script>
+        window.addEventListener('load', function() {
+            const splash = document.getElementById('splash-screen');
+        
+            // Đợi 2-3 giây để người dùng thấy thương hiệu (tùy chọn)
+            setTimeout(() => {
+                splash.classList.add('splash-hidden');
+            }, 2500);
+        });
+    </script>
+</body>
+
+</html>
+
+
