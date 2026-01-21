@@ -19,21 +19,6 @@
             padding: 0;
             overflow-x: hidden;
         }
-		
-		/* Màu sắc cho chương trình đang phát sóng */
-        .epg-item.is-live {
-            background-color: rgba(16, 185, 129, 0.15);
-            border-left: 3px solid #10b981;
-            border-bottom: 1px solid #10b981;
-        }
-
-        .epg-item.is-live .epg-time {
-            color: #ffffff;
-            background: #059669;
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-size: 11px;
-        }
 
         /* Tùy chỉnh thanh cuộn cho Máy tính */
         @media (min-width: 1024px) {
@@ -979,75 +964,6 @@
             }
         }
     </script>
-	
-	<script>
-	    async function loadEPG(xmlUrl, channelId) {
-            const containers = [document.getElementById('epg-desktop'), document.querySelector('#tab-epg .epg-list')];
-            containers.forEach(c => { if(c) c.innerHTML = '<p class="text-center py-10 text-zinc-500">Đang tải lịch...</p>'; });
-
-            try {
-                const response = await fetch(xmlUrl);
-                const xmlText = await response.text();
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(xmlText, "text/xml");
-        
-                const programmes = Array.from(xmlDoc.querySelectorAll(`programme[channel="${channelId}"]`));
-                let html = "";
-                const now = new Date();
-
-                // Hàm phụ để chuyển đổi định dạng YYYYMMDDHHMMSS của XMLTV sang đối tượng Date
-                const parseXMLDate = (str) => {
-                    return new Date(
-                        str.substring(0, 4), str.substring(4, 6) - 1, str.substring(6, 8),
-                        str.substring(8, 10), str.substring(10, 12), str.substring(12, 14)
-                    );
-                };
-
-                programmes.forEach((prog, index) => {
-                    const start = prog.getAttribute('start');
-                    const stop = prog.getAttribute('stop');
-                    const startTime = parseXMLDate(start);
-                    const stopTime = parseXMLDate(stop);
-            
-                    const title = prog.querySelector('title').textContent;
-                    const timeStr = `${start.substring(8, 10)}:${start.substring(10, 12)}`;
-            
-                    // Kiểm tra xem chương trình có đang phát hay không
-                    const isLive = now >= startTime && now < stopTime;
-                    const liveClass = isLive ? 'is-live' : '';
-                    const liveBadge = isLive ? '<span class="ml-2 text-[8px] bg-red-600 text-white px-1 rounded animate-pulse">LIVE</span>' : '';
-
-                    html += `
-                        <div class="epg-item ${liveClass}" ${isLive ? 'id="current-live-item"' : ''}>
-                            <span class="epg-time">${timeStr}</span>
-                            <div class="epg-info">
-                                <h4 class="flex items-center">${title} ${liveBadge}</h4>
-                            </div>
-                        </div>`;
-                });
-
-                const finalHtml = html || '<p class="text-center py-10 text-zinc-500">Không có lịch phát sóng.</p>';
-        
-                containers.forEach(c => { 
-                    if(c) {
-                        c.innerHTML = finalHtml;
-                        // Thực hiện cuộn sau khi HTML đã được render
-                        setTimeout(() => {
-                            const liveItem = c.querySelector('.is-live');
-                            if (liveItem) {
-                                liveItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            }
-                        }, 300);
-                    }
-                });
-
-            } catch (e) {
-                console.error("EPG Error:", e);
-                containers.forEach(c => { if(c) c.innerHTML = '<p class="text-center py-10 text-red-500">Lỗi tải dữ liệu EPG.</p>'; });
-            }
-        }
-	</script>
-	
 	<script>
         window.addEventListener('load', function() {
             const splash = document.getElementById('splash-screen');
