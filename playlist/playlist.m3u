@@ -1,12 +1,12 @@
 #EXTM3U
 
 #EXTINF:0 tvg-id="oni1hd" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="1", ONi1 HD
-https://160.22.122.248:9001/oni/index.m3u8
+https://onnanetwork.xyz/160.22.122.248:9001/oni/index.m3u8
 #EXTINF:0 tvg-id="oni2" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="2", ONi2
 https://kubolive.ddns.net:8081/hls_nonkey/oni2/index.m3u8
-#EXTINF:0 tvg-id="oni3" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="5", ONi3
+#EXTINF:0 tvg-id="oni3" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="3", ONi3
 https://kubolive.ddns.net:8081/hls_nonkey/oni3/index.m3u8
 #EXTINF:0 tvg-id="oni4hd" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="4", ONi4 HD
 https://kubolive.ddns.net:8081/hls_nonkey/oni4/index.m3u8
-#EXTINF:0 tvg-id="oni5hd" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="4", ONi5 HD
+#EXTINF:0 tvg-id="oni5hd" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="5", ONi5 HD
 https://kubolive.ddns.net:8081/hls_nonkey/oni5/index.m3u8
