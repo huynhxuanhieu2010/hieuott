@@ -1,51 +1,46 @@
 #EXTM3U
 
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="1", VTV1 HD
-https://live.fptplay53.net/fnxch2/vtv1hd_abr.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="2", VTV5 HD
-https://live.fptplay53.net/epzch2/vtv5hd_abr.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="3", Vietnam Today HD
-https://live.fptplay53.net/fnxhd1/vntoday_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="6", VTV2 HD
-https://live.fptplay53.net/fnxch2/vtv2hd_abr.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="7", VTV3 HD
-https://live.fptplay53.net/fnxch2/vtv3hd_abr.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="8", VTV4 HD
-https://live.fptplay53.net/fnxch2/vtv4hd_abr.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="9", VTV5 Tây Nam Bộ HD
-https://live.fptplay53.net/fnxhd1/vtv5tnb_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="10", VTV5 Tây Nguyên HD
-https://live.fptplay53.net/fnxhd1/vtv5taynguyen_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="11", VTV Cần Thơ HD
-https://live.fptplay53.net/fnxch2/vtvcantho_abr.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="12", VTV7 HD
-https://live.fptplay53.net/fnxhd1/vtv7hd_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="13", VTV8 HD
-https://live.fptplay53.net/epzhd1/vtv8hd_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="14", VTV9 HD
-https://live.fptplay53.net/epzch2/vtv9hd_abr.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="15", VTV1 SD
-http://ott1.nethubtv.vn/live/vtv1/playlist.m3u8
-
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="" ch-number="4", ANTV HD
-https://live.fptplay53.net/fnxhd2/anninhtv_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="" ch-number="16", ANTV SD
-http://ott1.nethubtv.vn/live/antv/playlist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="" ch-number="5", QPVN HD
-https://live.fptplay53.net/fnxhd2/quocphongvnhd_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="" ch-number="17", QPVN SD
-http://ott1.nethubtv.vn/live/qpvn/playlist.m3u8
-
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Khác" group-logo="" ch-number="20", Thử nghiệm
+#EXTINF:0 ch-number="1" tvg-id="" tvg-logo="" group-title="ONNA Network" group-logo="", ONi1 HD
+https://onnanetwork.xyz/160.22.122.248:9001/oni/index.m3u8
+#EXTINF:0 ch-number="2" tvg-id="" tvg-logo="" group-title="ONNA Network" group-logo="", ONi2
+https://kubolive.ddns.net:8081/hls_nonkey/oni2/index.m3u8
+#EXTINF:0 ch-number="3" tvg-id="" tvg-logo="" group-title="ONNA Network" group-logo="", ONi3
+https://kubolive.ddns.net:8081/hls_nonkey/oni3/index.m3u8
+#EXTINF:0 ch-number="4" tvg-id="" tvg-logo="" group-title="ONNA Network" group-logo="", ONi4 HD
+https://kubolive.ddns.net:8081/hls_nonkey/oni4/index.m3u8
+#EXTINF:0 ch-number="5" tvg-id="" tvg-logo="" group-title="ONNA Network" group-logo="", ONi5 HD
+https://kubolive.ddns.net:8081/hls_nonkey/oni5/index.m3u8
+#EXTINF:0 ch-number="20" tvg-id="" tvg-logo="" group-title="" group-logo="", Thử nghiệm
 http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8
 
-#EXTINF:0 tvg-id="oni1hd" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="21", ONi1 HD
-https://onnanetwork.xyz/160.22.122.248:9001/oni/index.m3u8
-#EXTINF:0 tvg-id="oni2" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="22", ONi2
-https://kubolive.ddns.net:8081/hls_nonkey/oni2/index.m3u8
-#EXTINF:0 tvg-id="oni3" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="23", ONi3
-https://kubolive.ddns.net:8081/hls_nonkey/oni3/index.m3u8
-#EXTINF:0 tvg-id="oni4hd" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="24", ONi4 HD
-https://kubolive.ddns.net:8081/hls_nonkey/oni4/index.m3u8
-#EXTINF:0 tvg-id="oni5hd" tvg-logo="" group-title="ONNA Network" group-logo="" ch-number="25", ONi5 HD
-https://kubolive.ddns.net:8081/hls_nonkey/oni5/index.m3u8
+#EXTINF:0 ch-number="21" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV1 HD
+https://live.fptplay53.net/fnxch2/vtv1hd_abr.smil/chunklist.m3u8
+#EXTINF:0 ch-number="22" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV5 HD
+https://live.fptplay53.net/epzch2/vtv5hd_abr.smil/chunklist.m3u8
+#EXTINF:0 ch-number="23" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", Vietnam Today HD
+https://live.fptplay53.net/fnxhd1/vntoday_vhls.smil/chunklist.m3u8
+#EXTINF:0 ch-number="24" tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="", ANTV HD
+https://live.fptplay53.net/fnxhd2/anninhtv_vhls.smil/chunklist.m3u8
+#EXTINF:0 ch-number="25" tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="", QPVN HD
+https://live.fptplay53.net/fnxhd2/quocphongvnhd_vhls.smil/chunklist.m3u8
+
+#EXTINF:0 ch-number="26" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV2 HD
+https://live.fptplay53.net/fnxch2/vtv2hd_abr.smil/chunklist.m3u8
+#EXTINF:0 ch-number="27" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV3 HD
+https://live.fptplay53.net/fnxch2/vtv3hd_abr.smil/chunklist.m3u8
+#EXTINF:0 ch-number="28" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV4 HD
+https://live.fptplay53.net/fnxch2/vtv4hd_abr.smil/chunklist.m3u8
+#EXTINF:0 ch-number="29" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV5 Tây Nam Bộ HD
+https://live.fptplay53.net/fnxhd1/vtv5tnb_vhls.smil/chunklist.m3u8
+#EXTINF:0 ch-number="30" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV5 Tây Nguyên HD
+https://live.fptplay53.net/fnxhd1/vtv5taynguyen_vhls.smil/chunklist.m3u8
+#EXTINF:0 ch-number="31" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV Cần Thơ HD
+https://live.fptplay53.net/fnxch2/vtvcantho_abr.smil/chunklist.m3u8
+#EXTINF:0 ch-number="32" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV7 HD
+https://live.fptplay53.net/fnxhd1/vtv7hd_vhls.smil/chunklist.m3u8
+#EXTINF:0 ch-number="33" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV8 HD
+https://live.fptplay53.net/epzhd1/vtv8hd_vhls.smil/chunklist.m3u8
+#EXTINF:0 ch-number="34" tvg-id="" tvg-logo="" group-title="VTV" group-logo="", VTV9 HD
+https://live.fptplay53.net/epzch2/vtv9hd_abr.smil/chunklist.m3u8
+
+
