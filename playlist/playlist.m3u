@@ -6,10 +6,6 @@ https://live.fptplay53.net/fnxch2/vtv1hd_abr.smil/chunklist.m3u8
 https://live.fptplay53.net/epzch2/vtv5hd_abr.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="3", Vietnam Today HD
 https://live.fptplay53.net/fnxhd1/vntoday_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="" ch-number="4", ANTV HD
-https://live.fptplay53.net/fnxhd2/anninhtv_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="" ch-number="5", QPVN HD
-https://live.fptplay53.net/fnxhd2/quocphongvnhd_vhls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="6", VTV2 HD
 https://live.fptplay53.net/fnxch2/vtv2hd_abr.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="7", VTV3 HD
@@ -29,12 +25,17 @@ https://live.fptplay53.net/epzhd1/vtv8hd_vhls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="14", VTV9 HD
 https://live.fptplay53.net/epzch2/vtv9hd_abr.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="VTV" group-logo="" ch-number="15", VTV1 SD
-https://ott1.nethubtv.vn/live/vtv1/playlist.m3u8
+http://ott1.nethubtv.vn/live/vtv1/playlist.m3u8
+
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="" ch-number="4", ANTV HD
+https://live.fptplay53.net/fnxhd2/anninhtv_vhls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="" ch-number="16", ANTV SD
-https://ott1.nethubtv.vn/live/antv/playlist.m3u8
+http://ott1.nethubtv.vn/live/antv/playlist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="" ch-number="5", QPVN HD
+https://live.fptplay53.net/fnxhd2/quocphongvnhd_vhls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="" ch-number="17", QPVN SD
-https://ott1.nethubtv.vn/live/qpvn/playlist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Khác" group-logo="" ch-number="18", XSMB
+http://ott1.nethubtv.vn/live/qpvn/playlist.m3u8
+
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Khác" group-logo="" ch-number="20", Thử nghiệm
 http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8
 
