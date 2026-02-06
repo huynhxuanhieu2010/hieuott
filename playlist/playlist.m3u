@@ -10,3 +10,5 @@ https://onnanetwork.xyz/https://kubolive.ddns.net:8081/hls_nonkey/oni3/index.m3u
 https://onnanetwork.xyz/https://kubolive.ddns.net:8081/hls_nonkey/oni4/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi5.png" group-title="ONNA Network" group-logo="", ONi5 HD
 https://onnanetwork.xyz/https://kubolive.ddns.net:8081/hls_nonkey/oni5/index.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="ONNA Network" group-logo="", ONNA Radio
+https://stream.zeno.fm/crzkultejmqvv
