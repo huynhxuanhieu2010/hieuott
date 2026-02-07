@@ -38,5 +38,18 @@ https://live.fptplay53.net/epzch2/vtv9hd_abr.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/VTV/Vietnam-Today.png" group-title="VTV" group-logo="", Vietnam Today HD
 https://live.fptplay53.net/fnxhd1/vntoday_vhls.smil/chunklist.m3u8
 
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="HTV" group-logo="", HTV1
+https://live.fptplay53.net/epzhd1/htv1_hls.smil/chunklist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="HTV" group-logo="", HTV2 - Vie Channel HD
+https://live.fptplay53.net/epzhd1/htv2hd_vhls.smil/chunklist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="HTV" group-logo="", HTV3
+https://live.fptplay53.net/epzhd1/htv3_hls.smil/chunklist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="HTV" group-logo="", HTV Key
+https://live.fptplay53.net/epzhd1/htv4_hls.smil/chunklist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="HTV" group-logo="", HTV7 HD
+https://live.fptplay53.net/epzch2/htv7hd_abr.smil/chunklist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="HTV" group-logo="", HTV9 HD
+https://live.fptplay53.net/epzhd1/htv9hd_vhls.smil/chunklist.m3u8
+
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Khác" group-logo="", Thử nghiệm
-http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8
+#http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8
