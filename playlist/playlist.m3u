@@ -67,5 +67,8 @@ https://live.fptplay53.net/epzhd1/htvcdulich_vhls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="HTV" group-logo="", HTVC Plus HD
 https://live.fptplay53.net/epzhd1/htvcplus_vhls.smil/chunklist.m3u8
 
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="SCTV" group-logo="", SCTV6 - Film 360
+https://live.fptplay53.net/epzhd2/film360_vhls.smil/chunklist.m3u8
+
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Khác" group-logo="", Thử Nghiệm
 #http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8
