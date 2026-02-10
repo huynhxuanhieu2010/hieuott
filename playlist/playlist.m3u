@@ -72,6 +72,3 @@ https://live.fptplay53.net/epzhd2/film360_vhls.smil/chunklist.m3u8
 
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Khác" group-logo="", Thử Nghiệm
 #http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8
-
-#EXTINF:0 tvg-id="angiang1" tvg-logo="" group-title="Địa phương" group-logo="" catchup="append" catchup-days="1" catchup-source="https://tv.angiangtv.vn/replay/index2.php/kgtv/1770700500_1770900000.m3u8", An Giang 1 HD
-https://live.fptplay53.net/epzsd1/angiang01_hls.smil/chunklist.m3u8
