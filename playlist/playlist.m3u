@@ -70,9 +70,9 @@ https://live.fptplay53.net/epzhd1/htvcplus_vhls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/SCTV/SCTV6.png" group-title="SCTV" group-logo="", SCTV6 - Film 360 HD
 https://live.fptplay53.net/epzhd2/film360_vhls.smil/chunklist.m3u8
 
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="", ANTV
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="", ANTV HD
 https://live.fptplay53.net/fnxhd2/anninhtv_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="", QPVN
+#EXTINF:0 tvg-id="" tvg-logo="" group-title="Thiết yếu" group-logo="", QPVN HD
 https://live.fptplay53.net/fnxhd2/quocphongvnhd_vhls.smil/chunklist.m3u8
 
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Khác" group-logo="", Thử Nghiệm
