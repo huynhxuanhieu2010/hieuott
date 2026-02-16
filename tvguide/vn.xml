@@ -50,4 +50,7 @@
 	<programme channel="oni1hd" start="20260216185600 +0700" stop="20260216190000 +0700">
 		<title lang="vi">CHƯƠNG TRÌNH ĐỆM</title>
 	</programme>
+	<programme channel="oni1hd" start="20260216190000 +0700" stop="20260216200000 +0700">
+		<title lang="vi">TIẾP SÓNG THỜI SỰ ĐÀI TRUYỀN HÌNH VIỆT NAM</title>
+	</programme>
 </tv>
