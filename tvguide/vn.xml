@@ -1,27 +1,27 @@
 <tv>
 	<channel id="oni1hd">
 		<display-name lang="vi">ONi1 HD</display-name>
-		<icon src="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi1.png">
+		<icon src="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi1.png"/>
 	</channel>
 	<channel id="oni2hd">
 		<display-name lang="vi">ONi2 HD</display-name>
-		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi2.png">
+		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi2.png"/>
 	</channel>
 	<channel id="oni3">
 		<display-name lang="vi">ONi3</display-name>
-		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi3.png">
+		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi3.png"/>
 	</channel>
 	<channel id="oni4sd">
 		<display-name lang="vi">ONi4 SD</display-name>
-		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4.png">
+		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4.png"/>
 	</channel>
 	<channel id="oni4hd">
 		<display-name lang="vi">ONi4 HD</display-name>
-		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4.png">
+		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4.png"/>
 	</channel>
 	<channel id="oni5hd">
 		<display-name lang="vi">ONi5 HD</display-name>
-		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi5.png">
+		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi5.png"/>
 	</channel>
 	<programme channel="oni1hd" start="20260216060000 +0700" stop="20260216070000 +0700">
 		<title lang="vi">TIẾP SÓNG CHƯƠNG TRÌNH CHÀO BUỔI SÁNG VTV</title>
