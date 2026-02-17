@@ -119,3 +119,5 @@ https://live.fptplay53.net/epzsd1/dongthaphd_vhls.smil/chunklist.m3u8
 https://live.fptplay53.net/epzsd1/gialai01_hls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/H1.png" group-title="Địa phương" group-logo="", Hà Nội 1 
 https://live.fptplay53.net/fnxhd2/hanoitv1_vhls.smil/chunklist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/H2UHD.png" group-title="Địa phương" group-logo="", Hà Nội 2 UHD
+https://live.fptplay53.net/fnxch2/hntv2_abr.smil/chunklist.m3u8
