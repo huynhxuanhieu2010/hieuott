@@ -168,3 +168,10 @@ https://live.fptplay53.net/fnxsd1/thainguyen_hls.smil/chunklist.m3u8
 https://live.fptplay53.net/fnxsd1/thanhhoa_hls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/TuyenQuangTV.png" group-title="Địa phương" group-logo="", Tuyên Quang
 https://live.fptplay53.net/fnxsd1/tuyenquang_hls.smil/chunklist.m3u8
+
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/H2.png" group-title="Địa phương (Thử nghiệm)" group-logo="", Hà Nội 2
+https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/ha-noi-2/KenhCoBan.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/DNNRTV3.png" group-title="Địa phương (Thử nghiệm)" group-logo="", Đồng Nai 3
+https://1.org.vn/dnrtv3
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/QGNTV2.png" group-title="Địa phương (Thử nghiệm)" group-logo="", Quảng Ngãi 2
+https://ace.hoiquan.click/module/IPTV/?id=QNgTV2&accKenh=vuminhthanh1
