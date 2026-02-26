@@ -150,6 +150,8 @@ https://live.fptplay53.net/fnxsd1/laocai_hls.smil/chunklist.m3u8
 https://live.fptplay53.net/epzsd1/lamdong_hls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/LTV2.png" group-title="Địa phương" group-logo="", Lâm Đồng 2
 https://live.fptplay53.net/epzsd1/lamdong02_hls.smil/chunklist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/BTV6.png" group-title="Địa phương" group-logo="", Bình Thuận 6
+http://14.255.66.32/udp/232.84.2.197:10966
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/NTV.png" group-title="Địa phương" group-logo="", Nghệ An
 https://live.fptplay53.net/fnxsd1/nghean_hls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/NBTV.png" group-title="Địa phương" group-logo="", Ninh Bình
