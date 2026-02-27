@@ -126,6 +126,8 @@ https://live.fptplay53.net/fnxch2/hntv2_abr.smil/chunklist.m3u8
 https://live.fptplay53.net/fnxsd1/hatinh_hls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THP.png" group-title="Địa phương" group-logo="", Hải Phòng
 https://live.fptplay53.net/fnxsd1/haiphong_hls.smil/chunklist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THP3.png" group-title="Địa phương" group-logo="", Hải Phòng 3
+https://live.fptplay53.net/fnxsd1/haiphongplus_hls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/HUETV.png" group-title="Địa phương" group-logo="", Huế
 https://live.fptplay53.net/epzsd1/hue_hls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/HYTV.png" group-title="Địa phương" group-logo="", Hưng Yên
@@ -183,10 +185,5 @@ https://live.fptplay53.net/epzsd1/vinhlong5_vhls.smil/chunklist.m3u8
 
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/H2.png" group-title="Địa phương" group-logo="", Hà Nội 2 HD
 #https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/ha-noi-2/KenhCoBan.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THP3.png" group-title="Địa phương" group-logo="", Hải Phòng 3
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
-#https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/hai-duong/KenhCoBan.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/BTV6.png" group-title="Địa phương" group-logo="", Bình Thuận 6
 #http://14.255.66.32/udp/232.84.2.197:10966
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/QNGTV2.png" group-title="Địa phương" group-logo="", Quảng Ngãi 2 HD
-#https://ace.hoiquan.click/module/IPTV/?id=QNgTV2&accKenh=vuminhthanh1
