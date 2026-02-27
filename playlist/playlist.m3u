@@ -178,13 +178,13 @@ https://live.fptplay53.net/fnxsd1/thainguyen_hls.smil/chunklist.m3u8
 https://live.fptplay53.net/fnxsd1/thanhhoa_hls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/TuyenQuangTV.png" group-title="Địa phương" group-logo="", Tuyên Quang
 https://live.fptplay53.net/fnxsd1/tuyenquang_hls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL1.png" group-title="Địa phương" group-logo="", Vĩnh Long 1
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL1.png" group-title="Địa phương" group-logo="", Vĩnh Long 1 HD
 https://live.fptplay53.net/epzch2/vinhlong1_abr.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL2.png" group-title="Địa phương" group-logo="", Vĩnh Long 2
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL2.png" group-title="Địa phương" group-logo="", Vĩnh Long 2 HD
 https://live.fptplay53.net/epzhd2/vinhlong2_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL3.png" group-title="Địa phương" group-logo="", Vĩnh Long 3
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL3.png" group-title="Địa phương" group-logo="", Vĩnh Long 3 HD
 https://live.fptplay53.net/epzch2/vinhlong3_abr.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL4.png" group-title="Địa phương" group-logo="", Vĩnh Long 4
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL4.png" group-title="Địa phương" group-logo="", Vĩnh Long 4 HD
 https://live.fptplay53.net/epzhd2/vinhlong4hd_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL5.png" group-title="Địa phương" group-logo="", Vĩnh Long 5
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL5.png" group-title="Địa phương" group-logo="", Vĩnh Long 5 HD
 https://live.fptplay53.net/epzsd1/vinhlong5_vhls.smil/chunklist.m3u8
