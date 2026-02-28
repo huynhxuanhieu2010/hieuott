@@ -193,6 +193,9 @@ https://live.fptplay53.net/epzhd2/vinhlong4hd_vhls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/THVL5.png" group-title="Địa phương" group-logo="", Vĩnh Long 5 HD
 https://live.fptplay53.net/epzsd1/vinhlong5_vhls.smil/chunklist.m3u8
 
+#EXTINF:0 tvg-imdb="8.5" tvg-season="3" tvg-episode="1" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/media/tv-series/poster/ONNA_Online/nhungduaconcuathantuong.png" group-title="ONNA Online" group-logo="" serie-title="Những Đứa Con Của Thần Tượng" type="series", - 
+https://rumble.com/hls-vod/72av32/playlist.m3u8
+
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/H2.png" group-title="Địa phương" group-logo="", Hà Nội 2 HD
 #https://toiyeuvietnam.dpdns.org/TuyetDoiKhongKinhDoanh/ha-noi-2/KenhCoBan.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/BTV6.png" group-title="Địa phương" group-logo="", Bình Thuận 6
