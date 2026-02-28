@@ -1,5 +1,4 @@
-#EXTM3U billed-msg="Chào mừng bạn đến với HieuOTT | Website: https://sites.google.com/view/ | Cập nhật lần cuối: 04:10 01/03/2026.
-Thông báo: Từ 01/03/2026, HieuOTT thêm kênh ONi4 UHD trong nhóm "ONNA Network"."
+#EXTM3U billed-msg="Chào mừng bạn đến với HieuOTT | Website: https://sites.google.com/view/ | Cập nhật lần cuối: 04:10 01/03/2026 | Thông báo: Từ 01/03/2026, HieuOTT thêm kênh ONi4 UHD trong nhóm "ONNA Network". "
 
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi1.png" group-title="ONNA Network" group-logo="", ONi1 HD
 https://kubolive.ddns.net:8081/hls_nonkey/oni1/index.m3u8
