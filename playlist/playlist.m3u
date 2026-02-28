@@ -1,29 +1,29 @@
-#EXTM3U url-tvg="https://huynhxuanhieu2010.github.io/hieuott/tvguide/vn.xml"
+#EXTM3U
 
-#EXTINF:0 tvg-id="oni1hd" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi1.png" group-title="ONNA Network" group-logo="", ONi1 HD
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi1.png" group-title="ONNA Network" group-logo="", ONi1 HD
 https://kubolive.ddns.net:8081/hls_nonkey/oni1/index.m3u8
-#EXTINF:0 tvg-id="oni14k" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi1-4K.png" group-title="ONNA Network" group-logo="", ONi1 4K
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi1-4K.png" group-title="ONNA Network" group-logo="", ONi1 4K
 http://160.22.122.248:9001/oni/index.m3u8
-#EXTINF:0 tvg-id="oni2hd" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi2.png" group-title="ONNA Network" group-logo="", ONi2 HD
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi2.png" group-title="ONNA Network" group-logo="", ONi2
 https://kubolive.ddns.net:8081/hls_nonkey/oni2hd/index.m3u8
-#EXTINF:0 tvg-id="oni3" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi3.png" group-title="ONNA Network" group-logo="", ONi3
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi3.png" group-title="ONNA Network" group-logo="", ONi3
 https://kubolive.ddns.net:8081/hls_nonkey/oni3/index.m3u8
-#EXTINF:0 tvg-id="oni4hd" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4.png" group-title="ONNA Network" group-logo="", ONi4 HD
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4.png" group-title="ONNA Network" group-logo="", ONi4 HD
 https://kubolive.ddns.net:8081/hls_nonkey/oni4/index.m3u8
-#EXTINF:0 tvg-id="oni5hd" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi5.png" group-title="ONNA Network" group-logo="", ONi5 HD
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi5.png" group-title="ONNA Network" group-logo="", ONi5 HD
 https://kubolive.ddns.net:8081/hls_nonkey/oni5/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/radio/logo/ONNA_Network/ONNA-Radio.png" group-title="ONNA Network" group-logo="" type="radio", ORi FM
 https://stream-176.zeno.fm/crwtkeidk9vuv/?/index.m3u8
 
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Event/FPT-Play.png" group-title="FPT Sự Kiện" group-logo="", FPT Sự Kiện 1 HD
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Event/FPTPlay.png" group-title="FPT Sự Kiện" group-logo="", FPT Sự Kiện 1 HD
 https://live.fptplay53.net/live/media/su-kien-01/hls_avc_v6/index.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Event/FPT-Play.png" group-title="FPT Sự Kiện" group-logo="", FPT Sự Kiện 1 4K
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Event/FPTPlay.png" group-title="FPT Sự Kiện" group-logo="", FPT Sự Kiện 1 4K
 https://live.fptplay53.net/live/media/su-kien-01-4k/hls_avc_v6/index.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Event/FPT-Play.png" group-title="FPT Sự Kiện" group-logo="", FPT Sự Kiện 3 HD
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Event/FPTPlay.png" group-title="FPT Sự Kiện" group-logo="", FPT Sự Kiện 3 HD
 https://live.fptplay53.net/live/media/su-kien-03/hls_avc_v6/index.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Event/FPT-Play.png" group-title="FPT Sự Kiện" group-logo="", FPT Sự Kiện 6 HD
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Event/FPTPlay.png" group-title="FPT Sự Kiện" group-logo="", FPT Sự Kiện 6 HD
 https://live.fptplay53.net/live/media/su-kien-06/hls_avc_v6/index.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Event/FPT-Play.png" group-title="FPT Sự Kiện" group-logo="", FPT Sự Kiện 7 HD
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Event/FPTPlay.png" group-title="FPT Sự Kiện" group-logo="", FPT Sự Kiện 7 HD
 https://live.fptplay53.net/live/media/su-kien-07/hls_avc_v6/index.m3u8
 
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/VTV/VTV1.png" group-title="VTV" group-logo="", VTV1 HD
@@ -130,7 +130,7 @@ https://live.fptplay53.net/epzsd1/dongthaphd_vhls.smil/chunklist.m3u8
 https://live.fptplay53.net/epzsd1/gialai01_hls.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/H1.png" group-title="Địa phương" group-logo="", Hà Nội 1 HD
 https://live.fptplay53.net/fnxhd2/hanoitv1_vhls.smil/chunklist.m3u8
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/H2UHD.png" group-title="Địa phương" group-logo="", Hà Nội 2 UHD
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/H2.png" group-title="Địa phương" group-logo="", Hà Nội 2 HD
 https://live.fptplay53.net/fnxch2/hntv2_abr.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/Local/BHTTV.png" group-title="Địa phương" group-logo="", Hà Tĩnh
 https://live.fptplay53.net/fnxsd1/hatinh_hls.smil/chunklist.m3u8
@@ -199,6 +199,3 @@ https://live.fptplay53.net/epzsd1/vinhlong5_vhls.smil/chunklist.m3u8
 #http://14.255.66.32/udp/232.84.2.197:10966
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Khác" group-logo="", Thử Nghiệm
 #http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8
-
-#EXTINF:0 tvg-imdb="8.3" tvg-season="3" tvg-episode="1" tvg-logo="" group-title="ONNA Online" group-logo="" serie-title="Những Đứa Con Của Thần Tượng" type="series", Phần 3 Tập 1
-https://rumble.com/hls-vod/72av32/playlist.m3u8
