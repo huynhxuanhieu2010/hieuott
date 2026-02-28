@@ -199,3 +199,6 @@ https://live.fptplay53.net/epzsd1/vinhlong5_vhls.smil/chunklist.m3u8
 #http://14.255.66.32/udp/232.84.2.197:10966
 #EXTINF:0 tvg-id="" tvg-logo="" group-title="Khác" group-logo="", Thử Nghiệm
 #http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8
+
+#EXTINF:0 tvg-serie="1" tvg-season="3" tvg-episode="1" tvg-logo="" group-title="ONNA Online" group-logo="" serie-title="Những đứa con của thần tượng", tập 1
+https://rumble.com/hls-vod/72av32/playlist.m3u8
