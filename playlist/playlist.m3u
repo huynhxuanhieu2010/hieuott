@@ -1,4 +1,4 @@
-#EXTM3U billed-msg="Chào mừng bạn đến với HieuOTT | Website:  | Cập nhật lần cuối: 04:21 01/03/2026"
+#EXTM3U billed-msg="Chào mừng bạn đến với HieuOTT | Website: https://sites.google.com/view/hieuott | Cập nhật lần cuối: 04:24 01/03/2026"
 
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi1.png" group-title="ONNA Network" group-logo="", ONi1 HD
 https://kubolive.ddns.net:8081/hls_nonkey/oni1/index.m3u8
