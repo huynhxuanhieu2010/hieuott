@@ -13,7 +13,7 @@ https://kubolive.ddns.net:8081/hls_nonkey/oni5/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/radio/logo/ONNA_Network/ONNA-Radio.png" group-title="ONNA Network" group-logo="" type="radio", ORi FM
 https://stream-176.zeno.fm/crwtkeidk9vuv/?/index.m3u8
 
-#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/VTV/VTV1.png" group-title="VTV" group-logo="", VTV1 HD
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/VTV/VTV1.png" group-title="VTV" group-logo="" catchup="default" catchup-days="2" catchup-source="http://sv.cvtv.xyz:3000/mytvod.m3u8?id=210&time=${start}&offset=${duration}", VTV1 HD
 https://live.fptplay53.net/fnxch2/vtv1hd_abr.smil/chunklist.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/VTV/VTV2.png" group-title="VTV" group-logo="", VTV2 HD
 https://live.fptplay53.net/fnxch2/vtv2hd_abr.smil/chunklist.m3u8
