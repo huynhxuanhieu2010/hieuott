@@ -1,5 +1,6 @@
 #EXTM3U
 #EXT-VERSION:3
+#EXT-X-TARGETDURATION: 4
 #EXTINF:0,
 http://onnanetwork.serveftp.com/hls/oni1/index.m3u8
 #EXT-X-ENDLIST
