@@ -3,3 +3,5 @@
 #EXT-X-ALLOW-CACHE:YES
 #EXT-X-STREAM-INF:RESOLUTION=1280x720
 http://onnanetwork.serveftp.com/hls/oni3/index.m3u8
+#EXT-X-STREAM-INF:RESOLUTION=1280x720
+https://image2url.com/r2/default/videos/1772361859930-a64e73b0-792a-41a4-a2bb-7ca682f6e92f.ts
