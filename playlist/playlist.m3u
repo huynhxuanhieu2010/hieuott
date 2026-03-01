@@ -5,7 +5,7 @@ https://huynhxuanhieu2010.github.io/hieuott/live/tv/onnanetwork/oni1/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi2.png" group-title="ONNA Network" group-logo="", ONi2
 https://kubolive.ddns.net:8081/hls_nonkey/oni2hd/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi3.png" group-title="ONNA Network" group-logo="", ONi3
-https://kubolive.ddns.net:8081/hls_nonkey/oni3/index.m3u8
+https://huynhxuanhieu2010.github.io/hieuott/live/tv/onnanetwork/oni3/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4.png" group-title="ONNA Network" group-logo="", ONi4 HD
 https://kubolive.ddns.net:8081/hls_nonkey/oni4/index.m3u8
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4UHD.png" group-title="ONNA Network" group-logo="", ONi4 UHD
