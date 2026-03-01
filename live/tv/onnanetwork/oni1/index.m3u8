@@ -1,7 +1,5 @@
 #EXTM3U
 #EXT-X-VERSION:3
 #EXT-X-ALLOW-CACHE:YES
-#EXT-X-STREAM-INF:RESOLUTION=1920x1080
+#EXTINF:-1,
 http://onnanetwork.serveftp.com/hls/oni1/index.m3u8
-#EXT-X-STREAM-INF:RESOLUTION=1920x1080
-https://huynhxuanhieu2010.github.io/hieuott/live/testcard/testcard.m3u8
