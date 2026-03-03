@@ -1,5 +1,0 @@
-#EXTM3U
-#EXT-X-VERSION:3
-#EXT-X-ALLOW-CACHE:NO
-#EXT-X-STREAM-INF:RESOLUTION=1920x1080
-http://onnanetwork.serveftp.com/hls/oni1/index.m3u8
