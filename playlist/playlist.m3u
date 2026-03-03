@@ -1,4 +1,4 @@
-#EXTM3U billed-msg="Chào mừng bạn đến với HieuOTT | Cập nhật lần cuối: 02:42 04/03/2026"
+#EXTM3U billed-msg="Chào mừng bạn đến với HieuOTT | Cập nhật lần cuối: 03:28 04/03/2026"
 
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi1.png" group-title="ONNA Network" group-logo="", ONi1 HD
 http://live.onnanetwork.xyz/hls/oni1/index.m3u8
@@ -203,6 +203,13 @@ https://live.fptplay53.net/epzsd1/vinhlong5_vhls.smil/chunklist.m3u8
 
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/International/Da-Vinci.png" group-title="Thiếu nhi" group-logo="", Da Vinci HD
 https://live.fptplay53.net/fnxhd2/davincihd_vhls.smil/chunklist.m3u8
+
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/International/CNA.png" group-title="Tin tức" group-logo="", Channel News Asia
+https://live.fptplay53.net/fnxhd2/newsasia_hls.smil/chunklist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/International/CNBC.png" group-title="Tin tức" group-logo="", CNBC
+https://live.fptplay53.net/fnxsd1/cnbc_hls.smil/chunklist.m3u8
+#EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/International/France24.png" group-title="Tin tức" group-logo="", France 24
+https://live.fptplay53.net/fnxhd2/france24_hls.smil/chunklist.m3u8
 
 #EXTINF:0 tvg-id="" tvg-logo="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/International/Asian-Food-Network.png" group-title="Khám phá" group-logo="", Asian Food Network HD
 https://live.fptplay53.net/fnxhd2/afchd_vhls.smil/chunklist.m3u8
