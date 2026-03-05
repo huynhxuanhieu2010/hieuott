@@ -5,34 +5,33 @@
 	</channel>
 	<channel id="oni2hd">
 		<display-name lang="vi">ONi2 HD</display-name>
-		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi2.png"/>
+		<icon src="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi2.png"/>
 	</channel>
 	<channel id="oni3">
 		<display-name lang="vi">ONi3</display-name>
-		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi3.png"/>
+		<icon src="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi3.png"/>
 	</channel>
-	<channel id="oni4sd">
-		<display-name lang="vi">ONi4 SD</display-name>
-		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4.png"/>
-	</channel>
-	<channel id="oni4hd">
-		<display-name lang="vi">ONi4 HD</display-name>
-		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4.png"/>
+	<channel id="oni4uhd">
+		<display-name lang="vi">ONi4 UHD</display-name>
+		<icon src="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi4UHD.png"/>
 	</channel>
 	<channel id="oni5hd">
 		<display-name lang="vi">ONi5 HD</display-name>
-		<icon scr="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi5.png"/>
+		<icon src="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi5.png"/>
 	</channel>
-	<programme channel="oni3" start="20260222180000 +0700" stop="20260222183500 +0700">
+	<programme channel="oni3" start="20260305180000 +0700" stop="20260305200000 +0700">
 		<title lang="vi">TRUYỀN HÌNH TRỰC TIẾP: XỔ SỐ KIẾN THIẾT MIỀN BẮC</title>
 	</programme>
-	<programme channel="oni3" start="20260222183500 +0700" stop="20260222190000 +0700">
-		<title lang="vi">VƯỢT LÊN CHÍNH MÌNH - SỐ 4</title>
+	<programme channel="oni4uhd" start="20260305180000 +0700" stop="20260305201100 +0700">
+		<title lang="vi">PHIM ĐIỆN ẢNH: CÔ HẦU GÁI</title>
 	</programme>
-	<programme channel="oni3" start="20260222190000 +0700" stop="20260222194500 +0700">
-		<title lang="vi">TIẾP SÓNG THỜI SỰ ĐÀI TRUYỀN HÌNH VIỆT NAM</title>
+	<programme channel="oni4uhd" start="20260305201100 +0700" stop="20260305211700 +0700">
+		<title lang="vi">PHIM ĐIỆN ẢNH: ẨN DANH - PHẦN 1</title>
 	</programme>
-	<programme channel="oni3" start="20260222194500 +0700" stop="20260222200500 +0700">
-		<title lang="vi">PHIM TÀI LIỆU: LỬA THIÊNG TRÀNG XÁ VÔ NHAI - TẬP 2: NHỮNG CON "HÙM XÁM" VÕ NHAI</title>
+	<programme channel="oni4uhd" start="20260305211700 +0700" stop="20260305224500 +0700">
+		<title lang="vi">THỬ THÁCH THẦN TƯỢNG - TẬP 761</title>
+	</programme>
+	<programme channel="oni4uhd" start="20260305224500 +0700" stop="20260305235100 +0700">
+		<title lang="vi">PHIM ĐIỆN ẢNH: ẨN DANH - PHẦN 2</title>
 	</programme>
 </tv>
