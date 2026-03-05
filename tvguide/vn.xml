@@ -19,6 +19,24 @@
 		<display-name lang="vi">ONi5 HD</display-name>
 		<icon src="https://huynhxuanhieu2010.github.io/hieuott/image/tvchannel/logo/ONNA_Network/ONi5.png"/>
 	</channel>
+	<programme channel="oni2hd" start="20260305120000 +0700" stop="20260305140000 +0700">
+		<title lang="vi">CHƯƠNG TRÌNH ÂM NHẠC - TIN TỨC - THỜI TIẾT</title>
+	</programme>
+	<programme channel="oni2hd" start="20260305140000 +0700" stop="20260305160000 +0700">
+		<title lang="vi">CHƯƠNG TRÌNH ÂM NHẠC - TIN TỨC - THỜI TIẾT</title>
+	</programme>
+	<programme channel="oni2hd" start="20260305160000 +0700" stop="20260305180000 +0700">
+		<title lang="vi">CHƯƠNG TRÌNH ÂM NHẠC - TIN TỨC - THỜI TIẾT</title>
+	</programme>
+	<programme channel="oni2hd" start="20260305180000 +0700" stop="20260305200000 +0700">
+		<title lang="vi">CHƯƠNG TRÌNH ÂM NHẠC - TIN TỨC - THỜI TIẾT</title>
+	</programme>
+	<programme channel="oni2hd" start="20260305200000 +0700" stop="20260305220000 +0700">
+		<title lang="vi">CHƯƠNG TRÌNH ÂM NHẠC - TIN TỨC - THỜI TIẾT</title>
+	</programme>
+	<programme channel="oni2hd" start="20260305220000 +0700" stop="20260306000000 +0700">
+		<title lang="vi">CHƯƠNG TRÌNH ÂM NHẠC - TIN TỨC - THỜI TIẾT</title>
+	</programme>
 	<programme channel="oni3" start="20260305180000 +0700" stop="20260305200000 +0700">
 		<title lang="vi">TRUYỀN HÌNH TRỰC TIẾP: XỔ SỐ KIẾN THIẾT MIỀN BẮC</title>
 	</programme>
